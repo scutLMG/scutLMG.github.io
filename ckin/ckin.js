@@ -1,4 +1,4 @@
-const { Octokit } = require("@octokit/rest");
+// const { Octokit } = require("@octokit/rest");
 var month_olypic = [31,29,31,30,31,30,31,31,30,31,30,31];//闰年每个月份的天数
 var month_normal = [31,28,31,30,31,30,31,31,30,31,30,31];
 var month_name =["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
@@ -39,7 +39,7 @@ function ajax(url){
         req.onload = function(){
             if(req.status === 200){
                 var json = JSON.parse(req.responseText);
-                var raw = json[json.length-1].body;
+                raw = json[json.length-1].body;
                 resolve(raw);
             }else{
                 var empty = 0;
@@ -55,23 +55,7 @@ ajax(url).then(function(json){
 }).catch(function(jsonZ){
     refreshDate(jsonZ);
 });
-//从github获得签到的数据。
-// function getsignday(){
-// 	var url = "https://api.github.com/repos/scutLMG/selfTalk_db/issues/2/comments";
-// 	var request = new XMLHttpRequest();
-//     request.open("get", url);/*设置请求方法与路径*/
-//     request.send(null);/*不发送数据到服务器*/
-//     request.onload = function () {
-//         if (request.status == 200) {/*返回状态为200，即为数据获取成功*/
-//             var json = JSON.parse(request.responseText);
-//             var raw = json[json.length-1].body;
-// 			signdayin = raw.split(/,/);
-// 			console.log(signdayin);
-// 			return(signdayin);
-// 		}
-// 	}
-// }
-//js实现str插入li+class,不要忘了用innerhtml进行插入
+
 function refreshDate(j){
 	// console.log(j);
 	// console.log(typeof(j));
@@ -85,6 +69,7 @@ function refreshDate(j){
     //计算当月的天数和每月第一天都是周几，day_month和day_year都从上面获得
     var totalDay = daysMonth(my_month,my_year);
     var firstDay = dayStart(my_month, my_year);
+    console.log(signday);
     //添加每个月的空白部分
     for(var i = 0; i < firstDay; i++){
         str += "<li>"+"</li>";
@@ -138,28 +123,34 @@ next.onclick = function(e){
     }
     refreshDate(0);
 }
-sign.onclick = function(e){
-    e.preventDefault();
-    //saveTest();
-    var x = prompt ("请输入访问密码: \n Enter your password:");/*第一个变量为提示语，第二个变量为默认初始值*/
-    if (x === "jianchijiushishengli"){
-    var daystr ="" + signday + my_day;
-    const octokit = new Octokit({
-        auth:"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",
-        userAgent: 'myApp v1.2.3'
-    })
-    octokit.rest.issues.createComment({
-        owner:"scutLMG",
-        repo:"selfTalk_db",
-        issue_number:2,
-        body:"",
-    });
-    // getsignday();
-    }
-    else{
-    alert("这是个人应用页面，只有站长能用哦。(施工中)\nThis is a private app for blogger, you can only check the calendar.");
-    }
-}
+// sign.onclick = function(e){
+//     e.preventDefault();
+//     var daybefore = raw.split(/,/);
+//     var daystr = ""+daybefore+","+my_day;
+//     var x = prompt ("请输入访问密码: \n Enter your password:");/*第一个变量为提示语，第二个变量为默认初始值*/
+//     if (x === "lili"){
+
+//     // var daystr ="" + signdays + "," + my_day;
+//     const octokit = new Octokit({
+//         auth:"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",
+//         userAgent: 'myApp v1.2.3'
+//     })
+//     octokit.rest.issues.createComment({
+//         owner:"scutLMG",
+//         repo:"selfTalk_db",
+//         issue_number:2,
+//         body:daystrs,
+//     });
+//     // getsignday();
+//     location.reload(true);
+//     }
+//     else{
+//         // var daystr ="" + signdays + my_day;
+//         console.log(daystr);
+//         alert("这是个人应用页面，只有站长能用哦。(施工中)\nThis is a private app for blogger, you can only check the calendar.");
+//     }
+//     // location.reload(true);
+// }
 function over(x){
     //x.style.color = "rgb(92,210,242)";
     x.style.color = "rgb(170,204,230)";
