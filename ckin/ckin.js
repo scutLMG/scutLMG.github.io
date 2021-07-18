@@ -1,4 +1,4 @@
-<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>// const { Octokit } = require("@octokit/rest");
+// const { Octokit } = require("@octokit/rest");
 var month_olypic = [31,29,31,30,31,30,31,31,30,31,30,31];//闰年每个月份的天数
 var month_normal = [31,28,31,30,31,30,31,31,30,31,30,31];
 var month_name =["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
