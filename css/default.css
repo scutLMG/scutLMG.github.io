@@ -10258,6 +10258,9 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  background: url("/img/mount.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 body > .section {
   flex-grow: 1;
@@ -11061,6 +11064,62 @@ footer.footer .level-end .field {
 .timeline .media:first-child:last-child:after {
   top: calc(1.5 * 0.85rem / 2 + 0.75rem / 2);
 }
+.chinese-zodiac {
+  float: right;
+}
+@font-face {
+  font-family: 'chinese-zodiac';
+  font-display: swap;
+  src: url("/fonts/chinese-zodiac.eot");
+  src: url("/fonts/chinese-zodiac.eot") format('embedded-opentype'), url("/fonts/chinese-zodiac.woff2") format('woff2'), url("/fonts/chinese-zodiac.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.symbolic-animals {
+  color: #3273dc;
+  display: inline-block;
+  font: normal normal normal 14px/1 chinese-zodiac;
+  font-size: x-large;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-dragon:before {
+  content: '\e806';
+}
+.icon-tiger:before {
+  content: '\e809';
+}
+.icon-pig:before {
+  content: '\e810';
+}
+.icon-horse:before {
+  content: '\e813';
+}
+.icon-rat:before {
+  content: '\e816';
+}
+.icon-goat:before {
+  content: '\e818';
+}
+.icon-snake:before {
+  content: '\e820';
+}
+.icon-ox:before {
+  content: '\e822';
+}
+.icon-dog:before {
+  content: '\e825';
+}
+.icon-rabbit:before {
+  content: '\e826';
+}
+.icon-monkey:before {
+  content: '\e829';
+}
+.icon-rooster:before {
+  content: '\e82f';
+}
 .searchbox {
   display: none;
   top: 0;
@@ -11628,14 +11687,47 @@ figure.highlight .section {
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
   .is-2-column .container {
-    max-width: 960px;
-    width: 960px;
+    max-width: 1152px;
+    width: 1152px;
+  }
+  .is-3-column .container {
+/* 关闭评论图片 后调节 原94%*/
+    max-width: 85%; /*screen-widescreen + 2 * extend-width - 2 * gap*/
+    width: 85%;
+  }
+  .column.is-3-widescreen {
+    flex: none;
+    width: 24%;
+  }
+  .column.is-6-widescreen {
+    width: 52%;
+  }
+  .column.is-4-widescreen {
+    flex: none;
+    width: 24%;
+  }
+  .column.is-8-widescreen {
+    width: 76%;
+  }
+  .column.is-9-widescreen {
+    width: 76%;
+  }
+  .navbar > .container .navbar-brand,
+  .container > .navbar .navbar-brand {
+    margin-left: 0%;
+  }
+  .navbar > .container .navbar-menu,
+  .container > .navbar .navbar-menu {
+    margin-right: 0.5%;
+  }
+  .level-end {
+    margin-right: -1.5%;
   }
 }
 @media screen and (min-width: 1472px) {
   .is-2-column .container {
-    max-width: 1152px;
-    width: 1152px;
+    max-width: 1344px;
+    width: 1344px;
   }
   .is-1-column .container {
     max-width: 960px;
@@ -11661,6 +11753,11 @@ figure.highlight .section {
   .section {
     padding: 1.5rem 1rem;
   }
+}
+.navbar {
+  z-index: 100;
+  position: sticky;
+  top: 0;
 }
 #universe {
   display: none;
