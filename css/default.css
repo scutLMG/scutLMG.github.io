@@ -12078,6 +12078,9 @@ body.night .timeline {
 body.night .timeline .media:before {
   background-color: #434a56;
 }
+body.night .symbolic-animals {
+  color: #c0c0c0;
+}
 body.night .searchbox .searchbox-container,
 body.night .searchbox .searchbox-header,
 body.night .searchbox .searchbox-header .searchbox-input,
@@ -12426,6 +12429,9 @@ body.night .twikoo code {
   }
   body:not(.light) .timeline .media:before {
     background-color: #434a56;
+  }
+  body:not(.light) .symbolic-animals {
+    color: #c0c0c0;
   }
   body:not(.light) .searchbox .searchbox-container,
   body:not(.light) .searchbox .searchbox-header,
