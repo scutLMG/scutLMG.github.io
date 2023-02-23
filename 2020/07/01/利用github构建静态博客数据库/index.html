@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>利用github构建静态博客数据库 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引言因为使用如hexo的框架搭建博客，是静态的，但是难免会有一些使用动态数据的需求产生，面对这些需求时，选择机械地编写硬编码，再上传生成显然不是一个优雅的做法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用github构建静态博客数据库">
+<meta property="og:url" content="http://example.com/2020/07/01/%E5%88%A9%E7%94%A8github%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="引言因为使用如hexo的框架搭建博客，是静态的，但是难免会有一些使用动态数据的需求产生，面对这些需求时，选择机械地编写硬编码，再上传生成显然不是一个优雅的做法。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/gitalk1.jpg">
+<meta property="og:image" content="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/OAuth2.jpg">
+<meta property="article:published_time" content="2020-07-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T18:44:08.415Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="cs">
+<meta property="article:tag" content="front-end">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/gitalk1.jpg">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-利用github构建静态博客数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/01/%E5%88%A9%E7%94%A8github%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2020-07-01T00:00:00.000Z" itemprop="datePublished">2020-07-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>►<a class="article-category-link" href="/categories/cs/">cs</a>►<a class="article-category-link" href="/categories/cs/front-end/">front-end</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用github构建静态博客数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>因为使用如<code>hexo</code>的框架搭建博客，是静态的，但是难免会有一些使用动态数据的需求产生，面对这些需求时，选择机械地编写硬编码，再上传生成显然不是一个优雅的做法。</p>
+<span id="more"></span>
+
+<p>而目前大多框架的主题都带有评论系统，其中支持<code>gitalk</code>的便使用了<code>OAuth</code>以及<code>github</code>中的<code>issue</code>，通过<code>OAuth</code>授权验证，<code>issue</code>作为存储。那么我们可以考虑利用这种模式，将动态数据更新到特定<code>repo</code>的某个<code>issue</code>中，再通过<code>github</code>提供的<code>API</code>访问获取数据。除此之外，关于这个存储<code>repo</code>，虽然不能私有，但是其中的<code>issue</code>可以选择关闭，只有管理员可以浏览编辑。这就只剩下一个问题，数据泄露，如果有比较机密的数据，当然不适合用这种方法了。<del>（不会真有人往博客里写秘密吧，谁把秘密写在博客里，能写在博客的那能叫秘密吗？）</del></p>
+<h1 id="认识gitalk"><a href="#认识gitalk" class="headerlink" title="认识gitalk"></a>认识gitalk</h1><p>看明白gitalk的工作原理，就成功大半了。</p>
+<p>我，前端菜鸡，看到前端代码就头疼，能瞎写绝不优化。差不多就行了。</p>
+<h2 id="github-token"><a href="#github-token" class="headerlink" title="github token"></a>github token</h2><p>此章参考<a target="_blank" rel="noopener" href="https://carl-zk.github.io/blog/2020/03/03/gitalk-%E8%BF%90%E4%BD%9C%E5%8E%9F%E7%90%86/">Gitalk 运作原理</a>，<a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">Gitalk</a>，<a target="_blank" rel="noopener" href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">Github文档</a>。<code>token</code>分为三类，<code>gitalk</code>使用<code>OAuth App</code>，属于github<code>的三种</code>token&#96;之一。</p>
+<ol>
+<li>GitHub Apps</li>
+<li>OAuth Apps</li>
+<li>Personal access tokens</li>
+</ol>
+<h2 id="OAuth-Apps"><a href="#OAuth-Apps" class="headerlink" title="OAuth Apps"></a>OAuth Apps</h2><p>实现了<code>OAuth2.0</code>认证协议，主要针对第三方平台想要通过<code>GitHub API</code>获取用户私密信息时，用户可不必向第三方平台提供<code>GitHub</code>账号密码即可完成认证。通过<code>OAuth Apps</code>授权的<code>token</code>代表的是该授权用户，而不是<code>App</code>，即<code>App</code>本身不具有任何权限。在权限限制上也与<code>GitHub App</code>不同，<code>OAuth App</code>只能读。值得一提的是<code>GitHub</code>使用的是<code>Authorization code grant</code>模式，也是最推荐的模式。以<code>gitalk</code>为例在该模式下的认证流程为</p>
+<p><img src="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/gitalk1.jpg" alt="gitalk1"></p>
+<h2 id="OAth2-0-协议"><a href="#OAth2-0-协议" class="headerlink" title="OAth2.0 协议"></a>OAth2.0 协议</h2><p>OAuth2 有4个角色：</p>
+<ol>
+<li>资源拥有者 (user)</li>
+<li>第三方客户端 (client)</li>
+<li>资源服务器 (resource server)</li>
+<li>认证服务器 (authentication server)</li>
+</ol>
+<p>Authentication code grant 模式流程如下：</p>
+<p><img src="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/OAuth2.jpg" alt="OAuth2"></p>
+<ol>
+<li>user在第三方平台A登录，登录方式是使用另一个平台B的身份信息。</li>
+<li>A携带clientID跳转到B的授权页，请user授权。（这个clientID就是A在B登记的OAuth身份标识，这也表明使用OAuth协议前必须先在平台注册登记）</li>
+<li>user授权A可以从B获取身份信息，grant_code作为凭据。</li>
+<li>A的【<strong>后台</strong>】向B发起access_token申请，携带参数clientID+clientSecret+grant_code。</li>
+<li>B验证无误后返回代表该用户的access_token。</li>
+<li>A可以使用access_token通过B的API调取user信息了。</li>
+</ol>
+<p>可以看出认证授权有两个阶段，这也是OAuth协议被认为安全的关键。第一阶段只能拿到一个临时许可令牌grant_code，可能十几分钟的过期。第二阶段拿access_token。</p>
+<ol>
+<li>第一阶段<br>clientID可以保存在前端，比如web页面，跳转认证时直接从前端取，不需要请求后台。grant_code只作为一个用户许可，并不能确保是否是可信任平台发起的请求，所以要验证平台是否可信，通过clientSecret。</li>
+<li>第二阶段<br>clientSecret只能保存在后台，而且获取access_token的请求只能由后台服务器发起和接收。这个过程跟前端无关，所以被认为是最安全的。</li>
+</ol>
+<p>access_token一般会被保存起来，过期时间会久一些，可能几个月。</p>
+<p>既然如此，是否可以说凡是使用OAuth2.0的认证就一定是最安全的呢？并不是，这要看是否使用的规范。gitalk就是一个不规范使用的例子，它把clientSecret也暴露在前端。<del>因为我们没有后台。</del>无后台server。缺点是暴露了clientSecret，不符合OAuth2.0规范。但是在GitHub上这样做是安全的，因为access_token只有读权限，不能对user的repo造成任何损害。</p>
+<h2 id="gitalk源码"><a href="#gitalk源码" class="headerlink" title="gitalk源码"></a><code>gitalk</code>源码</h2><p>gitalk没有后台server，clientSecret也是保存在前端，它的代理服务器地址。<br><a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk/blob/master/src/gitalk.jsx">gitalk的代码</a>，<a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk/blob/ab55125516b418e2bd9bb6ace44c6df4750a175a/src/gitalk.jsx#L63">使用的代理</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy: &#x27;https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token&#x27;,</span><br></pre></td></tr></table></figure>
+
+<p>一个公开的免费代理，声称是不会保存任何转发信息。</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk/blob/ab55125516b418e2bd9bb6ace44c6df4750a175a/src/gitalk.jsx#L153-L159">access_token</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">get accessToken () &#123;</span><br><span class="line">return this._accessToke || window.localStorage.getItem(GT_ACCESS_TOKEN)</span><br><span class="line">&#125;</span><br><span class="line">set accessToken (token) &#123;</span><br><span class="line">window.localStorage.setItem(GT_ACCESS_TOKEN, token)</span><br><span class="line">this._accessToken = token</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>access_token获取之后被保存起来，不关闭浏览器是不需要重复授权的。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk/blob/ab55125516b418e2bd9bb6ace44c6df4750a175a/src/gitalk.jsx#L267-L272">comments</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">createIssue () &#123;</span><br><span class="line">  const &#123; owner, repo, title, body, id, labels, url &#125; = this.options</span><br><span class="line">  return axiosGithub.post(`/repos/$&#123;owner&#125;/$&#123;repo&#125;/issues`, &#123;</span><br><span class="line">    title,</span><br><span class="line">    labels: labels.concat(id),</span><br><span class="line">    body: body || `$&#123;url&#125; \n\n $&#123;</span><br></pre></td></tr></table></figure>
+
+<p>注意labels后面连接的id，这个id就是文章的唯一标识，一般设置为URL。</p>
+<p>GitHub的label长度限制在63字符之内，超过就不能创建Issue。为此可以对URL进行md5哈希，md5后生成128-bit摘要，用16进制表示，长度恒等于32.</p>
+<p>Issues获取也是根据labels，不同文章的id不同，获取的列表自然也就不同，把Issues作为评论展示出来，这样一个简单的评论系统就完成了。</p>
+</li>
+</ol>
+<h1 id="读取issue"><a href="#读取issue" class="headerlink" title="读取issue"></a>读取issue</h1><p>这个简单，通过github api就完事了，有一定的次数限制，不过可以添加token授权来解除上限，带上token后续也可以做一些其他的操作，上锁、删除等等。</p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.github.com/en/rest/reference/issues">issue API</a></p>
+<p>主要用到的就是获取具体内容，其中的评论等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get <span class="attr">https</span>:<span class="comment">//api.github.com/repos/USER_NAME/repo_NAME/issues/number</span></span><br><span class="line"><span class="comment">// 获取第几个issue的内容</span></span><br><span class="line">get <span class="attr">https</span>:<span class="comment">//api.github.com/repos/USER_NAME/repo_NAME/issues/number/comments</span></span><br><span class="line"><span class="comment">// 获取第几个issue的评论内容，读取其中的body再解析就行了。</span></span><br></pre></td></tr></table></figure>
+
+<p>写个<code>XMLHttpRequest</code>请求。</p>
+<h1 id="写入issue"><a href="#写入issue" class="headerlink" title="写入issue"></a>写入issue</h1><p>写入比较麻烦，因为只读的请求是可以匿名的，写入修改是需要授权的，需要编写授权跳转页面，api地址<code>https://github.com/login/oauth/authorize?client_id=YOUR_CLIENT_ID&amp;redirect_uri=http://localhost:8000/home.html</code></p>
+<p>授权之后构造符合post请求的信息发送就可以了，但是要带上token,其中如果使用access token，不能直接明文记录，会被删除，可以分段记录在不同的变量拼接，当然了，会有一定的泄露风险，不过无所谓，只要授权不是最高级别的也没多大问题。</p>
+<h2 id="使用octokit"><a href="#使用octokit" class="headerlink" title="使用octokit"></a>使用octokit</h2><p>但是以上直接通过github API造轮子的办法比较繁琐，文档也没有太多例子，构造、测试非常的麻烦。所以可以直接用轮子，文档：<a target="_blank" rel="noopener" href="https://octokit.github.io/rest.js/v18">octokit&#x2F;rest.js</a>，github页面：<a target="_blank" rel="noopener" href="https://github.com/octokit/rest.js/">octokit&#x2F;rest.js</a>官方描述如下<code>GitHub REST API client for JavaScript</code>，直接查文档就行了。构造octokit对象，把参数填完就可以了。非常方便。</p>
+<h2 id="octokit使用注意事项"><a href="#octokit使用注意事项" class="headerlink" title="octokit使用注意事项"></a>octokit使用注意事项</h2><p>因为使用octokit需要引入模块，官方给出了两种方式。</p>
+<p><strong>浏览器</strong></p>
+<p>Load <code>@octokit/rest</code> directly from <a target="_blank" rel="noopener" href="https://cdn.skypack.dev/">cdn.skypack.dev</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">import</span> &#123; <span class="title class_">Octokit</span> &#125; <span class="keyword">from</span> <span class="string">&quot;https://cdn.skypack.dev/@octokit/rest&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>Node</strong></p>
+<p>Install with <code>npm install @octokit/rest</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Octokit</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;@octokit/rest&quot;</span>);</span><br><span class="line"><span class="comment">// or: import &#123; Octokit &#125; from &quot;@octokit/rest&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>如果使用浏览器的话，直接引用，在script标签里编写函数就可以了。</p>
+<p>如果在js文件中使用第二种方式，大概率会报错：<code>Uncaught ReferenceError：require is not defined</code>，因为浏览器环境没有RequireJS，需要另外引入，比较麻烦。可以通过加载定义Require的库，或者使用<code>browerify</code>,<code>webpack</code>等工具将js文件重新打包成带依赖的文件，但是会变大很多。建议还是使用第一种方式。</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="读取issue-1"><a href="#读取issue-1" class="headerlink" title="读取issue"></a>读取issue</h2><figure class="highlight javascript"><figcaption><span>读取issue >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> onload = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">&quot;https://api.github.com/repos/User_name/repo_name/issues/issue_id;&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">    <span class="keyword">var</span> clientID = <span class="string">&#x27;YOUR_clientID&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> clientSecret = <span class="string">&#x27;YOUR_clientSecret&#x27;</span>;</span><br><span class="line">	<span class="keyword">var</span> req = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">        req.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>);</span><br><span class="line">        req.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">        req.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(req.<span class="property">status</span> === <span class="number">200</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> json = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(req.<span class="property">responseText</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按需解析json即可，匿名读取有限制，每分钟60次，一般没问题，如果需要解除限制，就带上clientID和Secret区请求。</p>
+<h2 id="使用octokit-1"><a href="#使用octokit-1" class="headerlink" title="使用octokit"></a>使用octokit</h2><figure class="highlight html"><figcaption><span>使用octokit的实例 >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;pre&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;next&quot;</span>&gt;</span>bye<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">import</span> &#123; <span class="title class_">Octokit</span> &#125; <span class="keyword">from</span> <span class="string">&quot;https://cdn.skypack.dev/@octokit/rest&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> pre = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;pre&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">	pre.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>)</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript">	next.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">const</span> octokit = <span class="keyword">new</span> <span class="title class_">Octokit</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="attr">auth</span>:<span class="string">&quot;your_access_token&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">			<span class="attr">userAgent</span>: <span class="string">&#x27;myApp v1.2.3&#x27;</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">		&#125;)</span></span><br><span class="line"><span class="language-javascript">		octokit.<span class="property">rest</span>.<span class="property">issues</span>.<span class="title function_">createComment</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">		  <span class="attr">owner</span>:<span class="string">&quot;name&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">		  <span class="attr">repo</span>:<span class="string">&quot;repo_name&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">		  <span class="attr">issue_number</span>:issue_id,</span></span><br><span class="line"><span class="language-javascript">		  <span class="attr">body</span>:<span class="string">&quot;The content you want to send.&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">		&#125;);</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其他的octokit编写也差不多，看文档配参数就行，文档十分完善。</p>
+<h1 id="一些bug"><a href="#一些bug" class="headerlink" title="一些bug"></a>一些bug</h1><p>构建js代码时，会在<code>hexo</code>博客上遇到一些坑，一般是因为其他插件造成的，比如Aplayer的代码注入或是重复载入 Aplayer.js 资源脚本问题，会在js文件头部注入<code>&lt;link&gt;</code>标签，导致报错， 查阅官方文档给出的方式是在配置文件中加入</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">aplayer:</span></span><br><span class="line">  <span class="attr">asset_inject:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>但也很可能没有<del>卵</del>用！最好的方式就是，卸载APlayer，然后重装一个hexo-tag-aplayer（<del>反正我也不在页面内插入音乐盒子，文章里用hexo-tag-aplayer就够了</del>），然后再添加上述配置。</p>
+<hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><code>gitalk</code>：<a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">https://github.com/gitalk/gitalk</a></p>
+<p>利用 <code>github pages </code>与 <code>github api </code>搭建博客：<a target="_blank" rel="noopener" href="https://github.com/eyasliu/blog/issues/2">https://github.com/eyasliu/blog/issues/2</a></p>
+<p><code>gitalk</code>的运作原理：<a target="_blank" rel="noopener" href="https://carl-zk.github.io/blog/2020/03/03/gitalk-%E8%BF%90%E4%BD%9C%E5%8E%9F%E7%90%86/">https://carl-zk.github.io/blog/2020/03/03/gitalk-%E8%BF%90%E4%BD%9C%E5%8E%9F%E7%90%86/</a></p>
+<p><code>github Issue </code>作为博客微型数据库的应用：<a target="_blank" rel="noopener" href="https://removeif.github.io/theme/github-Issue-%E4%BD%9C%E4%B8%BA%E5%8D%9A%E5%AE%A2%E5%BE%AE%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%BA%94%E7%94%A8.html">https://removeif.github.io/theme/github-Issue-%E4%BD%9C%E4%B8%BA%E5%8D%9A%E5%AE%A2%E5%BE%AE%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%BA%94%E7%94%A8.html</a></p>
+<p>透过<code>Github Action</code>生成数据：<a target="_blank" rel="noopener" href="https://blog.uiharu.top/archives/generate-links-json-via-github-action.html">https://blog.uiharu.top/archives/generate-links-json-via-github-action.html</a></p>
+<p>利用<code>github api</code>获取<code>issue</code>的想法：<a target="_blank" rel="noopener" href="https://github.com/isaaxite/blog/issues/44">https://github.com/isaaxite/blog/issues/44</a></p>
+<p><code>github</code>文档的issues操作：<a target="_blank" rel="noopener" href="https://docs.github.com/en/rest/reference/issues">https://docs.github.com/en/rest/reference/issues</a></p>
+<p><code>github API</code>的调用教程：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015144126">https://segmentfault.com/a/1190000015144126</a></p>
+<p>利用<code>github issue</code>实现评论插件：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011100934">https://segmentfault.com/a/1190000011100934</a></p>
+<p><code>octokit</code>文档：<a target="_blank" rel="noopener" href="https://octokit.github.io/rest.js/v18">https://octokit.github.io/rest.js/v18</a></p>
+<p>解决<code>require</code>问题：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19059580/client-on-node-js-uncaught-referenceerror-require-is-not-defined">https://stackoverflow.com/questions/19059580/client-on-node-js-uncaught-referenceerror-require-is-not-defined</a></p>
+<p>使用<code>hexo-tag-aplayer</code>以及配置书写：<a target="_blank" rel="noopener" href="https://easyhexo.com/3-Plugins-use-and-config/3-1-hexo-tag-aplayer/#%E4%BB%8B%E7%BB%8D">https://easyhexo.com/3-Plugins-use-and-config/3-1-hexo-tag-aplayer/#%E4%BB%8B%E7%BB%8D</a></p>
+<p>解决<code>Aplayer</code>注入问题：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27439819/article/details/105011943">https://blog.csdn.net/qq_27439819/article/details/105011943</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/07/01/%E5%88%A9%E7%94%A8github%E6%9E%84%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="clehge7y2002vcgok91miekfa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs/" rel="tag">cs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/01/welcome/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Welcome
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/20/hexo+icarus%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo+icarus博客搭建</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

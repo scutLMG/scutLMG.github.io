@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>docker数据持久化 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="docker的数据储存方案，volums bind mounts 为持久化方案，tmpfs mounts 是临时储存。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker数据持久化">
+<meta property="og:url" content="http://example.com/2021/09/28/docker%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="docker的数据储存方案，volums bind mounts 为持久化方案，tmpfs mounts 是临时储存。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/docker-storage.png">
+<meta property="article:published_time" content="2021-09-28T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T18:44:08.415Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/docker-storage.png">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker数据持久化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/28/docker%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" class="article-date">
+  <time datetime="2021-09-28T00:00:00.000Z" itemprop="datePublished">2021-09-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cs/">cs</a>►<a class="article-category-link" href="/categories/cs/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker数据持久化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>docker的数据储存方案，<code>volums</code> <code>bind mounts</code> 为持久化方案，<code>tmpfs mounts</code> 是临时储存。</p>
+<span id="more"></span>
+
+<p>默认情况下，在容器内创建的所有文件都存储在可写容器层上。这意味着：</p>
+<ul>
+<li>当该容器不再存在时，数据不会持久存在。</li>
+<li>如果另一个进程需要数据，则很难将数据从容器中取出。容器的可写层与运行容器的主机紧密耦合。您无法轻松地将数据移动到其他地方。</li>
+<li>写入容器的可写层需要存储驱动程序来管理文件系统。存储驱动程序提供了一个联合文件系统，使用 Linux 内核。与使用直接写入主机文件系统的数据卷相比，会降低性能。</li>
+</ul>
+<p>Docker 为容器在主机上存储文件提供了两种选择，以便即使在容器停止后文件也能持久保存：卷 <code>volumes</code> 和绑定挂载 <code>bind mounts</code> 。</p>
+<p>Docker 还支持将文件存储在主机内存中的容器。此类文件不会持久保存。即使用 tmpfs mount  将文件存储在主机的系统内存中。</p>
+<h2 id="方案区别"><a href="#方案区别" class="headerlink" title="方案区别"></a>方案区别</h2><p>无论您选择使用哪种类型的挂载，容器内的数据看起来都是一样的。它以目录或容器文件系统中的单个文件的形式公开。</p>
+<p>可视化卷、绑定挂载和 tmpfs 挂载之间差异的是数据在 Docker 主机上的位置。</p>
+<ul>
+<li>卷存储在由 Docker 管理的主机文件系统的一部分（Linux 上的 &#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;）。<strong>非 Docker 进程不应修改</strong>文件系统的这一部分。<strong>卷是在 Docker 中持久化数据的最佳方式。</strong></li>
+<li>绑定挂载可以存储在主机系统的任何位置。它们甚至可能是重要的系统文件或目录。 Docker 主机或 Docker 容器上的<strong>非 Docker 进程可以随时修改</strong>它们。</li>
+<li>tmpfs 挂载<strong>仅存储在主机系统的内存</strong>中，永远不会写入主机系统的文件系统。</li>
+</ul>
+<p><img src="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/docker-storage.png" alt="docker-storage"></p>
+<h3 id="volums卷"><a href="#volums卷" class="headerlink" title="volums卷"></a>volums卷</h3><p>由 Docker 创建和管理。使用 docker volume create 命令显式创建卷，或者 Docker 可以在容器或服务创建期间创建卷。</p>
+<p>创建卷时，它存储在 Docker 主机上的目录中。当您将卷挂载到容器中时，此目录就是挂载到容器中的目录。类似于绑定挂载的工作方式，只是<strong>卷由 Docker 管理并且与主机的核心功能隔离。</strong></p>
+<p>给定的卷<strong>可以同时安装到多个容器</strong>中。当没有正在运行的容器使用卷时，卷仍然可供 Docker 使用，并且不会自动删除。您可以使用 docker volume prune 删除未使用的卷。</p>
+<p>挂载一个卷时，它<strong>可能是命名的或匿名的</strong>。匿名卷在首次挂载到容器时没有明确的名称，因此 Docker 为它们提供了一个随机名称，该名称保证在给定的 Docker 主机中是唯一的。除了名称之外，<strong>命名卷和匿名卷的行为方式相同。</strong></p>
+<h3 id="bind-mounts绑定挂载"><a href="#bind-mounts绑定挂载" class="headerlink" title="bind mounts绑定挂载"></a>bind mounts绑定挂载</h3><p>绑定挂载：从 Docker  早期就可用。与卷相比，绑定挂载的功能有限。当您使用绑定挂载时，主机上的文件或目录会挂载到容器中。文件或目录由其在主机上的完整路径引用。该文件或目录不需要已经存在于 Docker 主机上。如果它尚不存在，则按需创建。绑定挂载非常高效，但它们<strong>依赖于具有特定目录结构的主机文件系统</strong>。（要部署到新主机的时候就麻烦了，移植性差，自己用的话性能倒是很不错），不能使用 Docker CLI 命令直接管理绑定挂载。绑定挂载允许访问敏感文件。</p>
+<p>使用绑定挂载的一个副作用是，您<strong>可以通过在容器中运行的进程更改主机文件系统，包括创建、修改或删除重要的系统文件或目录</strong>。可能会产生安全隐患，包括影响主机系统上的非 Docker 进程。</p>
+<h3 id="tmpfs-挂载"><a href="#tmpfs-挂载" class="headerlink" title="tmpfs 挂载"></a>tmpfs 挂载</h3><p>tmpfs 挂载不会持久保存在磁盘上，无论是在 Docker 主机上还是在容器内。它可以<strong>在容器的生命周期内被容器使用，用于存储非持久状态或敏感信息</strong>。例如，在内部，swarm 服务使用 tmpfs 挂载将<strong>机密信息挂载</strong>到服务的容器中。</p>
+<p>绑定挂载和卷都可以使用 -v 或 –volume 标志挂载到容器中，但每个的语法略有不同。对于 tmpfs 挂载，您可以使用 –tmpfs 标志。我们建议对容器和服务使用 –mount 标志，用于绑定挂载、卷或 tmpfs 挂载，因为语法更清晰。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="Volumes"><a href="#Volumes" class="headerlink" title="Volumes"></a>Volumes</h3><p>有两种方式，其中 –mount 更加明确和详细。最大的区别是 -v 语法将所有选项组合在一个字段中，而 –mount 语法将它们分开。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#v</span></span><br><span class="line">docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  -v myvol2:/app \</span><br><span class="line">  nginx:latest</span><br><span class="line">  </span><br><span class="line"><span class="comment"># mount</span></span><br><span class="line">docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  --mount <span class="built_in">source</span>=myvol2,target=/app \</span><br><span class="line">  nginx:latest</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="v-或-–volume："><a href="#v-或-–volume：" class="headerlink" title="-v 或 –volume："></a>-v 或 –volume：</h4><p>由三个字段组成，以冒号字符 (:) 分隔。字段必须按正确的顺序排列，每个字段的含义不是很明显。<br>在命名卷的情况下，第一个字段是卷的名称，并且在给定的主机上是唯一的。对于匿名卷，省略第一个字段。<br>第二个字段是文件或目录在容器中挂载的路径。<br>第三个字段是可选的，是以逗号分隔的选项列表，例如 ro。</p>
+<h4 id="–mount"><a href="#–mount" class="headerlink" title="–mount"></a>–mount</h4><p>由多个键值对组成，以逗号分隔，每个由一个 <code>&lt;key&gt;=&lt;value&gt;</code> 元组组成。 –mount 语法比 -v 或 –volume 更冗长，但键的顺序并不重要，标志的值更容易理解。如果需要指定卷驱动程序选项，则必须使用 –mount。</p>
+<ul>
+<li><code>type</code> 挂载类型，可以是 bind、volume 或 tmpfs。</li>
+<li><code>source</code> 挂载源。对于命名卷，这是卷的名称。对于匿名卷，此字段被省略。可以指定为 source 或 src。</li>
+<li><code>detination</code> 将安装在容器中的文件或目录路径作为其值。可以指定为destination、dst 或target。</li>
+<li><code>readonly</code> 选项（如果存在）会导致绑定挂载以只读方式挂载到容器中。可以指定为 readonly 或 ro。</li>
+<li>可以多次指定的 <code>volume-opt</code> 选项，由选项名称及其值组成的键值对。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker service create \</span><br><span class="line">    --mount <span class="string">&#x27;type=volume,src=&lt;VOLUME-NAME&gt;,dst=&lt;CONTAINER-PATH&gt;,volume-driver=local,volume-opt=type=nfs,volume-opt=device=&lt;nfs-server&gt;:&lt;nfs-path&gt;,&quot;volume-opt=o=addr=&lt;nfs-address&gt;,vers=4,soft,timeo=180,bg,tcp,rw&quot;&#x27;</span></span><br><span class="line">    --name myservice \</span><br><span class="line">    &lt;IMAGE&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sudo docker volume ls</span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     c0afcad67ec7b5489fe1a44aaf405a477b14fa806b64353759685d3fc20256fc</span><br><span class="line"></span><br><span class="line">sudo docker inspect c0afcad67ec7b5489fe1a44aaf405a477b14fa806b64353759685d3fc20256fc</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2022-04-24T13:05:51+08:00&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: null,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/c0afcad67ec7b5489fe1a44aaf405a477b14fa806b64353759685d3fc20256fc/_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;c0afcad67ec7b5489fe1a44aaf405a477b14fa806b64353759685d3fc20256fc&quot;,</span><br><span class="line">        &quot;Options&quot;: null,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="bind-mounts-与-tmpfs"><a href="#bind-mounts-与-tmpfs" class="headerlink" title="bind mounts 与 tmpfs"></a>bind mounts 与 tmpfs</h3><p>一样用 mount，只是 type 不同，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name tomcat-bind --mount type=bind,source=/tmp,target=/user/local tomcat:latest</span><br><span class="line"></span><br><span class="line">#bind mounts use -v flag, absolute working directory</span><br><span class="line">docker run -d -it --name=test-nginx -v /app/page:/usr/share/nginx/html nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://docs.docker.com/storage/volumes/">docker-docs-volumes</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/storage/">Manage data in Docker</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/storage/volumes/">Use volumes</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ppzhang/p/13689071.html">docker数据持久化&#x2F;共享—volume，bind-mount，tmpfs-mount</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/28/docker%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" data-id="clehge7xb0011cgokhylm2tq8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/28/docker%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          docker入门笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/15/Hexo-icarus%E4%B8%BB%E9%A2%98%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F%E4%BB%A5%E5%8F%8A%E8%83%8C%E6%99%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo-icarus主题黑夜模式以及背景</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Bulma笔记 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端不适合我，怎么写怎么烂，这种框架大概是救我狗命的。为了演示，本文已引入 Bulma 的 CSS 文件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bulma笔记">
+<meta property="og:url" content="http://example.com/2023/01/03/Bulma%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前端不适合我，怎么写怎么烂，这种框架大概是救我狗命的。为了演示，本文已引入 Bulma 的 CSS 文件。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-03T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T18:44:08.415Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="front-end">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Bulma笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/03/Bulma%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2023-01-03T00:00:00.000Z" itemprop="datePublished">2023-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cs/">cs</a>►<a class="article-category-link" href="/categories/cs/front-end/">front-end</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Bulma笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前端不适合我，怎么写怎么烂，这种框架大概是救我狗命的。为了演示，本文已引入 <code>Bulma</code> 的 CSS 文件。</p>
+<a target="_blank" rel="noopener" href="https://bulma.io">
+  <img
+    src="https://bulma.zcopy.site/images/made-with-bulma.png"
+    alt="Made with Bulma"
+    width="128"
+    height="24">
+</a>
+
+<span id="more"></span>
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>开抄： <code>Bulma css</code> 框架是一个免费的、开源的框架，它提供了可随时使用的前端组件，可以轻松地将这些组件组合起来构建响应性强的web界面。<code>Bulma css</code> 框架无需任何CSS知识即可开发网站。（<em>really？</em>）完全基于 <code>Flexbox</code>。<code>Flexbox</code> 是一个相对较新的CSS规范，不过使用 <code>Bulma</code> 无须了解 <code>Flexbox</code> （<em>really？</em>）<code>Bulma</code> 框架所有样式都基于 <code>class</code>，只需为HTML元素指定 <code>class</code>，样式立刻生效。</p>
+<p>反正样式确实是不想写，<a target="_blank" rel="noopener" href="https://getbootstrap.com/">Bootstrap</a> 也确实不想看，开冲。</p>
+<p>与其他CSS框架相比，<code>Bulma</code> 有如下不同之处。</p>
+<ul>
+<li><strong>现代化</strong>：整个 <code>Bulma</code> 是基于CSS Flexbox设计的。</li>
+<li><strong>响应式</strong>：<code>Bulma</code> 的设计同时支持移动端和桌面设备。</li>
+<li><strong>易学</strong>：大多数用户只需几分钟便能入门。</li>
+<li><strong>语法简单</strong>：<code>Bulma</code> 使用更少的HTML，所以代码易于阅读和编写。</li>
+<li><strong>可定制</strong>：<code>Bulma</code> 提供了300多个SASS变量，基于这些样式变量，你可以定制自己的主题框架。</li>
+<li><strong>无JavaScript</strong>：<code>Bulma</code> 完全基于CSS设计编写，因此可以很优雅地与任何JavaScript框架（<code>Angular</code>、<code>Vue.js</code>、<code>React</code>、<code>Ember</code>或者纯 <code>JavaScript</code> 应用）集成。</li>
+</ul>
+<h2 id="安装与定制"><a href="#安装与定制" class="headerlink" title="安装与定制"></a>安装与定制</h2><p>下载<a target="_blank" rel="noopener" href="https://github.com/jgthms/bulma/releases/tag/0.9.4">源码版本</a>，根目录文件为配置文件sass目录下为定制源码，css目录下为官方生成文件。</p>
+<p>或者安装 <code>npm</code> 包、克隆等，看着办。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install bulma</span><br><span class="line">yarn add bulma</span><br><span class="line">git clone git@github.com:jgthms/bulma.git</span><br><span class="line">gh repo clone jgthms/bulma</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>本地引用：下载后把bulma.min.css文件放在网站目录，css目录下，在网页中引用即可</p>
+<ul>
+<li><p>css导入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;bulma.min.css&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML链接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cdn的</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">本地的</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/bulma.min.css&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><p>要正常运行，就得用HTML5文档类型，添加响应式视窗元标记（responsive viewport meta tag）。不过都已经塞到模板里了，阅读下一小节。修修补补开始。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="入门模板"><a href="#入门模板" class="headerlink" title="入门模板"></a>入门模板</h3><p>直接复制然后修修补补，很好，很friendly。</p>
+<p>这个是网络引用，本地的话改一改 <code>&lt;link&gt;</code> </p>
+<figure class="highlight html"><figcaption><span>template.html >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello Bulma!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;section&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span></span><br><span class="line">        Hello World</span><br><span class="line">      <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;subtitle&quot;</span>&gt;</span></span><br><span class="line">        My first website with <span class="tag">&lt;<span class="name">strong</span>&gt;</span>Bulma<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>!</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>插入css样式表以后，直接用就可以了。</p>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><p>为HTML元素加上 <code>class</code> 渲染成基类，再添加以 <code>is-</code> 或 <code>has-</code> 开头的修饰类，即可改变基类样式。<code>button</code> 类实例代码如下。其中，修饰符可以相互组合，尺寸、颜色与状态等，以实现样式呈现需求。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button is-small is-primary&quot;</span>&gt;</span>Small<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button is-loading&quot;</span>&gt;</span>Default<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button is-large&quot;</span>&gt;</span>Large<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p><code>Bulma</code> 包含39 个 <code>.sass</code> 文件,可以单独导入这些文件。例如只需要 <code>Bulma columns</code>，文件位于 <code>bulma/sass/grid</code> 文件夹中。 只需要 <code>button</code> 类，文件位于<code>bulma/sass/elements</code> </p>
+<p>只需导入实用程序依赖项，然后直接导入需要的文件，即可使用该类及其所有修饰符。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;bulma/sass/utilities/_all.sass&quot;</span></span><br><span class="line">@import <span class="string">&quot;bulma/sass/grid/columns.sass&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>Bulma 有<a target="_blank" rel="noopener" href="https://github.com/jgthms/bulma/blob/master/sass/utilities/initial-variables.sass#L56,L64">4 个断点</a>，定义了<strong>5 种屏幕尺寸</strong>：</p>
+<ul>
+<li><code>mobile</code>： 取决于<code>768px</code></li>
+<li><code>tablet</code>： 从<code>769px</code></li>
+<li><code>desktop</code>： 从<code>1024px</code></li>
+<li><code>widescreen</code>： 从<code>1216px</code></li>
+<li><code>fullhd</code>： 从<code>1408px</code></li>
+</ul>
+<p>在设计CSS时，注意不同响应布局的调整，如基于断点的间隙设计，可以使用 <code>is-1-mobile</code> 、<code>is-0-tablet</code>、 <code>is-3-desktop</code>、 <code>is-8-widescreen</code> 、<code>is-2-fullhd</code> 等间隙布局。</p>
+<p>最后，Bulma 提供了<a target="_blank" rel="noopener" href="https://bulma.io/documentation/utilities/responsive-mixins/">易于使用的响应式混合宏</a>，</p>
+<h2 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h2><p>使用 <code>columns</code> 指定容器，使用 <code>column</code> 指定项目。使用修饰类用来指定项目的宽度。有 <code>is-three-quarters</code> 分数式，有 <code>is-2</code>  12网格体系，有 <code>is-offset-</code> 网格偏移修饰类。不加修饰时，各项目<strong>平分</strong>容器宽度。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;../personal/css/bulma.min.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;columns&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button is-small is-success&quot;</span>&gt;</span>Small<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button is-normal is-link&quot;</span>&gt;</span>Default<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button is-medium is-warning&quot;</span>&gt;</span>Medium<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;button is-large is-danger is-loading&quot;</span>&gt;</span>Large<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<link rel="stylesheet" href="../personal/css/bulma.min.css"/>
+
+<div class="columns">
+  <div class="column">
+    <a class="button is-small is-success">Small</a>
+  </div>
+  <div class="column">
+    <a class="button is-normal is-link">Default</a>
+  </div>
+  <div class="column">
+    <a class="button is-medium is-warning">Medium</a>
+  </div>
+  <div class="column">
+    <a class="button is-large is-danger is-loading">Large</a>
+  </div>
+</div>
+
+<hr>
+<figure class="highlight html"><figcaption><span>栅格系统.html >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;columns is-variable&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-primary is-1&quot;</span>&gt;</span></span><br><span class="line">        	is-1</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-warning&quot;</span>&gt;</span></span><br><span class="line">        	其余内容</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;columns&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-primary is-2&quot;</span>&gt;</span></span><br><span class="line">        	is-2</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-warning&quot;</span>&gt;</span></span><br><span class="line">        	其余内容</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;columns&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-primary is-one-quarter&quot;</span>&gt;</span></span><br><span class="line">        	is-one-quarter</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-warning&quot;</span>&gt;</span></span><br><span class="line">        	其余内容</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;columns&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-primary is-4 is-offset-4&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">                is-4 is-offset-4</span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column button is-warning is-4&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">                其余内容</span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+  <div class="columns is-variable">
+        <div class="column button is-primary is-1">
+            is-1
+        </div>
+        <div class="column button is-warning">
+            其余内容
+        </div>
+  </div>
+
+  <div class="columns">
+        <div class="column button is-primary is-2">
+            is-2
+        </div>
+        <div class="column button is-warning">
+            其余内容
+        </div>
+  </div>
+
+  <div class="columns">
+        <div class="column button is-primary is-one-quarter">
+            is-one-quarter
+        </div>
+        <div class="column button is-warning">
+            其余内容
+        </div>
+  </div>
+
+  <div class="columns">
+        <div class="column button is-primary is-4 is-offset-4">
+            <p>
+                is-4 is-offset-4
+            </p>
+        </div>
+        <div class="column button is-warning is-4">
+            <p>
+                其余内容
+            </p>
+        </div>
+  </div>
+
+<hr>
+<h2 id="CSS库"><a href="#CSS库" class="headerlink" title="CSS库"></a>CSS库</h2><p>包括列、元素、组件、表单、布局、辅助等项目。需要的时候翻阅文档。</p>
+<p>如组件库，有面包屑、卡片、下拉菜单、导航栏等选项，每一类有各自对应的属性，边用边查。</p>
+<h2 id="定制"><a href="#定制" class="headerlink" title="定制"></a>定制</h2><p>这个比较high level了，毕竟代码我是一点不懂的，我只能尽量抄得比较通俗易懂。</p>
+<p>Bulma是一个易于自定义的CSS框架，可以通过以下几种方式实现：</p>
+<ul>
+<li>重写Bulma的初始变量和继承变量；</li>
+<li>重写Bulma的组件变量；</li>
+<li>添加自己的变量；</li>
+<li>重写Bulma的样式；</li>
+<li>添加自己的样式。</li>
+</ul>
+<p>下面简要描述一种方法：</p>
+<p>下载源码以及依赖：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/jgthms/bulma.git</span><br><span class="line">cd bulma</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>新建 <code>mystyle.sass</code> 文件，写定制代码，该文件需要引入 Bulma 基础变量，然后修改预设变量，下例修改了blue</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./sass/utilities/initial-variables&quot;</span></span><br><span class="line"></span><br><span class="line">$<span class="attribute">blue</span>: #<span class="number">72</span>d0eb</span><br></pre></td></tr></table></figure>
+
+<p>加载入口脚本，之后再写自己需要的样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./bulma&quot;</span></span><br><span class="line">    </span><br><span class="line">.title &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，打开<code>package.json</code>，找到下面这行。把里面的<code>bulma.sass</code>改成<code>mystyle.sass</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;build-sass&quot;: &quot;node-sass --output-style expanded --source-map true bulma.sass css/bulma.css&quot;,</span><br><span class="line">    </span><br><span class="line">&quot;build-sass&quot;: &quot;node-sass --output-style expanded --source-map true mystyle.sass css/bulma.css&quot;,</span><br></pre></td></tr></table></figure>
+
+<p>以后每次修改完样式，运行一下<code>npm run build</code>，就会生成自己的样式表<code>css/bulma.css</code>了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>有什么还是看官方文档最快。另外，百闻不如一写，记了点笔记入了门就行<del>（写这种笔记确实有够烦）</del>，所以本博客的额外页面，就直接用 <code>Bulma</code> 做。</p>
+<p><a target="_blank" rel="noopener" href="https://bulma.io/documentation/">Bulma官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ituring.com.cn/book/tupubarticle/31935">Bulma必知必会</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/10/bulma.html">阮一峰CSS框架Bulma教程</a></p>
+<a target="_blank" rel="noopener" href="https://bulma.io">
+  <img
+    src="https://bulma.io/images/made-with-bulma.png"
+    alt="Made with Bulma"
+    width="128"
+    height="24">
+</a>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/03/Bulma%E7%AC%94%E8%AE%B0/" data-id="clehge7wn0004cgokcdx73e6c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/front-end/" rel="tag">front-end</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/01/17/%E5%8D%87%E7%BA%A7icarus%E5%88%B05.x/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          升级icarus到5.x
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/12/28/%E5%8C%BF%E5%90%8D%E9%80%9A%E4%BF%A1%E9%87%8D%E6%96%B0%E8%AE%BF%E9%97%AEzlib/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">匿名通信重新访问zlib</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

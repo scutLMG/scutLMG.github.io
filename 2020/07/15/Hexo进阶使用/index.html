@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo进阶使用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这是一篇对hexo以及typora等博客工具的食用说明手册，随时补充。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo进阶使用">
+<meta property="og:url" content="http://example.com/2020/07/15/Hexo%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这是一篇对hexo以及typora等博客工具的食用说明手册，随时补充。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/gallery/babyDogs.jpg">
+<meta property="og:image" content="http://example.com/gallery/link.jpg">
+<meta property="article:published_time" content="2020-07-15T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T18:44:08.415Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/gallery/babyDogs.jpg">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Hexo进阶使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/15/Hexo%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2020-07-15T00:00:00.000Z" itemprop="datePublished">2020-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo进阶使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一篇对hexo以及typora等博客工具的食用说明手册，随时补充。</p>
+<span id="more"></span>
+
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>​	<code>hexo</code>静态博客，简洁大气，个人比较中意。<code>typora</code>作为轻量级的<code>markdown</code>编辑器，界面也比较简洁，当然在支持上不够完全。导致了一些<code>markdown</code>语法的页面渲染与本地有所区别，特此记录。<br>​	也可以考虑换个大型的编辑器？</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="hexo插件"><a href="#hexo插件" class="headerlink" title="hexo插件"></a>hexo插件</h3><p>​	<code>hexo</code>插件比较丰富，可以在<a target="_blank" rel="noopener" href="https://hexo.io/plugins/">官方插件页</a>下载使用插件。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bubkoo/hexo-filter-flowchart"><code>hexo-filter-flowchat</code>渲染flow图</a>，</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/webappdevelp/hexo-filter-mermaid-diagrams"><code>hexo-filter-mermaid-diagrams</code>渲染mermaid和diagrams</a>，</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bubkoo/hexo-filter-sequence"><code>hexo-filter-sequence</code>渲染序列图</a>，</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget"><code>live2d-widget</code>看板娘</a>，没啥用，还有可能挡住内容和按钮，减慢加载速度。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/MaxChang3/hexo-bilibili-card"><code>hexo-bilibili-card</code>插入哔哩哔哩视频卡片</a>具体有没用，好不好用有待测试。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/D0n9X1n/hexo-blog-encrypt"> <code>hexo-blog-encrypt</code>文章加密</a>，确实可以加密，但是解密之后好像样式会崩。</p>
+</br>
+
+</br>
+
+<h3 id="hexo标签"><a href="#hexo标签" class="headerlink" title="hexo标签"></a>hexo标签</h3><p>​	<code>hexo</code>使用标签语言可以实现丰富页面的媒体展示。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins.html"><code>hexo</code>官方标签插件介绍</a>，不能嵌入到<code>markdown</code>语法中。</p>
+<ul>
+<li><code>quote</code>引用</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>quote</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote><p>俱往矣，数风流人物，还看今朝</p>
+<footer><strong>毛泽东</strong><cite><a target="_blank" rel="noopener" href="https://www.shicimingju.com/chaxun/list/48905.html">沁园春·雪</a></cite></footer></blockquote>
+
+</br>
+
+<ul>
+<li><code>code block</code>代码块</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock [title] [lang:language] [url] [link text] [additional options] %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% codeblock action_logic.vhd lang:vhdl https://github.com/scutLMG/pixels_plane-VHDL %&#125;</span><br><span class="line">library IEEE;</span><br><span class="line">use IEEE.STD_LOGIC_1164.ALL;</span><br><span class="line">use IEEE.STD_LOGIC_ARITH.ALL;</span><br><span class="line">use IEEE.STD_LOGIC_UNSIGNED.ALL;</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vhdl"><figcaption><span>action_logic.vhd</span><a target="_blank" rel="noopener" href="https://github.com/scutLMG/pixels_plane-VHDL/blob/master/action_logic.vhd">pixels_plane-VHDL</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span> IEEE;</span><br><span class="line"><span class="keyword">use</span> IEEE.STD_LOGIC_1164.<span class="keyword">ALL</span>;</span><br><span class="line"><span class="keyword">use</span> IEEE.STD_LOGIC_ARITH.<span class="keyword">ALL</span>;</span><br><span class="line"><span class="keyword">use</span> IEEE.STD_LOGIC_UNSIGNED.<span class="keyword">ALL</span>;</span><br></pre></td></tr></table></figure>
+
+<p>和<code>markdown</code>语法的区别在于可以添加标题和链接及其名字。<code>markdown</code>语法中强行写入标题，会导致编辑器中无法识别并分配上色方案，但是<code>hexo</code>网页渲染是没问题的，所以其实区别不大。</p>
+</br>
+
+<ul>
+<li><code>YouTube</code>视频</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>youtube</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% youtube video_id [type] [cookie] %&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="video-container"><iframe src="https://www.youtube.com/embed/fuM1aVCGR8c" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+</br>
+
+<ul>
+<li><code>img</code>图片</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>img</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% img [class names] /path/to/image [width] [height] &#x27;&quot;title text&quot; &quot;alt text&quot;&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/gallery/babyDogs.jpg" class="jpg" title="小狗狗" alt="小狗狗">
+
+
+
+
+<p><code>title text</code>为悬停显示名称，<code>alt text</code>为图像标题。图片路径的名称不要带空格，特别是像通过批量重命名的图片，名称就有空格，往往无法显示。</p>
+</br>
+
+<ul>
+<li><code>link</code>链接</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>link</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% link text url [external] [title] %&#125;</span><br></pre></td></tr></table></figure>
+
+<a href="https://scutlmg.github.io/" title="也无风雨也无晴" target="">博客</a>加入了链接，不如`markdown`自带的方便好用。	
+
+<p>​	</p>
+<ul>
+<li><p>摘要</p>
+<p>在<code>markdown</code>文件中使用<code>&lt;!--more--&gt;</code>可以将其之上的文字划分为摘要，在主页时，文章只显示摘要和阅读更多按钮。	</p>
+<p>​</p>
+</li>
+</ul>
+<p>	</p>
+<h3 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h3><p><code>hexo clean</code> 清除旧的缓存，<code>source</code>文件夹中的文件不会被清除。</p>
+<p><code>hexo g</code>生成博客</p>
+<p><code>hexo s</code>本地运行博客预览，可以进行实时的样式、文章修改（当然了，还是要刷新的）</p>
+<p><code>hexo d</code>上传到<code>github</code></p>
+<p><code>hexo new page page_name</code>生成新页面时使用，生成后要在配置文件内添加导航分栏，自定义渲染以及布局文件。		</p>
+<p>​	</p>
+<h3 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h3><p>​	<code>front-matter</code>似乎是属于<code>yaml</code>的一种书写方式。写在<code>.md</code>文件的头部，定义其表现形式，使用三重虚线包围	</p>
+<p><a target="_blank" rel="noopener" href="https://jekyllrb.com/docs/front-matter/">Front Matter</a>，<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter.html">Hexo-Front-matter</a>，一般就下面几个参数。</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>layout</code></td>
+<td align="left">布局</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0"><code>config.default_layout</code></a></td>
+</tr>
+<tr>
+<td align="left"><code>title</code></td>
+<td align="left">标题</td>
+<td align="left">文章的文件名</td>
+</tr>
+<tr>
+<td align="left"><code>date</code></td>
+<td align="left">建立日期</td>
+<td align="left">文件建立日期</td>
+</tr>
+<tr>
+<td align="left"><code>updated</code></td>
+<td align="left">更新日期</td>
+<td align="left">文件更新日期</td>
+</tr>
+<tr>
+<td align="left"><code>comments</code></td>
+<td align="left">开启文章的评论功能</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left"><code>tags</code></td>
+<td align="left">标签（不适用于分页）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>categories</code></td>
+<td align="left">分类（不适用于分页）</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="其他（HTML块）"><a href="#其他（HTML块）" class="headerlink" title="其他（HTML块）"></a>其他（HTML块）</h3><p>HTML块的使用。主要是图片插入。</p>
+<p>typora支持使用HTML，所以图片也可以使用HTML的方式插入，但样式需要通过内联样式 <code> style</code> 的方式修改。</p>
+<p>而图片可以直接使用 <code>&lt;img&gt;</code> 标签插入，但因为HTML5废弃了居中属性，所以要实现对齐，需要用 <code>&lt;div&gt;</code> 包裹，并在 <code>&lt;div&gt;</code> 内添加内联样式。下为一例，除此以外，其他需求也可以通过插入HTML的方式实现。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/gallery/link.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;林克&quot;</span> <span class="attr">style</span>=<span class="string">&quot;zoom:40%;&quot;</span> /&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<div align="center">
+    <img src="/gallery/link.jpg" alt="林克" style="zoom:40%;" /> 
+</div>
+
+<h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>主要是<code>markdown</code>语法和<code>Typora</code>的显示兼容。</p>
+<p><code>Markdown</code>语法已经很熟练了，而且编辑器大部分都很友好，懒得写了。可查询网页<a target="_blank" rel="noopener" href="https://www.markdown.xyz/basic-syntax/">markdown指南中文版</a>，以及<a target="_blank" rel="noopener" href="https://support.typora.io/">Typora支持</a>，有不太熟悉的再写到下面。</p>
+<p>插入空行使用：<code>TAB</code>+空格，<code>&lt;/br&gt;</code>标签等等。</p>
+<p>​	</p>
+<p>其他的待补充。</p>
+<h2 id="Bulma"><a href="#Bulma" class="headerlink" title="Bulma"></a>Bulma</h2><p>一种css框架。</p>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><div class="buttons">
+  <button class="button is-info">Info</button>
+  <button class="button is-success">Success</button>
+  <button class="button is-warning">Warning</button>
+  <button class="button is-danger">Danger</button>
+</div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;buttons&quot;&gt;</span><br><span class="line">  &lt;button class=&quot;button is-info&quot;&gt;Info&lt;/button&gt;</span><br><span class="line">  &lt;button class=&quot;button is-success&quot;&gt;Success&lt;/button&gt;</span><br><span class="line">  &lt;button class=&quot;button is-warning&quot;&gt;Warning&lt;/button&gt;</span><br><span class="line">  &lt;button class=&quot;button is-danger&quot;&gt;Danger&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>光有按钮肯定是不行的，一般我们还需要给按钮增加事件，比如点击下面的按钮，可以显示一条一言（Hitokoto）。</p>
+<p><button class="button is-info" onclick="showHitokoto(event)">显示一言</button></p>
+<blockquote class="hitokoto">↑↑↑ 试着点击“显示一言”！</blockquote>
+
+<script>
+function showHitokoto (event) {
+    event.target.classList.add('is-loading');
+    $.ajax({
+        type: 'GET',
+        url: 'https://v1.hitokoto.cn/',
+        success: function (data) {
+            $('.hitokoto').text(data.hitokoto);
+            event.target.classList.remove('is-loading');
+        }
+    });
+}
+</script>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class=&quot;button is-info&quot; onclick=&quot;showHitokoto(event)&quot;&gt;显示一言&lt;/button&gt;</span><br><span class="line">&lt;blockquote class=&quot;hitokoto&quot;&gt;↑↑↑ 试着点击“显示一言”！&lt;/blockquote&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">function showHitokoto (event) &#123;</span><br><span class="line">    event.target.classList.add(&#x27;is-loading&#x27;);</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type: &#x27;GET&#x27;,</span><br><span class="line">        url: &#x27;https://v1.hitokoto.cn/&#x27;,</span><br><span class="line">        success: function (data) &#123;</span><br><span class="line">            $(&#x27;.hitokoto&#x27;).text(data.hitokoto);</span><br><span class="line">            event.target.classList.remove(&#x27;is-loading&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h3><p><progress class="progress is-info" value="20" max="100"></progress><br><progress class="progress is-success" value="40" max="100"></progress><br><progress class="progress is-warning" value="60" max="100"></progress><br><progress class="progress is-danger" value="80" max="100"></progress><br><progress class="progress is-info" max="100"></progress></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;progress class=&quot;progress is-info&quot; value=&quot;20&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</span><br><span class="line">&lt;progress class=&quot;progress is-success&quot; value=&quot;40&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</span><br><span class="line">&lt;progress class=&quot;progress is-warning&quot; value=&quot;60&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</span><br><span class="line">&lt;progress class=&quot;progress is-danger&quot; value=&quot;80&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</span><br><span class="line">&lt;progress class=&quot;progress is-info&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="标签页"><a href="#标签页" class="headerlink" title="标签页"></a>标签页</h3><div class="tabs is-toggle"><ul>
+<li class="is-active"><a onclick="onTabClick(event)">
+<span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+<span>Pictures</span>
+</a></li>
+<li><a onclick="onTabClick(event)">
+<span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+<span>Music</span>
+</a></li>
+<li><a onclick="onTabClick(event)">
+<span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+<span>Videos</span>
+</a></li>
+<li><a onclick="onTabClick(event)">
+<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+<span>Documents</span>
+</a></li>
+</ul></div>
+
+<div id="Pictures" class="tab-content" style="display: block;">
+<p><a target="_blank" rel="noopener" href="https://pixabay.com/zh/">Pixabay</a> 是全球知名的图库网站及充满活力的创意社区,拥有上百万张免费正版高清照片素材,涵盖风景、人物、动态、静物等多种分类,你可以在任何地方使用 Pixabay 图库中的素材…</p>
+</div>
+<div id="Music" class="tab-content">
+<p><a target="_blank" rel="noopener" href="https://music.163.com/">网易云音乐</a> 是一款专注于发现与分享的音乐产品,依托专业音乐人、DJ、好友推荐及社交功能,为用户打造全新的音乐生活。</p>
+</div>
+<div id="Videos" class="tab-content">
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/">哔哩哔哩</a> 是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。</p>
+</div>
+<div id="Documents" class="tab-content">
+<p><a target="_blank" rel="noopener" href="https://shimo.im/">石墨文档</a> 是全新一代云 Office 办公软件,支持多人在线协作编辑文档和表格,独有内容级安全,全过程留痕可追溯。PC 端和移动端全覆盖,随时随地远程办公。即写即存…</p>
+</div>
+
+<style type="text/css">
+.content .tabs ul { margin: 0; }
+.tab-content { display: none; }
+</style>
+
+<script>
+function onTabClick (event) {
+    var tabTitle = $(event.currentTarget).children('span:last-child').text();
+    $('.article .content .tab-content').css('display', 'none');
+    $('.article .content .tabs li').removeClass('is-active');
+    $('#' + tabTitle).css('display', 'block');
+    $(event.currentTarget).parent().addClass('is-active');
+}
+</script>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;tabs is-toggle&quot;&gt;&lt;ul&gt;</span><br><span class="line">&lt;li class=&quot;is-active&quot;&gt;&lt;a onclick=&quot;onTabClick(event)&quot;&gt;</span><br><span class="line">&lt;span class=&quot;icon is-small&quot;&gt;&lt;i class=&quot;fas fa-image&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">&lt;span&gt;Pictures&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a onclick=&quot;onTabClick(event)&quot;&gt;</span><br><span class="line">&lt;span class=&quot;icon is-small&quot;&gt;&lt;i class=&quot;fas fa-music&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">&lt;span&gt;Music&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a onclick=&quot;onTabClick(event)&quot;&gt;</span><br><span class="line">&lt;span class=&quot;icon is-small&quot;&gt;&lt;i class=&quot;fas fa-film&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">&lt;span&gt;Videos&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a onclick=&quot;onTabClick(event)&quot;&gt;</span><br><span class="line">&lt;span class=&quot;icon is-small&quot;&gt;&lt;i class=&quot;far fa-file-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">&lt;span&gt;Documents&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&#123;% raw %&#125;&lt;div id=&quot;Pictures&quot; class=&quot;tab-content&quot; style=&quot;display: block;&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Pixabay](https://pixabay.com/zh/) 是全球知名的图库网站及充满活力的创意社区,拥有上百万张免费正版高清照片素材,涵盖风景、人物、动态、静物等多种分类,你可以在任何地方使用 Pixabay 图库中的素材...</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br><span class="line">&#123;% raw %&#125;&lt;div id=&quot;Music&quot; class=&quot;tab-content&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[网易云音乐](https://music.163.com/) 是一款专注于发现与分享的音乐产品,依托专业音乐人、DJ、好友推荐及社交功能,为用户打造全新的音乐生活。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br><span class="line">&#123;% raw %&#125;&lt;div id=&quot;Videos&quot; class=&quot;tab-content&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[哔哩哔哩](https://www.bilibili.com/) 是国内知名的视频弹幕网站,这里有最及时的动漫新番,最棒的ACG氛围,最有创意的Up主。大家可以在这里找到许多欢乐。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br><span class="line">&#123;% raw %&#125;&lt;div id=&quot;Documents&quot; class=&quot;tab-content&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[石墨文档](https://shimo.im/) 是全新一代云 Office 办公软件,支持多人在线协作编辑文档和表格,独有内容级安全,全过程留痕可追溯。PC 端和移动端全覆盖,随时随地远程办公。即写即存...</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br><span class="line"></span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">.content .tabs ul &#123; margin: 0; &#125;</span><br><span class="line">.tab-content &#123; display: none; &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">function onTabClick (event) &#123;</span><br><span class="line">    var tabTitle = $(event.currentTarget).children(&#x27;span:last-child&#x27;).text();</span><br><span class="line">    $(&#x27;.article .content .tab-content&#x27;).css(&#x27;display&#x27;, &#x27;none&#x27;);</span><br><span class="line">    $(&#x27;.article .content .tabs li&#x27;).removeClass(&#x27;is-active&#x27;);</span><br><span class="line">    $(&#x27;#&#x27; + tabTitle).css(&#x27;display&#x27;, &#x27;block&#x27;);</span><br><span class="line">    $(event.currentTarget).parent().addClass(&#x27;is-active&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="彩色突出"><a href="#彩色突出" class="headerlink" title="彩色突出"></a>彩色突出</h3><div class="notification is-info">
+<p><a target="_blank" rel="noopener" href="https://blog.zhangruipeng.me/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;div class=&quot;notification is-info&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus//) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="notification is-success">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;div class=&quot;notification is-success&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="notification is-warning">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;div class=&quot;notification is-warning&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="notification is-danger">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;div class=&quot;notification is-danger&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<article class="message is-info"><div class="message-body">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div></article>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;article class=&quot;message is-info&quot;&gt;&lt;div class=&quot;message-body&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&lt;/article&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<article class="message is-success"><div class="message-body">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div></article>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;article class=&quot;message is-success&quot;&gt;&lt;div class=&quot;message-body&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&lt;/article&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<article class="message is-warning"><div class="message-body">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div></article>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;article class=&quot;message is-warning&quot;&gt;&lt;div class=&quot;message-body&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&lt;/article&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<article class="message is-danger"><div class="message-body">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div></article>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;article class=&quot;message is-danger&quot;&gt;&lt;div class=&quot;message-body&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&lt;/article&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<article class="message is-info"><div class="message-header">
+<p>活用 Bulma 美化 Icarus 文章</p>
+</div><div class="message-body">
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">Icarus</a> 主题以白色的简洁为主，但有时候我们希望在文章中用<strong>特别的样式</strong>注明一些内容，<em>markdown</em> 语法就不够用了，所以在此分享一下我的高级玩法。</p>
+</div></article>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;article class=&quot;message is-info&quot;&gt;&lt;div class=&quot;message-header&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">活用 Bulma 美化 Icarus 文章</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&lt;div class=&quot;message-body&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line">[Icarus](https://ppoffice.github.io/hexo-theme-icarus/) 主题以白色的简洁为主，但有时候我们希望在文章中用**特别的样式**注明一些内容，*markdown* 语法就不够用了，所以在此分享一下我的高级玩法。</span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&lt;/article&gt;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="让简介不出现在正文"><a href="#让简介不出现在正文" class="headerlink" title="让简介不出现在正文"></a>让简介不出现在正文</h3><p>我们知道 Hexo 用 <code>&lt;!-- more --&gt;</code> 可以分隔简介和正文部分，但这样简介也会在正文中出现，如果我们不想让简介部分出现在正文呢？</p>
+<div class="post-summary">
+
+<p>这里的内容只会出现在 <strong>简介</strong></p>
+</div>
+
+<!-- more -->
+
+<style type="text/css">
+.post-summary { display: none; }
+</style>
+
+<p>这里的内容只会出现在 <strong>正文</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;&lt;div class=&quot;post-summary&quot;&gt;&#123;% endraw %&#125;</span><br><span class="line"></span><br><span class="line">这里的内容只会出现在 **简介**</span><br><span class="line"></span><br><span class="line">&#123;% raw %&#125;&lt;/div&gt;&#123;% endraw %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">.post-summary &#123; display: none; &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">这里的内容只会出现在 **正文**</span><br></pre></td></tr></table></figure>
+
+<h3 id="封面图来源声明"><a href="#封面图来源声明" class="headerlink" title="封面图来源声明"></a>封面图来源声明</h3><a class="tag is-dark is-medium" href="https://www.vecteezy.com/free-vector/vector-landscape" target="_blank">
+<span class="icon"><i class="fas fa-camera"></i></span>&nbsp;&nbsp;
+Vector Landscape Vectors by Vecteezy
+</a>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a class=&quot;tag is-dark is-medium&quot; href=&quot;https://www.vecteezy.com/free-vector/vector-landscape&quot; target=&quot;_blank&quot;&gt;</span><br><span class="line">&lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;fas fa-camera&quot;&gt;&lt;/i&gt;&lt;/span&gt;&amp;nbsp;&amp;nbsp;</span><br><span class="line">Vector Landscape Vectors by Vecteezy</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这就是关于 Icarus 的高级玩法了。大部分是复制<a target="_blank" rel="noopener" href="https://www.imaegoo.com/2020/icarus-with-bulma/">imaegoo</a>的介绍以及Typora官方的文档，在typora中，不能即时显示渲染。</p>
+<p>关于 <code>Bulma</code> ，将来再另开一文详叙。</p>
+<h2 id="主题文档参考以及摘要"><a href="#主题文档参考以及摘要" class="headerlink" title="主题文档参考以及摘要"></a>主题文档参考以及摘要</h2><p>主要是 <code>[icarus](https://github.com/ppoffice/hexo-theme-icarus)</code> 的官方文档。</p>
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Configuration/icarus%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/">Icarus用户指南 - 主题配置</a>：主题配置要素详解、配置文件详解、配置校验等。</p>
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Configuration/icarus%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97-cdn%E6%8F%90%E4%BE%9B%E5%95%86/">Icarus用户指南 - CDN提供商</a></p>
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Plugins/Other/icarus%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97-%E5%85%B6%E4%BB%96%E6%8F%92%E4%BB%B6/">Icarus用户指南 - 其他插件</a>：画廊、数学公式（KaTeX、MathJax）、Cookie、载入动画等。</p>
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Plugins/Analytics/icarus%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97-%E7%BD%91%E7%AB%99%E5%88%86%E6%9E%90%E6%8F%92%E4%BB%B6/">Icarus用户指南 - 网站分析插件</a>：网页指标统计。</p>
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Widgets/icarus%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97-%E6%8C%82%E4%BB%B6/">Icarus用户指南 - 挂件</a>：资料卡、目录、友情链接、最新文章、归档、分类、邮件订阅、广告插件（？）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/07/15/Hexo%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8/" data-id="clehge7x0000hcgokeauwgnmi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/19/Pycharm%E8%AE%B0%E5%BD%95%EF%BC%88%E7%A0%B4%E8%A7%A3%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Pycharm记录（破解）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/01/welcome/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Welcome</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

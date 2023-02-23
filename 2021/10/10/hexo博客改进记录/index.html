@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>hexo博客改进记录 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原来修改了什么已经忘记了，但是新修改的可以记录一下。 主要包括固定导航栏、gitalk 评论排列、添加新的自定义页面、修改组件、主页面宽度、归档时间轴页添加年份生肖图标、多端同步与客制化（shift+F5）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo博客改进记录">
+<meta property="og:url" content="http://example.com/2021/10/10/hexo%E5%8D%9A%E5%AE%A2%E6%94%B9%E8%BF%9B%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="原来修改了什么已经忘记了，但是新修改的可以记录一下。 主要包括固定导航栏、gitalk 评论排列、添加新的自定义页面、修改组件、主页面宽度、归档时间轴页添加年份生肖图标、多端同步与客制化（shift+F5）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T18:44:08.415Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo博客改进记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/10/hexo%E5%8D%9A%E5%AE%A2%E6%94%B9%E8%BF%9B%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time datetime="2021-10-10T00:00:00.000Z" itemprop="datePublished">2021-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo博客改进记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原来修改了什么已经忘记了，但是新修改的可以记录一下。</p>
+<p>主要包括固定导航栏、gitalk 评论排列、添加新的自定义页面、修改组件、主页面宽度、归档时间轴页添加年份生肖图标、多端同步与客制化（shift+F5）</p>
+<span id="more"></span>
+
+<h1 id="固定导航栏"><a href="#固定导航栏" class="headerlink" title="固定导航栏"></a>固定导航栏</h1><p>在 <code>hexo-theme-icarus\source\css\style.styl</code> 内添加</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.navbar</span></span><br><span class="line"> <span class="attribute">z-index</span>: <span class="number">100</span></span><br><span class="line"> position: sticky</span><br><span class="line"> top: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="gitalk-评论排列"><a href="#gitalk-评论排列" class="headerlink" title="gitalk 评论排列"></a>gitalk 评论排列</h1><p>查阅官方文档，在 <code>script</code> 内添加参数，<code>pagerDirection: &#39;last&#39;</code></p>
+<h1 id="添加新的自定义页面"><a href="#添加新的自定义页面" class="headerlink" title="添加新的自定义页面"></a>添加新的自定义页面</h1><h2 id="外部链接"><a href="#外部链接" class="headerlink" title="外部链接"></a>外部链接</h2><p>直接在 <code>icarus</code> 的 <code>config</code> 文件的 <code>navbar</code> 栏添加 <code>xx: &#39;url&#39;</code> </p>
+<h2 id="新页面"><a href="#新页面" class="headerlink" title="新页面"></a>新页面</h2><p>添加新文件夹，里面新建 <code>index.md</code>，内容和脚本写在里面，并在 <code>icarus</code> 的 <code>config</code> 文件的 <code>navbar</code> 栏添加 <code>xx: &#39;folder_name&#39;</code> 样式由 <code>hexo</code> 渲染。所以会与博客主题一致。</p>
+<h2 id="无样式新页面"><a href="#无样式新页面" class="headerlink" title="无样式新页面"></a>无样式新页面</h2><p>在页面文件夹直接创建 <code>xx.html</code> ？或者在 <code>index.md</code> 的 <code>front-matter</code> 里添加 <code>layout: false</code> </p>
+<h2 id="不同布局的新页面"><a href="#不同布局的新页面" class="headerlink" title="不同布局的新页面"></a>不同布局的新页面</h2><p>虽然无样式可以创建，但是又得手撸页面，难免有点不爽，不过既然 <code>front-matter</code> 的优先级更高，那就可以在上面写 <code>widget:</code> 将组件置空，那么基础样式将保留。</p>
+<p>未来有拓展需求时，再详细研究一下这个。</p>
+<h1 id="修改组件、主页面宽度"><a href="#修改组件、主页面宽度" class="headerlink" title="修改组件、主页面宽度"></a>修改组件、主页面宽度</h1><p>查阅 <code>icarus</code> 的 <code>issue</code> 有介绍，主要就是修改样式。</p>
+<h2 id="添加文件并改变引用（方便）"><a href="#添加文件并改变引用（方便）" class="headerlink" title="添加文件并改变引用（方便）"></a>添加文件并改变引用（方便）</h2><p>可以自定义，不过我直接找了个开源分支库，里面有别人写好的，预览了主页感觉可以，直接套上去用了。更新应该也不会刷掉，统一备份 <code>mystyle</code> 就好了应该。步骤如下：</p>
+<ul>
+<li>在 <code>hexo-theme-icarus/include/style</code> 下创建 <code>mystyle</code> 文件夹，在内复制粘贴添加一个修改好的 <code>responsive.styl</code> </li>
+<li>在 <code>hexo-theme-icarus/source/css/style.styl</code> 内，将 <code>@import &#39;../../include/style/responsive&#39;</code> 修改为 <code>@import &#39;../../include/style/mystyle/responsive&#39;</code> 即可。</li>
+</ul>
+<h2 id="直接修改"><a href="#直接修改" class="headerlink" title="直接修改"></a>直接修改</h2><p>如果想要直接修改 <code>responsive.styl</code> ，在内的 <code>+widescreen()</code> 下修改为如下代码</p>
+<figure class="highlight css"><figcaption><span>responsive.styl >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+widescreen()</span><br><span class="line">    <span class="selector-class">.is-1-column</span> <span class="selector-class">.container</span>, <span class="selector-class">.is-2-column</span> <span class="selector-class">.container</span></span><br><span class="line">        <span class="attribute">max-width</span>: $widescreen - <span class="number">2</span> * $gap</span><br><span class="line">        width: $widescreen - <span class="number">2</span> * $gap</span><br><span class="line"></span><br><span class="line">    .is-<span class="number">3</span>-column .container &#123;</span><br><span class="line">        <span class="comment">/* 关闭评论图片 后调节 原94%*/</span></span><br><span class="line">        <span class="attribute">max-width</span>: <span class="number">85%</span>; <span class="comment">/*screen-widescreen + 2 * extend-width - 2 * gap*/</span></span><br><span class="line">        <span class="attribute">width</span>: <span class="number">85%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">max-width</span>: $desktop - <span class="number">2</span> * $gap</span><br><span class="line">    width: $desktop - <span class="number">2</span> * $gap</span><br><span class="line">    .column.is-<span class="number">3</span>-widescreen &#123;</span><br><span class="line">        <span class="attribute">flex</span>: none;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">24%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.column</span><span class="selector-class">.is-6-widescreen</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">52%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.column</span><span class="selector-class">.is-4-widescreen</span> &#123;</span><br><span class="line">        <span class="attribute">flex</span>: none;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">24%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.column</span><span class="selector-class">.is-8-widescreen</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">76%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.column</span><span class="selector-class">.is-9-widescreen</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">76%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    //screen-widescreen + <span class="number">2</span> * extend-<span class="attribute">width</span> - <span class="number">2</span> * <span class="attribute">gap</span></span><br><span class="line">    <span class="selector-class">.navbar</span> &gt; <span class="selector-class">.container</span> <span class="selector-class">.navbar-brand</span>, <span class="selector-class">.container</span> &gt; <span class="selector-class">.navbar</span> <span class="selector-class">.navbar-brand</span> &#123;</span><br><span class="line">        <span class="attribute">margin-left</span>: <span class="number">0%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="selector-class">.navbar</span> &gt; <span class="selector-class">.container</span> <span class="selector-class">.navbar-menu</span>, <span class="selector-class">.container</span> &gt; <span class="selector-class">.navbar</span> <span class="selector-class">.navbar-menu</span> &#123;</span><br><span class="line">        <span class="attribute">margin-right</span>: <span class="number">0.5%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="selector-class">.level-end</span> &#123;</span><br><span class="line">        <span class="attribute">margin-right</span>: -<span class="number">1.5%</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><p>引自<a target="_blank" rel="noopener" href="https://carol-yang09.github.io/">Carol</a>的 <code>hexo-icarus</code> 博客：</p>
+<ul>
+<li>修改側欄及文章區塊所佔網格比例</li>
+</ul>
+<p>放寬內容區塊(側欄加文章區塊)後，再來就是修改側欄以及文章區塊所佔的網格比，讓側欄變窄，中間文章區塊變寬</p>
+<p>預設側欄(兩側)所佔的網格比，可在 <code>themes/icarus/layout/common/widgets.jsx</code> 檔案中看到</p>
+<ul>
+<li>修改文章區塊與側欄區塊比例</li>
+</ul>
+<p>接下來我們要放寬文章區塊，減少側欄區塊寬度</p>
+<p>在 <code>themes/icarus/layout/common/widgets.jsx</code>，修改側欄(兩側)所佔的網格比</p>
+<p>在 <code>themes/icarus/layout/layout.jsx</code>，修改文章區塊所佔的網格比</p>
+<h1 id="归档页添加年份生肖"><a href="#归档页添加年份生肖" class="headerlink" title="归档页添加年份生肖"></a>归档页添加年份生肖</h1><p>逛 <code>icarus</code> 的 <code>issue</code> 发现好玩的，试着加到博客里，可惜的是没有插件式的套件。</p>
+<p>原 <code>issue</code> 提出的修改方法：</p>
+<ol>
+<li><strong>下载字体</strong>：<a target="_blank" rel="noopener" href="https://io-oi.me/uploads/chinese-zodiac.zip">chinese-zodiac.zip (23.2KB)</a>，下载后将解压的三个字体文件全部放在 <code>icarus/source/fonts</code> 下</li>
+<li><strong>添加样式</strong>: 在 <code>icarus/style/timeline.styl</code> 中加入，为避免修改带来的bug，我在 <code>mystyle</code> 复制新的 <code>timeline.styl</code> 并添加下面的代码，在 <code>style.styl</code> 修改引用。</li>
+</ol>
+<figure class="highlight css"><figcaption><span>timeline.styl >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.chinese-zodiac</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: right;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;chinese-zodiac&#x27;</span>;</span><br><span class="line">    <span class="attribute">font-display</span>: swap;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;/fonts/chinese-zodiac.eot&#x27;</span>);</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;/fonts/chinese-zodiac.eot&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;embedded-opentype&#x27;</span>),</span><br><span class="line">            <span class="built_in">url</span>(<span class="string">&#x27;/fonts/chinese-zodiac.woff2&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff2&#x27;</span>),</span><br><span class="line">            <span class="built_in">url</span>(<span class="string">&#x27;/fonts/chinese-zodiac.woff&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff&#x27;</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.symbolic-animals</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#3273DC</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">font</span>: normal normal normal <span class="number">14px</span>/<span class="number">1</span> chinese-zodiac;</span><br><span class="line">    <span class="attribute">font-size</span>: x-large;</span><br><span class="line">    <span class="attribute">text-rendering</span>: auto;</span><br><span class="line">    -webkit-<span class="attribute">font-smoothing</span>: antialiased;</span><br><span class="line">    -moz-osx-<span class="attribute">font-smoothing</span>: grayscale;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon-dragon</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e806&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-tiger</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e809&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-pig</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e810&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-horse</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e813&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-rat</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e816&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-goat</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e818&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-snake</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e820&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-ox</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e822&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-dog</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e825&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-rabbit</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e826&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-monkey</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e829&#x27;</span>; &#125;</span><br><span class="line"><span class="selector-class">.icon-rooster</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">&#x27;\e82f&#x27;</span>; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li>修改 <code>hexo-theme-icarus\layout\archive.jsx</code> ：将 <code>renderArticleList</code> 函数修改为</li>
+</ol>
+<figure class="highlight plaintext"><figcaption><span>archive.jsx >folded</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function renderArticleList(posts, year, month = null) &#123;</span><br><span class="line">    const time = moment([page.year, page.month ? page.month - 1 : null].filter(i =&gt; i !== null));</span><br><span class="line">    </span><br><span class="line">    const zodiac = (() =&gt; &#123;</span><br><span class="line">        switch (year % 12) &#123;</span><br><span class="line">            case 0: return &#x27;symbolic-animals icon-monkey&#x27;;</span><br><span class="line">            case 1: return &#x27;symbolic-animals icon-rooster&#x27;;</span><br><span class="line">            case 2: return &#x27;symbolic-animals icon-dog&#x27;;</span><br><span class="line">            case 3: return &#x27;symbolic-animals icon-pig&#x27;;</span><br><span class="line">            case 4: return &#x27;symbolic-animals icon-rat&#x27;;</span><br><span class="line">            case 5: return &#x27;symbolic-animals icon-ox&#x27;;</span><br><span class="line">            case 6: return &#x27;symbolic-animals icon-tiger&#x27;;</span><br><span class="line">            case 7: return &#x27;symbolic-animals icon-rabbit&#x27;;</span><br><span class="line">            case 8: return &#x27;symbolic-animals icon-dragon&#x27;;</span><br><span class="line">            case 9: return &#x27;symbolic-animals icon-snake&#x27;;</span><br><span class="line">            case 10: return &#x27;symbolic-animals icon-horse&#x27;;</span><br><span class="line">            case 11: return &#x27;symbolic-animals icon-goat&#x27;;</span><br><span class="line">            default: return &#x27;symbolic-animals icon-ox&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    </span><br><span class="line">    return &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;card-content&quot;&gt;</span><br><span class="line">            &lt;h3 class=&quot;tag&quot;&#125;&gt;&#123;month === null ? year : time.locale(language).format(&#x27;MMMM YYYY&#x27;)&#125;&lt;/h3&gt;</span><br><span class="line">            &lt;div class=&quot;chinese-zodiac&quot;&gt;</span><br><span class="line">                &lt;i class=&#123;zodiac&#125;&gt; &lt;/i&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改颜色"><a href="#修改颜色" class="headerlink" title="修改颜色"></a>修改颜色</h3><p>这份修改的源码将颜色设为红色，有点不搭。将颜色改回原来的 <code>#3273DC</code> 。上面第一份代码搜索 <code>color</code> 修改。</p>
+<h3 id="夜间模式的适配"><a href="#夜间模式的适配" class="headerlink" title="夜间模式的适配"></a>夜间模式的适配</h3><p>添加了这玩意后，夜间模式下，样式也得适配添加。在 <code>night.styl</code> 的 <code>time line</code> 内添加 <code>.symbolic-animals</code> ，如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//<span class="selector-tag">time</span> line</span><br><span class="line"><span class="selector-class">.timeline</span></span><br><span class="line">	xxx</span><br><span class="line">	xxx</span><br><span class="line"><span class="selector-class">.symbolic-animals</span> </span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#C0C0C0</span></span><br></pre></td></tr></table></figure>
+
+<p>颜色选择合适的就行。</p>
+<h1 id="修改部署后样式的同步"><a href="#修改部署后样式的同步" class="headerlink" title="修改部署后样式的同步"></a>修改部署后样式的同步</h1><p>经常改了之后本地预览没问题，<code>hexo d</code> 之后没有变化，文章倒是有更新，查来查去，<code>shift</code> + <code>f5</code> 强制刷新页面，清理缓存一般就可以了。</p>
+<h2 id="多端同步与客制化位置"><a href="#多端同步与客制化位置" class="headerlink" title="多端同步与客制化位置"></a>多端同步与客制化位置</h2><p>由于 <code>git push</code> 到仓库时，<code>.gitignore</code> 将 <code>node_modules/hexo-theme-icarus</code> 加入不上传列表，那么对应的修改就没有同步，解决的办法就是，将这个文件夹内容全部复制，到博客目录下的 <code>themes</code> 内创建 <code>icarus</code> 目录并粘贴。</p>
+<p>这样，<code>hexo</code> 就会以 <code>themes/icarus</code> 内的设置对页面配置，算是客制化设定（其实一开始就应该做这一步，然后在 <code>themes/icarus</code> 内进行客制化主题修改的）。</p>
+<p>则同步上传时，会将该文件夹同步。 </p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><h2 id="gitalk"><a href="#gitalk" class="headerlink" title="gitalk"></a>gitalk</h2><p>gitalk-github文档：<a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">https://github.com/gitalk/gitalk</a></p>
+<h2 id="页面的布局"><a href="#页面的布局" class="headerlink" title="页面的布局"></a>页面的布局</h2><p>icarus用户指南：<a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Configuration/icarus-user-guide-configuring-the-theme/#Configuration-Files-and-Priority">https://ppoffice.github.io/hexo-theme-icarus/Configuration/icarus-user-guide-configuring-the-theme/#Configuration-Files-and-Priority</a></p>
+<h2 id="宽度修改"><a href="#宽度修改" class="headerlink" title="宽度修改"></a>宽度修改</h2><p>Hexo - Icarus 主題 - 內容區塊寬度：<a target="_blank" rel="noopener" href="https://carol-yang09.github.io/2020/11/22/hexo-icarus-themes-content-width/">https://carol-yang09.github.io/2020/11/22/hexo-icarus-themes-content-width/</a></p>
+<p>可否增加内容栏自定义宽度功能 #434：<a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus/issues/434">https://github.com/ppoffice/hexo-theme-icarus/issues/434</a></p>
+<p>hexo-theme-amazing-responsive.styl：<a target="_blank" rel="noopener" href="https://github.com/removeif/hexo-theme-amazing/blob/7fea32fa88ef79b3ca0c697ed55ee3213f72bb2b/include/style/mystyle/responsive.styl">https://github.com/removeif/hexo-theme-amazing/blob/7fea32fa88ef79b3ca0c697ed55ee3213f72bb2b/include/style/mystyle/responsive.styl</a></p>
+<h2 id="归档页添加年份生肖-1"><a href="#归档页添加年份生肖-1" class="headerlink" title="归档页添加年份生肖"></a>归档页添加年份生肖</h2><p>在归档界面加入与年份对应的12生肖小图标 #776：<a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus/issues/776">https://github.com/ppoffice/hexo-theme-icarus/issues/776</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/10/hexo%E5%8D%9A%E5%AE%A2%E6%94%B9%E8%BF%9B%E8%AE%B0%E5%BD%95/" data-id="clehge7xk001ncgok9f7o6mri" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/11/02/Crontab/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Crontab
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/29/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">docker镜像制作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
