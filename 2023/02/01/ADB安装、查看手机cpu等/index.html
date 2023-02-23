@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ADB安装、查看手机cpu、Tasker配置等 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="手机adb调试，要求安装adb。以及手机自动化，要求adb授权。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ADB安装、查看手机cpu、Tasker配置等">
+<meta property="og:url" content="http://example.com/2023/02/01/ADB%E5%AE%89%E8%A3%85%E3%80%81%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BAcpu%E7%AD%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="手机adb调试，要求安装adb。以及手机自动化，要求adb授权。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T17:39:22.771Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="cs">
+<meta property="article:tag" content="automation">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="tasker">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ADB安装、查看手机cpu等" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/02/01/ADB%E5%AE%89%E8%A3%85%E3%80%81%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BAcpu%E7%AD%89/" class="article-date">
+  <time datetime="2023-02-01T00:00:00.000Z" itemprop="datePublished">2023-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cs/">cs</a>►<a class="article-category-link" href="/categories/cs/android/">android</a>►<a class="article-category-link" href="/categories/cs/automation/">automation</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ADB安装、查看手机cpu、Tasker配置等
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>手机adb调试，要求安装adb。以及手机自动化，要求adb授权。</p>
+<span id="more"></span>
+
+<p>废旧手机不少了，寻思着用起来，记录一点笔记，都是简单的东西。</p>
+<h2 id="ADB安装"><a href="#ADB安装" class="headerlink" title="ADB安装"></a>ADB安装</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>ADB 全名是Android Debug Bridge，是开发或使用Android 时很常用到的工具。可以从电脑透过USB 连线到Android 手机上，利用指令列来控制你得手机。简单讲，就像是安装在电脑上面的Android 遥控器，只是这个遥控器需要用指令才能操控你的手机。ADB 可以做到的事情举例还来说有：</p>
+<ul>
+<li><p>通过adb 进入机器或模拟器的shell 模式</p>
+</li>
+<li><p>直接在手机与电脑中间传送档案</p>
+</li>
+<li><p>直接将手机截图到电脑</p>
+</li>
+<li><p>命令手机直接执行档案</p>
+</li>
+<li><p>将Android 手机刷机，取得手机最大权限的时候，会需要和Fastboot 搭配使用</p>
+</li>
+<li><p>遥控手机的时候，例如有些游戏脚本就是透过ADB来控制手机。</p>
+</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>ADB不需要安装也能直接使用，但是每次使用时都要在切换到放文件的位置很麻烦，所以安装一下。</p>
+<p>Google 提供的下载路径：</p>
+<ul>
+<li>Windows 版本：<a target="_blank" rel="noopener" href="http://bit.ly/2tyUEo4">https://dl.google.com/android/repository/platform-tools-latest-windows.zip</a></li>
+<li>Mac 版本：<a target="_blank" rel="noopener" href="http://bit.ly/2QquGMr">https://dl.google.com/android/repository/platform-tools-latest-darwin.zip</a></li>
+<li>Linux 版本：<a target="_blank" rel="noopener" href="http://bit.ly/2ZS5hhD">https://dl.google.com/android/repository/platform-tools-latest-linux.zip</a></li>
+</ul>
+<p>在此电脑—属性—高级—环境变量—系统变量—Path，添加platform-tools的路径。</p>
+<p>cmd界面输入 <code>adb --version</code> 验证。</p>
+<h2 id="安装scrcpy"><a href="#安装scrcpy" class="headerlink" title="安装scrcpy"></a>安装scrcpy</h2><p>开发时，需要手机界面显示，下载这个用就行。需要打开开发者模式的adb调试。</p>
+<p>下载安装解压：略，开源的。</p>
+<h2 id="查看手机cpu类型"><a href="#查看手机cpu类型" class="headerlink" title="查看手机cpu类型"></a>查看手机cpu类型</h2><p>手机打开开发者模式后，连接电脑。</p>
+<p>安装好adb工具后，命令行界面输入 <code>adb shell getprop ro.product.cpu.abi</code> </p>
+<p><strong>一般来说：</strong></p>
+<p><strong>armeabiv-v7a</strong>: 第7代及以上的 ARM 处理器。相对比较旧，一几年的手机了。<br><strong>arm64-v8a</strong>: 第8代、64位ARM处理器，<strong>新手机都是这个</strong>。<br><strong>armeabi</strong>: 第5代、第6代的ARM处理器，早期的手机，非常老，赛博古董级别。<br><strong>x86</strong>: 平板、模拟器用得比较多。<br><strong>x86_64</strong>: 64位的平板。</p>
+<h2 id="Tasker-基本配置"><a href="#Tasker-基本配置" class="headerlink" title="Tasker 基本配置"></a>Tasker 基本配置</h2><p>有了ADB，怎能少了Tasker。</p>
+<p>通过下面的命令可以详细获取 Tasker 相关的权限和服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys package net.dinglisch.android.taskerm</span><br></pre></td></tr></table></figure>
+
+<p>大部分权限可以手动通过设置来打开，一部分特殊权限需要使用 adb 授权.</p>
+<h3 id="获取普通权限的方法"><a href="#获取普通权限的方法" class="headerlink" title="获取普通权限的方法"></a>获取普通权限的方法</h3><h4 id="安装-Tasker-时获取"><a href="#安装-Tasker-时获取" class="headerlink" title="安装 Tasker 时获取"></a>安装 Tasker 时获取</h4><p>可以通过 (把 Tasker 安装文件放置到手机存储根目录)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm install -g /storage/0/tasker.apk</span><br></pre></td></tr></table></figure>
+
+<p>或者 (把 Tasker 安装文件放置到 adb 根目录)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install -g tasker.apk</span><br></pre></td></tr></table></figure>
+
+<p>这两种 adb 安装方式直接获取常规权限.</p>
+<h4 id="安装-Tasker-后手动设置"><a href="#安装-Tasker-后手动设置" class="headerlink" title="安装 Tasker 后手动设置"></a>安装 Tasker 后手动设置</h4><p>可以在系统设置的应用管理界面手动赋予权限。建议是这个。</p>
+<h3 id="获取特殊权限的方法"><a href="#获取特殊权限的方法" class="headerlink" title="获取特殊权限的方法"></a>获取特殊权限的方法</h3><p>特殊权限只能通过 adb 或者 root 授权:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm grant net.dinglisch.android.taskerm android.permission.WRITE_SECURE_SETTINGS</span><br><span class="line">adb shell pm grant net.dinglisch.android.taskerm android.permission.DUMP</span><br><span class="line">adb shell pm grant net.dinglisch.android.taskerm android.permission.READ_LOGS</span><br><span class="line">adb shell pm grant net.dinglisch.android.taskerm android.permission.SET_VOLUME_KEY_LONG_PRESS_LISTENER</span><br><span class="line">adb shell pm grant net.dinglisch.android.taskerm android.permission.SET_MEDIA_KEY_LISTENER</span><br></pre></td></tr></table></figure>
+
+<p>一般来说，第一条命令（修改系统权限）就很够了。AutoJs等自动化工具亦是如此。</p>
+<p>截屏权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell appops set net.dinglisch.android.taskerm PROJECT_MEDIA allow</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tasker-需要开启的服务"><a href="#Tasker-需要开启的服务" class="headerlink" title="Tasker 需要开启的服务"></a>Tasker 需要开启的服务</h3><p>无障碍服务 (辅助功能) 和 通知管理服务，既可以手动通过系统设置赋权也可以使用下面的 adb 命令开启</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb shell settings put secure enabled_accessibility_services net.dinglisch.android.taskerm/.MyAccessibilityService</span><br><span class="line">adb shell settings put secure accessibility_enabled 1</span><br><span class="line"></span><br><span class="line">adb shell settings put secure enabled_notification_listeners net.dinglisch.android.taskerm/.NotificationListenerService</span><br><span class="line">adb shell settings put secure notification_enabled 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>参见：<a target="_blank" rel="noopener" href="https://taskerm.com/">Tasker 配置教程站</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://hi-upchen.medium.com/%E5%A6%82%E4%BD%95%E5%9C%A8-win10-%E5%AE%89%E8%A3%9D-android-adb%E5%B7%A5%E5%85%B7-8546cb0b81ce">如何在WIN10 安装Android ADB工具</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pong137/p/14327484.html">如何查看Android手机CPU类型是armeabi，armeabi-v7a，还是arm64-v8a</a></p>
+<p><a target="_blank" rel="noopener" href="https://taskerm.com/2020/01/31/how-to-enable-all-permissions-and-services-required-by-tasker-in-pc">如何在 PC 端一次性开启 Tasker 的所有权限和服务</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/01/ADB%E5%AE%89%E8%A3%85%E3%80%81%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BAcpu%E7%AD%89/" data-id="clehe2yer0003e5oseg933g56" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/automation/" rel="tag">automation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs/" rel="tag">cs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tasker/" rel="tag">tasker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/17/%E5%8D%87%E7%BA%A7icarus%E5%88%B05.x/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">升级icarus到5.x</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

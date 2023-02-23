@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>匿名通信重新访问zlib | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自从zlib挂了以后，想找本书都难。目前的方法为：APP、 TGBOT、民间自建离线库和通过匿名浏览器访问原址。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="匿名通信重新访问zlib">
+<meta property="og:url" content="http://example.com/2022/12/28/%E5%8C%BF%E5%90%8D%E9%80%9A%E4%BF%A1%E9%87%8D%E6%96%B0%E8%AE%BF%E9%97%AEzlib/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="自从zlib挂了以后，想找本书都难。目前的方法为：APP、 TGBOT、民间自建离线库和通过匿名浏览器访问原址。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-28T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T17:39:22.775Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="book">
+<meta property="article:tag" content="magic">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-匿名通信重新访问zlib" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/12/28/%E5%8C%BF%E5%90%8D%E9%80%9A%E4%BF%A1%E9%87%8D%E6%96%B0%E8%AE%BF%E9%97%AEzlib/" class="article-date">
+  <time datetime="2022-12-28T00:00:00.000Z" itemprop="datePublished">2022-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/book/">book</a>►<a class="article-category-link" href="/categories/book/magic/">magic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      匿名通信重新访问zlib
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自从zlib挂了以后，想找本书都难。目前的方法为：APP、 TGBOT、民间自建离线库和通过匿名浏览器访问原址。</p>
+<span id="more"></span>
+
+<p>由于使用APP、 TGBOT、民间自建离线库等方式都有诸多局限、比如限制下载大小（&lt;50M）、数据错乱等，想来想去还是用官方指导方法吧。</p>
+<h2 id="基于TOR-x2F-I2R的连接"><a href="#基于TOR-x2F-I2R的连接" class="headerlink" title="基于TOR&#x2F;I2R的连接"></a>基于TOR&#x2F;I2R的连接</h2><p>二选一，大差不差，我用tor。</p>
+<p>TOR 的主要强项在于：提供匿名的网络访问，保护你的隐私。但是有个明显的缺点：浏览网站速度极慢。</p>
+<p>如果魔法世界来去自如，精通ssr、clash，v2ray等，就可以魔法提升tor浏览速度。</p>
+<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>官网地址：<a target="_blank" rel="noopener" href="https://www.torproject.org/download/">https://www.torproject.org/download/</a></p>
+<h3 id="配置tor浏览器"><a href="#配置tor浏览器" class="headerlink" title="配置tor浏览器"></a>配置tor浏览器</h3><ul>
+<li><p>选择”配置&#x2F; Configure”</p>
+</li>
+<li><p>勾选”我使用代理连接至互联网&#x2F; I use a proxy connect to the Internet”</p>
+</li>
+<li><p>查看代理的IP地址（127.0.0.1）和端口（法杖上肯定写的了）</p>
+</li>
+<li><p>ssr和v2ray的客户端的proxy type是socks5，clash是HTTPS</p>
+</li>
+<li><p>点击Connect连接至Tor网络</p>
+</li>
+<li><p>可以访问<a target="_blank" rel="noopener" href="https://check.torproject.org/">https://check.torproject.org/</a> 查看效果，也可以打开其他网站tor浏览器感受一下速度</p>
+</li>
+</ul>
+<h3 id="网页链接"><a href="#网页链接" class="headerlink" title="网页链接"></a>网页链接</h3><h4 id="TOR"><a href="#TOR" class="headerlink" title="TOR"></a>TOR</h4><p>浏览器：<a target="_blank" rel="noopener" href="http://torproject.netcologne.de/zh-CN/download/">http://torproject.netcologne.de/zh-CN/download/</a></p>
+<p>网址（必须使用上面的浏览器打开）：<a target="_blank" rel="noopener" href="http://bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion/">http://bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion/</a></p>
+<h4 id="I2P"><a href="#I2P" class="headerlink" title="I2P"></a>I2P</h4><p>浏览器：<a target="_blank" rel="noopener" href="https://geti2p.net/en/download">https://geti2p.net/en/download</a></p>
+<p>网址（必须使用上面的浏览器打开）：<a target="_blank" rel="noopener" href="http://kkd7tiqf5lv3olqfdnkw4znmmmmnjo2xqlxrp5ntthp6juowaiha.b32.i2p/">http://kkd7tiqf5lv3olqfdnkw4znmmmmnjo2xqlxrp5ntthp6juowaiha.b32.i2p/</a></p>
+<p>不知何时会变。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://fanqiang.info/archives/vpn-tor-ssr-v2ray-clash.html">科学上网工具+tor浏览器 让隐匿隐私的同时提升一下浏览速度</a></p>
+<p><a target="_blank" rel="noopener" href="https://zlib.download/zh/#2-i2ptor">zlibrary 下载教程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/12/28/%E5%8C%BF%E5%90%8D%E9%80%9A%E4%BF%A1%E9%87%8D%E6%96%B0%E8%AE%BF%E9%97%AEzlib/" data-id="clehe2ygd0039e5os1paw3j8g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/magic/" rel="tag">magic</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/01/03/Bulma%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Bulma笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/25/github-https/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">github-https</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

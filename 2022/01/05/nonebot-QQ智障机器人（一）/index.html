@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>nonebot-QQ智障机器人（部署） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="NoneBot ，利用 OneBot 实现的 Python 异步机器人框架。现在的版本已经是 v2了，要求 Python &gt;&#x3D; 3.7.3 ，通过插件化的形式，将消息分发到命令处理器和自然语言处理器，完成具体功能，拓展性挺强的。整一个玩玩，顺手写一个傻瓜式笔记记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nonebot-QQ智障机器人（部署）">
+<meta property="og:url" content="http://example.com/2022/01/05/nonebot-QQ%E6%99%BA%E9%9A%9C%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="NoneBot ，利用 OneBot 实现的 Python 异步机器人框架。现在的版本已经是 v2了，要求 Python &gt;&#x3D; 3.7.3 ，通过插件化的形式，将消息分发到命令处理器和自然语言处理器，完成具体功能，拓展性挺强的。整一个玩玩，顺手写一个傻瓜式笔记记录。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T17:39:22.775Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="nonebot">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nonebot-QQ智障机器人（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/05/nonebot-QQ%E6%99%BA%E9%9A%9C%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2022-01-05T00:00:00.000Z" itemprop="datePublished">2022-01-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cs/">cs</a>►<a class="article-category-link" href="/categories/cs/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nonebot-QQ智障机器人（部署）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>NoneBot ，利用 OneBot 实现的 Python 异步机器人框架。现在的版本已经是 v2了，要求 Python &gt;&#x3D; 3.7.3 ，通过插件化的形式，将消息分发到命令处理器和自然语言处理器，完成具体功能，拓展性挺强的。整一个玩玩，顺手写一个傻瓜式笔记记录。</p>
+<span id="more"></span>
+
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>开始之前，确保 python 在3.7.3 以上，后续安装的是 v2 版本，所以先将原来的卸载了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall nonebot</span><br></pre></td></tr></table></figure>
+
+<p>其他需要补充的前提</p>
+<ul>
+<li>了解 python 异步机制</li>
+<li>了解 PEP 484，NoneBot2 用此实现类型注解</li>
+<li>改进编辑器</li>
+</ul>
+<p>编辑器我使用 VS code ，推荐也是使用这个。使用 <code>pylance</code> Language Server 并启用 <code>Type Checking</code> 的 <code>basic</code> 模式以达到最佳开发体验。</p>
+<p>VS code 配置插件 pylance、jupyter</p>
+<h3 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h3><p>一般来说 venv 一个就行了，但是既然都开了大坑，干脆就把 Anaconda 也装上。</p>
+<p>在 Ubuntu 安装 <a target="_blank" rel="noopener" href="https://www.anaconda.com/">Anaconda</a> ，首先在官网下载安装包，是 .sh 后缀的，依据<a target="_blank" rel="noopener" href="https://docs.anaconda.com/anaconda/install/linux/">文档</a>进行校验安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#检验完整性</span></span><br><span class="line"><span class="built_in">sha256sum</span> /path/filename</span><br><span class="line">bash /path/filename <span class="comment">#一般为：~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh</span></span><br><span class="line"><span class="comment">#重启终端，检查安装</span></span><br><span class="line">conda version</span><br><span class="line"><span class="comment">#关闭终端默认自启的conda base环境</span></span><br><span class="line">conda config --show | grep auto_activate_base</span><br><span class="line">conda config --<span class="built_in">set</span> auto_activate_base False</span><br><span class="line"><span class="comment">#进入base</span></span><br><span class="line"><span class="built_in">source</span> ~/anaconda3/bin/activate root</span><br><span class="line"><span class="comment">#退出，关闭终端重启或命令</span></span><br><span class="line">conda deactivate</span><br><span class="line"><span class="comment">#查看环境</span></span><br><span class="line">conda <span class="built_in">env</span> list</span><br><span class="line">conda info -e</span><br><span class="line"><span class="comment">#查看包列表</span></span><br><span class="line">conda list</span><br><span class="line"><span class="comment">#启动anaconda</span></span><br><span class="line"><span class="built_in">source</span> ~/anaconda3/bin/activate root</span><br><span class="line">anaconda-navigator</span><br></pre></td></tr></table></figure>
+
+<p>然后创建虚拟环境nonebot。</p>
+<h3 id="避免风控"><a href="#避免风控" class="headerlink" title="避免风控"></a>避免风控</h3><p>一般来说，QQ机器人被tx风控是正常的事。据说不要经常群发、链接、图片。还有建议不要太嘲讽，把机器人部署到腾讯云里。反正我反手把QQ塞到挂号平台开一个月刷刷活跃，服务器也是自己组的，部署运行几天看看。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>一般还是装个脚手架比较方便。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install nb-cli</span><br><span class="line"><span class="comment"># 纯净安装无脚手架</span></span><br><span class="line">pip install nonebot2</span><br><span class="line">poetry add nonebot2</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="驱动器安装"><a href="#驱动器安装" class="headerlink" title="驱动器安装"></a>驱动器安装</h4><p>文档说默认内置 <code>fastapi</code> 服务端，一般来说是不够的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看驱动器列表</span></span><br><span class="line">nb driver <span class="built_in">list</span></span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">nb driver install &lt;driver&gt;</span><br><span class="line"><span class="comment"># or use pip to install</span></span><br><span class="line">pip install &lt;driver&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或者去<a target="_blank" rel="noopener" href="https://v2.nonebot.dev/store">NB2商店</a>复制安装驱动器。</p>
+<h4 id="协议适配器"><a href="#协议适配器" class="headerlink" title="协议适配器"></a>协议适配器</h4><p>同样地，<a target="_blank" rel="noopener" href="https://v2.nonebot.dev/store">NB2商店</a>也可以直接装。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nb adapter list</span><br><span class="line">nb adapter install &lt;adapter&gt;</span><br><span class="line">pip install &lt;adapter&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第三方插件"><a href="#第三方插件" class="headerlink" title="第三方插件"></a>第三方插件</h4><p>同样，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nb plugin list</span><br><span class="line">nb plugin install &lt;plugin&gt;</span><br><span class="line">pip install &lt;plugin&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="go-cqhttp"><a href="#go-cqhttp" class="headerlink" title="go-cqhttp"></a>go-cqhttp</h4><p>下载最新的 Release，解压并初始化（运行go-cqhttp），开启自动配置，以 ubuntu 为例</p>
+<ul>
+<li>解压目录下（建议放到机器人目录），打开终端，<code>./go-cqhttp</code> 执行命令，选择“反向 Websocket 通信”，等待初始化 <code>config.yml</code> 。</li>
+<li>配置 <code>config.yml</code> ，更改帐号，不需要填密码，设置反向 ws universal 的地址。为：ws:&#x2F;&#x2F;127.0.0.1:port&#x2F;onebot&#x2F;v11&#x2F;ws</li>
+<li>文件说明：device.json 保存设备信息，务必不要删除，go-cqhttp：用于启动程序，session.token：QQ登录服务器后产生的token，后续不用再次扫码。如果以后登录不上，删除后重新扫码登录。</li>
+</ul>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>到目标目录下，激活虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda info -e</span><br><span class="line">conda activate &lt;env_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>创建项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">nb creat</span><br><span class="line"><span class="comment"># ValueError: Unknown scheme for proxy URL URL(&#x27;socks ...</span></span><br><span class="line"><span class="comment"># 有可能是v2ray的代理设置导致的，先关闭，清空代理，项目创建完再重启v2ray</span></span><br><span class="line"><span class="built_in">env</span> | grep -i proxy</span><br><span class="line"><span class="built_in">unset</span> ALL_PROXY</span><br><span class="line"><span class="built_in">unset</span> all_proxy</span><br><span class="line"><span class="comment"># 正常进入就是设置项目名称等参数的界面，选择插件存放位置，然后选择echo，选择onebot v11完成创建</span></span><br><span class="line"><span class="comment">#完成后进入项目目录，如awesome-bot</span></span><br><span class="line">nb run</span><br><span class="line"><span class="comment">#一切正常即可退出。</span></span><br></pre></td></tr></table></figure>
+
+<p>之后的启动在目录下，不要遗漏激活虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nb run</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">python bot.py</span><br><span class="line"><span class="comment"># activate</span></span><br><span class="line">conda activate nonebot</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><ul>
+<li><code>bot/plugins</code> 或 <code>src/plugins</code>: 用于存放编写的 bot 插件</li>
+<li><code>.env</code>、<code>.env.dev</code>、<code>.env.prod</code>: 各环境配置文件</li>
+<li><code>bot.py</code>: bot 入口文件</li>
+<li><code>pyproject.toml</code>: 项目插件配置文件</li>
+<li><code>Dockerfile</code>、<code>docker-compose.yml</code>: Docker 镜像配置文件</li>
+</ul>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p><code>.env</code> 文件内设置使用 <code>dev</code> 或 <code>prod</code> 的配置，随便哪个都行。</p>
+<p>对应的配置文件如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HOST=127.0.0.1	#配置监听的IP/主机</span><br><span class="line">PORT=xxxxx	#同GOCQ的config内的端口，监听的端口</span><br><span class="line">SUPERUSERS=[]	#超级用户</span><br><span class="line">NICKNAME=[&quot;&quot;, &quot;&quot;]	#昵称</span><br><span class="line">COMMAND_START=[&quot;/&quot;]	#命令起始符</span><br><span class="line">COMMAND_SEP=[&quot;.&quot;]	#命令分隔符</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="初次调试"><a href="#初次调试" class="headerlink" title="初次调试"></a>初次调试</h3><ul>
+<li><p>环境配置完成后，命令行执行 <code>nb run</code> 或者在 IDE 内以非调试模式运行，但不建议。</p>
+</li>
+<li><p>nonebot 开启后，到gocq目录下执行 <code>./go-cqhttp</code> 以打开 gocq 。</p>
+</li>
+<li><p>一般来说上述两步执行完就完成 hello world 了。打开QQ对机器人发送信息 <code>/echo hello world</code> ，有正常回复就算完成了初始化搭建。</p>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://github.com/nonebot/nonebot">GitHub NoneBot</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Mrs4s/go-cqhttp">GitHub go-cqhttp</a></p>
+<p><a target="_blank" rel="noopener" href="https://v2.nonebot.dev/docs/">NoneBot v2 Docs</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.go-cqhttp.org/guide/quick_start.html#%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B">go-cqhttp quick_start</a></p>
+<p><a target="_blank" rel="noopener" href="https://tianbiao.top/30-%E5%9F%BA%E4%BA%8Ego-cqhttp%E5%92%8CNoneBot2%E7%9A%84QQ%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E7%8E%B0/index.html">基于go-cqhttp和NoneBot2的QQ机器人实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://v2.nonebot.dev/store">NB2商店</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.well404.top/">well404的博客</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/05/nonebot-QQ%E6%99%BA%E9%9A%9C%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="clehe2yfv0021e5os940lgtpq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nonebot/" rel="tag">nonebot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/01/06/nonebot-QQ%E6%99%BA%E9%9A%9C%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E6%8F%92%E4%BB%B6%E4%B8%8Edocker%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nonebot-QQ智障机器人（插件与docker）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/11/05/docker%E9%A1%B9%E7%9B%AE-calibre%E4%B9%A6%E5%BA%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">docker项目-calibre书库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>docker镜像制作 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="构建定制化docker的镜像，选择合适的 Linux 作为构建镜像的基础。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker镜像制作">
+<meta property="og:url" content="http://example.com/2021/09/29/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="构建定制化docker的镜像，选择合适的 Linux 作为构建镜像的基础。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T17:39:22.775Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker镜像制作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/29/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/" class="article-date">
+  <time datetime="2021-09-29T00:00:00.000Z" itemprop="datePublished">2021-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cs/">cs</a>►<a class="article-category-link" href="/categories/cs/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker镜像制作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>构建定制化docker的镜像，选择合适的 Linux 作为构建镜像的基础。</p>
+<span id="more"></span>
+
+<h2 id="Alpine"><a href="#Alpine" class="headerlink" title="Alpine"></a>Alpine</h2><p><a target="_blank" rel="noopener" href="https://alpinelinux.org/">Alpine</a> 是一个轻量的 Linux 发行版，适合制作镜像，本体大小只有5<del>8 MB 。使用 apk 包管理器。不过也可以使用 ubuntu 等 Linux 发行版来制作镜像，体积稍大，70</del>80MB。所以可以从 Alpine 开始制作一个镜像。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -it alpine:3.11.3   #用新的稳定发行版，一般来说，支持两年。</span><br><span class="line">apk --help   #查看包管理器的支持。</span><br><span class="line">apk update</span><br><span class="line"></span><br><span class="line">dcoker ps   #在新建终端查看容器运行</span><br><span class="line">docker diff id   #以id查找容器，查看文件更改历史</span><br></pre></td></tr></table></figure>
+
+<p>下以添加 hexo 为例，打包镜像。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apk add nodejs npm</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">npm i hexo-cli -g</span><br><span class="line">hexo -v</span><br><span class="line">npm install</span><br><span class="line">cd /home</span><br><span class="line">mkdir bolg</span><br><span class="line">cd blog</span><br><span class="line">apk add git</span><br><span class="line">hexo init</span><br><span class="line">hexo g</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">新建终端</span></span><br><span class="line">docker container ls</span><br><span class="line">docker commit id your_name/image_name:tag_name #打包成新镜像</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>alpine 实在是非常轻量，虽然构建镜像很适合，但是也会少了很多熟悉的工具，如果有打包好的镜像，可以直接下载对应 tag 的 alpine 镜像。比如 redis:4.0-alpine ，jenkins2.60.3-alpine（ <del>什么老古董</del>）。</li>
+<li>alpine 的 package repo 只有一个版本的包，这就意味着，当使用 alpine 构建特定镜像时，没有对应版本的包。比如 alpine3.4 中的 nodejs 包，只有6.7的。</li>
+<li>选择 alpine 构建镜像前，如果对版本有特殊要求（不喜欢<del>最新版的大坑</del>），先去 alpine 官网的 packages 查一下。</li>
+<li>其他发行版的体积大，但是版本管理确实舒服。个人用来应应急是无所谓的。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">alpine 的常用命令</span></span><br><span class="line">apk 		# 包管理，下为参数，一般都是见词知意的。</span><br><span class="line">update, upgrade, 		#更新镜像源，升级软件包</span><br><span class="line">search, info,    		#查找与列出包信息</span><br><span class="line">add, del,automove       #添加与删除，默认自动执行的清理</span><br><span class="line"></span><br><span class="line">rc- #服务管理，运行级的增删服务。我不用，所以不写。留个索引方便以后查</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用服务管理需要安装openrc</span></span><br><span class="line">apk add openrc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">一般就是包管理和服务管理这两类，详见 alpine 官网 docs/User Handbook/Working With Alpine</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h2><p>构建镜像这种事，当然还是自动化一点更好。写个 dockerfile 比较方便。</p>
+<p>以最简单的 hello world 镜像构建为例。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> scratch </span><br><span class="line"><span class="comment"># base on scrstch</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> hello /</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;/hello&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>太简单了。再写几个</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">8.4</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /test</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /test</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install --registry=https://registry.npm.taobao.org</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">5000</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ROM openjdk:<span class="number">8</span>-jre	<span class="comment"># jar包基于jdk ,war包基于tomcat</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> demo-0.0.1-SNAPSHOT.jar app.jar	<span class="comment"># 将上下文中 jar包复制到 /app目录下，并且重命名为app.jar</span></span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8081</span>	<span class="comment"># 暴露端口</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash">[ <span class="string">&quot;java&quot;</span> , <span class="string">&quot;-jar&quot;</span> ]	<span class="comment"># 启动应用固定命令</span></span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash">[<span class="string">&quot;app.jar&quot;</span>]	<span class="comment"># 动态传递jar包名</span></span></span><br></pre></td></tr></table></figure>
+
+<p>项目根目录下，可以新建一个 <code>.dockerignore</code> ，逐行写入不需要打包的文件。</p>
+<p>以后有需求再加点实例吧。</p>
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><p>参考<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">文档</a></p>
+<ul>
+<li><p><strong>FROM</strong> 指令初始化一个新的构建阶段并为后续指令设置基本镜像。有效的 Dockerfile 必须以 FROM 指令开头。（除非是 ARG 开头，FROM 指令支持在第一个 FROM 之前出现的 ARG 指令声明的变量）</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ARG</span>  CODE_VERSION=latest</span><br><span class="line"><span class="keyword">FROM</span> base:$&#123;CODE_VERSION&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RUN</strong> 有两种形式：</p>
+<ul>
+<li><code>RUN command</code>（shell形式，命令在shell中运行，Linux默认为&#x2F;bin&#x2F;sh -c，Windows默认为cmd &#x2F;S &#x2F;C），</li>
+<li><code>RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</code> (执行形式)，</li>
+<li><strong>RUN 指令将在当前图像之上的新层中执行任何命令并提交结果。</strong>生成的提交图像将用于 Dockerfile 中的下一步。exec 形式可以避免 shell 字符串修改，并使用不包含指定 shell 可执行文件的基本映像运行命令。</li>
+</ul>
+</li>
+<li><p><strong>CMD</strong> 的主要目的是<strong>为正在执行的容器提供默认值</strong>。这些默认值可以包括可执行文件，也可以省略可执行文件，在这种情况下，还必须指定 ENTRYPOINT 指令。只会生效一个，所以写多个也只有最后一个生效。</p>
+</li>
+<li><p><strong>LABEL</strong> 指令将元数据添加到镜像，是键值对。</p>
+</li>
+<li><p><strong>EXPOSE</strong> 指令指定 Docker 容器在运行时监听的网络端口。可以指定端口监听 TCP 还是 UDP，如果不指定协议，则默认为 TCP。端口暴露与否视 RUN 指令决定。</p>
+</li>
+<li><p><strong>ENV</strong> 键值对，指定环境变量，可被后续调用。</p>
+</li>
+<li><p><strong>COPY</strong> 和 <strong>ADD</strong>，COPY 复制主机或前阶段（–from）的文件或目录生成新的镜像层（不解压，不能访问网络资源），ADD 相似，不过支持使用 URL，tar 文件自动解压。</p>
+</li>
+<li><p><strong>VOLUME</strong> 用于指定持久化目录（指定此目录可以被挂载出去）。</p>
+</li>
+<li><p><strong>WORKDIR</strong> 工作目录，类似于cd命令。</p>
+</li>
+</ul>
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><p>如果一个项目需要用到多个容器（常有的事），那么容器的编排就十分重要了。</p>
+<ul>
+<li>dockerfile 定义环境</li>
+<li>docker-compose 定义服务，运行在隔离的环境中。构建完整的业务单元。</li>
+<li>启动命令 <code>docker compose up</code></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>一般来说，linux 下安装 docker 是不会带 docker compose 的。除非装的是 docker engine ，安装 compose 可以用库也可以用二进制文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-compose-plugin</span><br><span class="line">docker compose version	<span class="comment">#verify that docker-compose is installed correctly</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_CONFIG=<span class="variable">$&#123;DOCKER_CONFIG:-<span class="variable">$HOME</span>/.docker&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$DOCKER_CONFIG</span>/cli-plugins</span><br><span class="line"></span><br><span class="line">curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o <span class="variable">$DOCKER_CONFIG</span>/cli-plugins/docker-compose</span><br><span class="line"> </span><br><span class="line"><span class="built_in">chmod</span> +x <span class="variable">$DOCKER_CONFIG</span>/cli-plugins/docker-compose</span><br><span class="line">sudo <span class="built_in">chmod</span> +x /usr/local/lib/docker/cli-plugins/docker-compose</span><br><span class="line"></span><br><span class="line">docker compose version</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>A <code>docker-compose.yml</code> looks like this:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.9&quot;</span>  <span class="comment"># optional since v1.27.0</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">web:</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">.</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8000:5000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">.:/code</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">logvolume01:/var/log</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">logvolume01:</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实操<a target="_blank" rel="noopener" href="https://docs.docker.com/compose/gettingstarted/">见此</a>，官网文档过于详细，我都不想抄了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://alpinelinux.org/">Alpine</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/docker/compose">docker&#x2F;compose</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">Overview of Docker Compose</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/29/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/" data-id="clehe2yfl001ce5os6nrle9oy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/10/hexo%E5%8D%9A%E5%AE%A2%E6%94%B9%E8%BF%9B%E8%AE%B0%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hexo博客改进记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/28/docker%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">docker入门笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,55 +1,559 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="个人测试                             &#x2F;* 时间 *&#x2F;         function time() {           t_div &#x3D; document.getElementById(&#39;showtime&#39;);           var now &#x3D; new Date()           t_div.innerHTML">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/personal/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="个人测试                             &#x2F;* 时间 *&#x2F;         function time() {           t_div &#x3D; document.getElementById(&#39;showtime&#39;);           var now &#x3D; new Date()           t_div.innerHTML">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/logo/logo_light.svg">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="og:image" content="https://github.com/favicon.ico">
+<meta property="article:published_time" content="2023-02-23T17:39:22.803Z">
+<meta property="article:modified_time" content="2023-02-23T17:39:22.803Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/logo/logo_light.svg">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/personal/index.html" class="article-date">
+  <time datetime="2023-02-23T17:39:22.803Z" itemprop="datePublished">2023-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<!-- 
+ ___       _____ ______   ________     
+|\  \     |\   _ \  _   \|\   ____\    
+\ \  \    \ \  \\\__\ \  \ \  \___|    
+ \ \  \    \ \  \\|__| \  \ \  \  ___  
+  \ \  \____\ \  \    \ \  \ \  \|\  \ 
+   \ \_______\ \__\    \ \__\ \_______\
+    \|_______|\|__|     \|__|\|_______|
+                           
+______ _     _____ _____ 
+| ___ \ |   |  _  |  __ \
+| |_/ / |   | | | | |  \/
+| ___ \ |   | | | | | __ 
+| |_/ / |___\ \_/ / |_\ \
+\____/\_____/\___/ \____/ 
+
+-->
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>个人测试</title>
     <link rel="stylesheet" href="./css/bulma.min.css">
+    <link rel="stylesheet" href="./css/myclass.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    <script>
+        /* 时间 */
+        function time() {
+          t_div = document.getElementById('showtime');
+          var now = new Date()
+          t_div.innerHTML = ("0" + now.getHours()).slice(-2) + " : " + ("0" + now.getMinutes()).slice(-2) + " : " + ("0" + now.getSeconds()).slice(-2);
+          setTimeout(time, 1000);
+        }
+	</script>
+	<script>
+        /* 日期 */
+        function showdate() {
+          d_div = document.getElementById('showdate');
+          var now = new Date()
+          d_div.innerHTML = now.getFullYear() + " 年 " + ("0" + now.getMonth() + 1).slice(-2) + " 月 " + ("0" + now.getDate()).slice(-2) + " 日 ";
+        }
+	</script>
   </head>
-  <div class="columns is-variable">
-        <div class="column button is-primary is-1">
-        	is-1
-        </div>
-        <div class="column button is-warning">
-        	其余内容
-        </div>
-  </div>
 
-  <div class="columns">
-        <div class="column button is-primary is-2">
-        	is-2
-        </div>
-        <div class="column button is-warning">
-        	其余内容
-        </div>
-  </div>
+  <body style="background-color: #F7F6F4; width: 100%" class="has-navbar-fixed-top" onload="time();showdate()">
 
-  <div class="columns">
-        <div class="column button is-primary is-one-quarter">
-        	is-one-quarter
-        </div>
-        <div class="column button is-warning">
-        	其余内容
-        </div>
-  </div>
+  	
+  	<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="box-shadow: 0 5px 20px rgb(0 0 0 / 5%)">
+	  <div class="navbar-brand">
+	    <a class="navbar-item" href="./index.html">
+	      <img src="../logo/logo_light.svg" width="112" height="28">
+	    </a>
 
-  <div class="columns">
-        <div class="column button is-primary is-4 is-offset-4">
-            <p>
-                is-4 is-offset-4
-            </p>
-        </div>
-        <div class="column button is-warning is-4">
-            <p>
-                其余内容
-            </p>
-        </div>
-  </div>
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	  </div>
+
+	  <div id="navbarBasicExample" class="navbar-menu">
+	    <div class="navbar-start">
+	      <a class="navbar-item">
+	        首页
+	      </a>
+
+	      <div class="navbar-item has-dropdown is-hoverable">
+	        <a class="navbar-link">
+	          今日
+	        </a>
+
+	        <div class="navbar-dropdown">
+	          <a class="navbar-item">
+	            气象抓取
+	          </a>
+	          <a class="navbar-item">
+	            吃啥哟
+	          </a>
+	          <a class="navbar-item">
+	            用品更新
+	          </a>
+	        </div>
+	      </div>
+
+	      <div class="navbar-item has-dropdown is-hoverable">
+	        <a class="navbar-link">
+	          数据仓库
+	        </a>
+
+	        <div class="navbar-dropdown">
+	          <a class="navbar-item">
+	            电子图书馆
+	          </a>
+	          <a class="navbar-item">
+	            软件列表
+	          </a>
+	          <a class="navbar-item">
+	            开源工具
+	          </a>
+	          <a class="navbar-item">
+	            常用网页服务
+	          </a>
+	          <a class="navbar-item">
+	            百货条目
+	          </a>
+	          <a class="navbar-item">
+	            资讯平台名录
+	          </a>
+	        </div>
+	      </div>
+
+	      <div class="navbar-item has-dropdown is-hoverable">
+	        <a class="navbar-link">
+	          一时兴起
+	        </a>
+
+	        <div class="navbar-dropdown">
+	          <a class="navbar-item">
+	            一
+	          </a>
+	          <a class="navbar-item">
+	            时
+	          </a>
+	          <a class="navbar-item">
+	            兴
+	          </a>
+	          <a class="navbar-item">
+	            起
+	          </a>
+	        </div>
+	      </div>
+
+	      <div class="navbar-item has-dropdown is-hoverable">
+	        <a class="navbar-link">
+	          个人
+	        </a>
+
+	        <div class="navbar-dropdown">
+	          <a class="navbar-item">
+	            每日
+	          </a>
+	          <a class="navbar-item">
+	            爬虫运行
+	          </a>
+	          <a class="navbar-item">
+	            自动化
+	          </a>
+	          <a class="navbar-item">
+	            资讯聚合
+	          </a>
+	          <hr class="navbar-divider">
+	          <a class="navbar-item">
+	            提交需求
+	          </a>
+	        </div>
+	      </div>
+	    </div>
+
+	    <div class="navbar-end">
+	    	<a class="navbar-item">
+	            about
+	         </a>
+	      <div class="navbar-item">
+	        <div class="buttons">
+	          <a class="button is-info">
+	            <strong>Sign up</strong>
+	          </a>
+	          <a class="button is-light">
+	            Log in
+	          </a>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</nav>
+
+	<section class="hero" style="background-image:url('./img/time_background.jpg');background-size: cover;">
+	  <div class="hero-body">
+	  	<div class="container has-text-centered has-text-white">
+	  		<p>&nbsp</p>
+	  		<p id="showdate" class="is-size-4">
+		      Title
+		    </p>
+		    <p id="showtime" class="is-size-1">
+		    </p>
+		    <p class="is-size-6">人类是地球上的匆匆来客</p>
+		    <p>&nbsp</p>
+	  	</div>
+	  </div>
+	</section>
+
+	
+
+	<div class="main-content">
+		<span class="icon-text each-list">
+		  <span class="icon">
+		    <i class="fa-regular fa-bookmark"></i>
+		  </span>
+		  <span><strong>常用网页</strong></span>
+		</span>
+		<div class="columns">
+			  <div class="column">
+			  	<div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div>  
+			  </div>
+			  <div class="column">
+			    <div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div>
+			  </div>
+			  <div class="column">
+			  	<div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div> 
+			  </div>
+			  <div class="column">
+			  	<div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div> 
+			  </div>
+		</div>
+		<div class="columns">
+			  <div class="column">
+			  	<div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div>  
+			  </div>
+			  <div class="column">
+			    <div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div>
+			  </div>
+			  <div class="column">
+			  	<div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div> 
+			  </div>
+			  <div class="column">
+			  	<div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div> 
+			  </div>
+		</div>
+		<div class="columns">
+			  <div class="column is-one-fifth">
+			  	<div class="box">
+				  <article class="media">
+				    <div class="media-left">
+				      <figure class="image is-32x32">
+				        <img src="https://github.com/favicon.ico" alt="Image">
+				      </figure>
+				    </div>
+				    <div class="media-content">
+				      <div class="content">
+				        <p>
+				          <strong>Github</strong>
+				          <br>
+				          写代码的。
+				        </p>
+				      </div>
+				    </div>
+				  </article>
+				</div>  
+			  </div>
+		</div>
+	</div>
+		
+
+	<div class="tabs is-toggle is-toggle-rounded">
+	  <ul>
+	    <li class="is-active">
+	      <a>
+	        <span class="icon is-small"><i class="fas fa-image"></i></span>
+	        <span>Pictures</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a>
+	        <span class="icon is-small"><i class="fas fa-music"></i></span>
+	        <span>Music</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a>
+	        <span class="icon is-small"><i class="fas fa-film"></i></span>
+	        <span>Videos</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a>
+	        <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
+	        <span>Documents</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+	<button class="button is-primary"><a href="./test.html">跳转测试</a></button>
 
 
+	    <div class="cursor"></div>
 
-  <body>
-
+	<footer class="footer">
+	  <div class="content has-text-centered">
+	    <p>本站内容采自互联网，如果侵犯了您的权益，请联系本人予以删除！
+	      <strong>Blog</strong> by 戴闻濠. The website content
+	      is licensed <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+	    </p>
+	  </div>
+	</footer>
   </body>
 
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/personal/index.html" data-id="clehe2yeq0002e5os0p46a06c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
 </html>

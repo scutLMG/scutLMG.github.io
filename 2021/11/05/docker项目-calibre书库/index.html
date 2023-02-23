@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>docker项目-calibre书库 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="电子书有不少，格式也比较杂乱，用 calibre 建立一个本地的管理服务，再用 docker 建立一个网络的书库，未来如果有公网ip之类的，可以实现在线阅读。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker项目-calibre书库">
+<meta property="og:url" content="http://example.com/2021/11/05/docker%E9%A1%B9%E7%9B%AE-calibre%E4%B9%A6%E5%BA%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="电子书有不少，格式也比较杂乱，用 calibre 建立一个本地的管理服务，再用 docker 建立一个网络的书库，未来如果有公网ip之类的，可以实现在线阅读。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T17:39:22.775Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="docker-app">
+<meta property="article:tag" content="book">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker项目-calibre书库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/11/05/docker%E9%A1%B9%E7%9B%AE-calibre%E4%B9%A6%E5%BA%93/" class="article-date">
+  <time datetime="2021-11-05T00:00:00.000Z" itemprop="datePublished">2021-11-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/book/">book</a>►<a class="article-category-link" href="/categories/cs/">cs</a>►<a class="article-category-link" href="/categories/cs/docker/">docker</a>►<a class="article-category-link" href="/categories/cs/docker/docker-app/">docker-app</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker项目-calibre书库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>电子书有不少，格式也比较杂乱，用 calibre 建立一个本地的管理服务，再用 docker 建立一个网络的书库，未来如果有公网ip之类的，可以实现在线阅读。</p>
+<span id="more"></span>
+
+<h2 id="安装calibre"><a href="#安装calibre" class="headerlink" title="安装calibre"></a>安装calibre</h2><p>服务器里安装calibre，linux下，使用二进制安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo -v &amp;&amp; wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin</span><br><span class="line"></span><br><span class="line">可以在末尾加上</span><br><span class="line">install_dir=/xxxx </span><br><span class="line">来更改安装目录</span><br><span class="line">version=4.xx.x</span><br><span class="line">来更改版本号</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://calibre-ebook.com/download_linux">官网</a>推荐不要使用linux发行版自带的calibre包，版本落后且错误较多。</p>
+<p>同时源代码安装也不被推荐。官方的说法是“calibre is a highly complex piece of software with lots of very finicky dependencies. If you install from source, you are  on your own. Please do not open bug reports or expect any form of  support. You have been warned.” 依赖复杂还没给错误支持。（试了一下确实如此。）</p>
+<p>安装完毕后，可以在命令行calibre启动或者点击启动。</p>
+<p>官方提示运行前需要 xdg-utils、wget、xz-utils 和 python ≥ 2.6，一般是满足的，但启动时很可能遇上以下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin <span class="string">&quot;xcb&quot;</span> <span class="keyword">in</span> <span class="string">&quot;&quot;</span> even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx, xcb.</span><br></pre></td></tr></table></figure>
+
+<p>查阅知，Qt不将xcb与自身绑定，需要额外安装<code>libxcb-xinerama0</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libxcb-xinerama0</span><br></pre></td></tr></table></figure>
+
+<p>如果还报错，把<code>libxcb-icccm4</code>，<code>libxcb-image0</code>，<code>libxcb-keysums1</code>，<code>libxcb-render-util0</code>都整上。</p>
+<p>创建书库文件夹，要固定一个文件夹专门存放书籍。</p>
+<h2 id="安装calibre-web"><a href="#安装calibre-web" class="headerlink" title="安装calibre-web"></a>安装calibre-web</h2><p>拉取calibre镜像</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull linuxserver/calibre-web</span><br></pre></td></tr></table></figure>
+
+<p>有很多个，linuxserver的一直保持更新的，可以使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name=calibre-web \</span><br><span class="line">  -e PUID=1000 \</span><br><span class="line">  -e PGID=1000 \</span><br><span class="line">  -e TZ=Asia/Shanghai \</span><br><span class="line">  -e DOCKER_MODS=linuxserver/calibre-web:calibre \</span><br><span class="line">  -p 8083:8083 \</span><br><span class="line">  -v /path/to/data:/config \</span><br><span class="line">  -v /path/to/calibre/library:/books \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  linuxserver/calibre-web</span><br></pre></td></tr></table></figure>
+
+<p>不过配置起来比较一般，所以我还是转向了<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/r/johngong/calibre-web">johngong&#x2F;calibre-web</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker create  \</span><br><span class="line">   --name=calibre-web  \</span><br><span class="line">   -p 8083:8083  \</span><br><span class="line">   -p 8080:8080  \</span><br><span class="line">   -v /配置文件位置:/config  \</span><br><span class="line">   -v /书库:/library  \</span><br><span class="line">   -v /自动添加文件夹:/autoaddbooks  \</span><br><span class="line">   -e UID=1000  \</span><br><span class="line">   -e GID=1000  \</span><br><span class="line">   -e CALIBRE_SERVER_USER=用户名  \</span><br><span class="line">   -e CALIBRE_SERVER_PASSWORD=用户密码 \</span><br><span class="line">   --restart unless-stopped  \</span><br><span class="line">   johngong/calibre-web:latest</span><br></pre></td></tr></table></figure>
+
+<p>使用起来方便多了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/05/docker%E9%A1%B9%E7%9B%AE-calibre%E4%B9%A6%E5%BA%93/" data-id="clehe2yfm001ee5os0x61c8ud" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/" rel="tag">book</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-app/" rel="tag">docker-app</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/01/05/nonebot-QQ%E6%99%BA%E9%9A%9C%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nonebot-QQ智障机器人（部署）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/11/03/Typora%E6%B5%8B%E8%AF%95%E7%89%88%E5%B7%B2%E8%BF%87%E6%9C%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Typora测试版已过期问题解决</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
