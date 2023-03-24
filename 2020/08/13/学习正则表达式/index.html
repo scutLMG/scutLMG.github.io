@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>学习正则表达式 - 也无风雨也无晴</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="也无风雨也无晴"><meta name="msapplication-TileImage" content="/logo/logo.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="也无风雨也无晴"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="正则表达式的学习，主要参考开源教程：learn-regex-zh 。本文基本相当于转载，修改不多，后续添加一些自己常用的例子。"><meta property="og:type" content="blog"><meta property="og:title" content="学习正则表达式"><meta property="og:url" content="https://scutlmg.github.io/2020/08/13/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><meta property="og:site_name" content="也无风雨也无晴"><meta property="og:description" content="正则表达式的学习，主要参考开源教程：learn-regex-zh 。本文基本相当于转载，修改不多，后续添加一些自己常用的例子。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://scutlmg.github.io/cover/cv_regex.jpg"><meta property="article:published_time" content="2020-08-13T16:00:00.000Z"><meta property="article:modified_time" content="2023-03-24T18:25:57.663Z"><meta property="article:author" content="戴闻濠"><meta property="article:tag" content="cs"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://scutlmg.github.io/cover/cv_regex.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://scutlmg.github.io/2020/08/13/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"},"headline":"学习正则表达式","image":["https://scutlmg.github.io/cover/cv_regex.jpg"],"datePublished":"2020-08-13T16:00:00.000Z","dateModified":"2023-03-24T18:25:57.663Z","author":{"@type":"Person","name":"ivy"},"publisher":{"@type":"Organization","name":"也无风雨也无晴","logo":{"@type":"ImageObject","url":{"light":"/logo/logo_light.svg","dark":"/logo/logo_dark.svg"}}},"description":"正则表达式的学习，主要参考开源教程：learn-regex-zh 。本文基本相当于转载，修改不多，后续添加一些自己常用的例子。"}</script><link rel="canonical" href="https://scutlmg.github.io/2020/08/13/%E5%AD%A6%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><link rel="icon" href="/logo/logo.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atelier-dune-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><canvas id="universe"></canvas><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/logo/logo_light.svg" alt="也无风雨也无晴" height="28"><img class="logo-img-dark" src="/logo/logo_dark.svg" alt="也无风雨也无晴" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a><a class="navbar-item" href="/talktalk">瞎扯</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/scutLMG"><i class="fab fa-github"></i></a><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/cover/cv_regex.jpg" alt="学习正则表达式"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-08-13T16:00:00.000Z" title="8/13/2020, 4:00:00 PM">2020-08-14</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/cs/">cs</a></span><span class="level-item">31 分钟读完 (大约4653个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">学习正则表达式</h1><div class="content"><p>正则表达式的学习，主要参考开源教程：<a target="_blank" rel="noopener" href="https://github.com/cdoco/learn-regex-zh">learn-regex-zh</a> 。本文基本相当于转载，修改不多，后续添加一些自己常用的例子。</p>
+<span id="more"></span>
+
+<br/>
+<p align="center">
+<img src="https://i.imgur.com/bYwl7Vf.png" alt="Learn Regex">
+</p><br/>
+
+<h2 id="什么是正则表达式-？"><a href="#什么是正则表达式-？" class="headerlink" title="什么是正则表达式 ？"></a>什么是正则表达式 ？</h2><blockquote>
+<p>正则表达式是一种被用于从文本中检索符合某些特定模式的文本。</p>
+</blockquote>
+<p>正则表达式是从左到右来匹配一个字符串的。“Regular Expression”这个词太长了，我们通常使用它的缩写“regex”或者“regexp”。<br>正则表达式可以被用来替换字符串中的文本、验证表单、基于模式匹配从一个字符串中提取字符串等等。<br><br /></p>
+<p>想象一下，您正在编写应用程序，并且您希望在用户选择用户名时设置规则。我们希望用户名可以包含字母，数字，下划线和连字符。<br>为了让它看起来不丑，我们还想限制用户名中的字符数量。这时我们可以使用以下正则表达式来验证用户名：</p>
+<p align="center">
+<img src="https://i.imgur.com/UrDb9qc.png" alt="Regular expression">
+</p>
+
+<p>上面这个正则表达式可以匹配 <code>john_doe</code>，<code>jo-hn_doe</code> 和 <code>john12_as</code>。但是它不能匹配 <code>Jo</code>，因为该字符串里面包含大写字符，并且它太短了。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#1-%E5%9F%BA%E6%9C%AC%E5%8C%B9%E9%85%8D">基本匹配</a></li>
+<li><a href="#2-%E5%85%83%E5%AD%97%E7%AC%A6">元字符</a><ul>
+<li><a href="#21-%E8%8B%B1%E6%96%87%E5%8F%A5%E5%8F%B7">英文句号</a></li>
+<li><a href="#22-%E5%AD%97%E7%AC%A6%E9%9B%86">字符集</a><ul>
+<li><a href="#221-%E5%90%A6%E5%AE%9A%E5%AD%97%E7%AC%A6%E9%9B%86">否定字符集</a></li>
+</ul>
+</li>
+<li><a href="#23-%E9%87%8D%E5%A4%8D">重复</a><ul>
+<li><a href="#231-%E6%98%9F%E5%8F%B7">星号</a></li>
+<li><a href="#232-%E5%8A%A0%E5%8F%B7">加号</a></li>
+<li><a href="#233-%E9%97%AE%E5%8F%B7">问号</a></li>
+</ul>
+</li>
+<li><a href="#24-%E8%8A%B1%E6%8B%AC%E5%8F%B7">花括号</a></li>
+<li><a href="#25-%E5%AD%97%E7%AC%A6%E7%BB%84">字符组</a></li>
+<li><a href="#26-%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84">分支结构</a></li>
+<li><a href="#27-%E8%BD%AC%E4%B9%89%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6">转义特殊字符</a></li>
+<li><a href="#28-%E5%AE%9A%E4%BD%8D%E7%AC%A6">定位符</a><ul>
+<li><a href="#281-%E6%8F%92%E5%85%A5%E7%AC%A6%E5%8F%B7">插入符号</a></li>
+<li><a href="#282-%E7%BE%8E%E5%85%83%E7%AC%A6%E5%8F%B7">美元符号</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-%E7%AE%80%E5%86%99%E5%AD%97%E7%AC%A6%E9%9B%86">简写字符集</a></li>
+<li><a href="#4-%E6%96%AD%E8%A8%80">断言</a><ul>
+<li><a href="#41-%E6%AD%A3%E5%90%91%E5%85%88%E8%A1%8C%E6%96%AD%E8%A8%80">正向先行断言</a></li>
+<li><a href="#42-%E8%B4%9F%E5%90%91%E5%85%88%E8%A1%8C%E6%96%AD%E8%A8%80">负向先行断言</a></li>
+<li><a href="#43-%E6%AD%A3%E5%90%91%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80">正向后行断言</a></li>
+<li><a href="#44-%E8%B4%9F%E5%90%91%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80">负向后行断言</a></li>
+</ul>
+</li>
+<li><a href="#5-%E6%A0%87%E8%AE%B0">标记</a><ul>
+<li><a href="#51-%E4%B8%8D%E5%8C%BA%E5%88%86%E5%A4%A7%E5%B0%8F%E5%86%99">不区分大小写</a></li>
+<li><a href="#52-%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2">全局搜索</a></li>
+<li><a href="#53-%E5%A4%9A%E8%A1%8C%E5%8C%B9%E9%85%8D">多行匹配</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">常用正则表达式</a></li>
+</ul>
+<h2 id="1-基本匹配"><a href="#1-基本匹配" class="headerlink" title="1. 基本匹配"></a>1. 基本匹配</h2><p>正则表达式只是我们用于在文本中检索字符串的模式。例如正则表达式 <code>cat</code>，表示：字母 <code>c</code> 后面跟着一个字母 <code>a</code>，再后面跟着一个字母 <code>t</code>。</p>
+<pre>
+"cat" => The <a href="#learn-regex"><strong>cat</strong></a> sat on the mat
+</pre>
+
+<p>正则表达式 <code>123</code> 会匹配字符串“123”。通过将正则表达式中的每个字符逐个与要匹配的字符串中的每个字符进行比较，来完成正则匹配。<br>正则表达式通常区分大小写，因此正则表达式 <code>Cat</code> 与字符串“cat”不匹配。</p>
+<pre>
+"Cat" => The cat sat on the <a href="#learn-regex"><strong>Cat</strong></a>
+</pre>
+
+<h2 id="2-元字符"><a href="#2-元字符" class="headerlink" title="2. 元字符"></a>2. 元字符</h2><p>元字符是正则表达式的基本组成元素。元字符在这里跟它通常表达的意思不一样，而是以某种特殊的含义去解释。有些元字符在写在方括号内时有特殊含义。<br>元字符如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td>匹配除换行符以外的任意字符。</td>
+</tr>
+<tr>
+<td align="center">[ ]</td>
+<td>字符类，匹配方括号中包含的任意字符。</td>
+</tr>
+<tr>
+<td align="center">[^ ]</td>
+<td>否定字符类。匹配方括号中不包含的任意字符</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td>匹配前面的子表达式零次或多次</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td>匹配前面的子表达式一次或多次</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。</td>
+</tr>
+<tr>
+<td align="center">{n,m}</td>
+<td>花括号，匹配前面字符至少 n 次，但是不超过 m 次。</td>
+</tr>
+<tr>
+<td align="center">(xyz)</td>
+<td>字符组，按照确切的顺序匹配字符 xyz。</td>
+</tr>
+<tr>
+<td align="center">&amp;#124;</td>
+<td>分支结构，匹配符号之前的字符或后面的字符。</td>
+</tr>
+<tr>
+<td align="center">&amp;#92;</td>
+<td>转义符，它可以还原元字符原来的含义，允许你匹配保留字符 <code>[ ] ( ) &#123; &#125; . * + ? ^ $ \ &#124;</code></td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td>匹配行的开始</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td>匹配行的结束</td>
+</tr>
+</tbody></table>
+<h2 id="2-1-英文句号"><a href="#2-1-英文句号" class="headerlink" title="2.1 英文句号"></a>2.1 英文句号</h2><p>英文句号 <code>.</code> 是元字符的最简单的例子。元字符 <code>.</code> 可以匹配任意单个字符。它不会匹配换行符和新行的字符。例如正则表达式 <code>.ar</code>，表示：任意字符后面跟着一个字母 <code>a</code>，<br>再后面跟着一个字母 <code>r</code>。</p>
+<pre>
+".ar" => The <a href="#learn-regex"><strong>car</strong></a> <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
+</pre>
+
+<h2 id="2-2-字符集"><a href="#2-2-字符集" class="headerlink" title="2.2 字符集"></a>2.2 字符集</h2><p>字符集也称为字符类。方括号被用于指定字符集。使用字符集内的连字符来指定字符范围。方括号内的字符范围的顺序并不重要。<br>例如正则表达式 <code>[Tt]he</code>，表示：大写 <code>T</code> 或小写 <code>t</code> ，后跟字母 <code>h</code>，再后跟字母 <code>e</code>。</p>
+<pre>
+"[Tt]he" => <a href="#learn-regex"><strong>The</strong></a> car parked in <a href="#learn-regex"><strong>the</strong></a> garage.
+</pre>
+
+<p>然而，字符集中的英文句号表示它字面的含义。正则表达式 <code>ar[.]</code>，表示小写字母 <code>a</code>，后面跟着一个字母 <code>r</code>，再后面跟着一个英文句号 <code>.</code> 字符。</p>
+<pre>
+"ar[.]" => A garage is a good place to park a c<a href="#learn-regex"><strong>ar.</strong></a>
+</pre>
+
+<h3 id="2-2-1-否定字符集"><a href="#2-2-1-否定字符集" class="headerlink" title="2.2.1 否定字符集"></a>2.2.1 否定字符集</h3><p>一般来说插入字符 <code>^</code> 表示一个字符串的开始，但是当它在方括号内出现时，它会取消字符集。例如正则表达式 <code>[^c]ar</code>，表示：除了字母 <code>c</code> 以外的任意字符，后面跟着字符 <code>a</code>，<br>再后面跟着一个字母 <code>r</code>。</p>
+<pre>
+"[^c]ar" => The car <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
+</pre>
+
+<h2 id="2-3-重复"><a href="#2-3-重复" class="headerlink" title="2.3 重复"></a>2.3 重复</h2><p>以下元字符 <code>+</code>，<code>*</code> 或 <code>?</code> 用于指定子模式可以出现多少次。这些元字符在不同情况下的作用不同。</p>
+<h3 id="2-3-1-星号"><a href="#2-3-1-星号" class="headerlink" title="2.3.1 星号"></a>2.3.1 星号</h3><p>星号 <code>*</code> 表示匹配上一个匹配规则零次或多次。正则表达式 <code>a*</code> 表示小写字母 <code>a</code> 可以重复零次或者多次。但是它如果出现在字符集或者字符类之后，它表示整个字符集的重复。<br>例如正则表达式 <code>[a-z]*</code>，表示：一行中可以包含任意数量的小写字母。</p>
+<pre>
+"[a-z]*" => T<a href="#learn-regex"><strong>he</strong></a> <a href="#learn-regex"><strong>car</strong></a> <a href="#learn-regex"><strong>parked</strong></a> <a href="#learn-regex"><strong>in</strong></a> <a href="#learn-regex"><strong>the</strong></a> <a href="#learn-regex"><strong>garage</strong></a> #21.
+</pre>
+
+<p>星号 <code>*</code> 可以与元符号 <code>.</code> 用在一起，用来匹配任意字符串 <code>.*</code>。星号 <code>*</code> 可以与空格符 <code>\s</code> 一起使用，用来匹配一串空格字符。<br>例如正则表达式 <code>\s*cat\s*</code>，表示：零个或多个空格，后面跟小写字母 <code>c</code>，再后面跟小写字母 <code>a</code>，再在后面跟小写字母 <code>t</code>，后面再跟零个或多个空格。</p>
+<pre>
+"\s*cat\s*" => The fat<a href="#learn-regex"><strong> cat </strong></a>sat on the <a href="#learn-regex"><strong>cat</strong></a>.
+</pre>
+
+<h3 id="2-3-2-加号"><a href="#2-3-2-加号" class="headerlink" title="2.3.2 加号"></a>2.3.2 加号</h3><p>加号 <code>+</code> 表示匹配上一个字符一次或多次。例如正则表达式 <code>c.+t</code>，表示：一个小写字母 <code>c</code>，后跟任意数量的字符，后跟小写字母 <code>t</code>。</p>
+<pre>
+"c.+t" => The fat <a href="#learn-regex"><strong>cat sat on the mat</strong></a>.
+</pre>
+
+<h3 id="2-3-3-问号"><a href="#2-3-3-问号" class="headerlink" title="2.3.3 问号"></a>2.3.3 问号</h3><p>在正则表达式中，元字符 <code>?</code> 用来表示前一个字符是可选的。该符号匹配前一个字符零次或一次。<br>例如正则表达式 <code>[T]?he</code>，表示：可选的大写字母 <code>T</code>，后面跟小写字母 <code>h</code>，后跟小写字母 <code>e</code>。</p>
+<pre>
+"[T]he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in the garage.
+</pre>
+<pre>
+"[T]?he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in t<a href="#learn-regex"><strong>he</strong></a> garage.
+</pre>
+
+<h2 id="2-4-花括号"><a href="#2-4-花括号" class="headerlink" title="2.4 花括号"></a>2.4 花括号</h2><p>在正则表达式中花括号（也被称为量词？）用于指定字符或一组字符可以重复的次数。例如正则表达式 <code>[0-9]&#123;2,3&#125;</code>，表示：匹配至少 2 位数字但不超过 3 位（0 到 9 范围内的字符）。</p>
+<pre>
+"[0-9]{2,3}" => The number was 9.<a href="#learn-regex"><strong>999</strong></a>7 but we rounded it off to <a href="#learn-regex"><strong>10</strong></a>.0.
+</pre>
+
+<p>我们可以省略第二个数字。例如正则表达式 <code>[0-9]&#123;2,&#125;</code>，表示：匹配 2 个或更多个数字。如果我们也删除逗号，则正则表达式 <code>[0-9]&#123;2&#125;</code>，表示：匹配正好为 2 位数的数字。</p>
+<pre>
+"[0-9]{2,}" => The number was 9.<a href="#learn-regex"><strong>9997</strong></a> but we rounded it off to <a href="#learn-regex"><strong>10</strong></a>.0.
+</pre>
+
+<pre>
+"[0-9]{2}" => The number was 9.<a href="#learn-regex"><strong>99</strong></a><a href="#learn-regex"><strong>97</strong></a> but we rounded it off to <a href="#learn-regex"><strong>10</strong></a>.0.
+</pre>
+
+<h2 id="2-5-字符组"><a href="#2-5-字符组" class="headerlink" title="2.5 字符组"></a>2.5 字符组</h2><p>字符组是一组写在圆括号内的子模式 <code>(...)</code>。正如我们在正则表达式中讨论的那样，如果我们把一个量词放在一个字符之后，它会重复前一个字符。<br>但是，如果我们把量词放在一个字符组之后，它会重复整个字符组。<br>例如正则表达式 <code>(ab)*</code> 表示匹配零个或多个的字符串“ab”。我们还可以在字符组中使用元字符 <code>|</code>。例如正则表达式 <code>(c|g|p)ar</code>，表示：小写字母 <code>c</code>、<code>g</code> 或 <code>p</code> 后面跟字母 <code>a</code>，后跟字母 <code>r</code>。</p>
+<pre>
+"(c|g|p)ar" => The <a href="#learn-regex"><strong>car</strong></a> is <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
+</pre>
+
+<h2 id="2-6-分支结构"><a href="#2-6-分支结构" class="headerlink" title="2.6 分支结构"></a>2.6 分支结构</h2><p>在正则表达式中垂直条 <code>|</code> 用来定义分支结构，分支结构就像多个表达式之间的条件。现在你可能认为这个字符集和分支结构的工作方式一样。<br>但是字符集和分支结构巨大的区别是字符集只在字符级别上有作用，然而分支结构在表达式级别上依然可以使用。<br>例如正则表达式 <code>(T|t)he|car</code>，表示：匹配大写字母 <code>T</code> 或小写字母 <code>t</code>，后面跟小写字母 <code>h</code>，后跟小写字母 <code>e</code>，或匹配小写字母 <code>c</code>，后跟小写字母 <code>a</code>，后跟小写字母 <code>r</code>。</p>
+<pre>
+"(T|t)he|car" => <a href="#learn-regex"><strong>The</strong></a> <a href="#learn-regex"><strong>car</strong></a> is parked in <a href="#learn-regex"><strong>the</strong></a> garage.
+</pre>
+
+<h2 id="2-7-转义特殊字符"><a href="#2-7-转义特殊字符" class="headerlink" title="2.7 转义特殊字符"></a>2.7 转义特殊字符</h2><p>正则表达式中使用反斜杠 <code>\</code> 来转义下一个字符。这将允许你使用保留字符来作为匹配字符 <code>&#123; &#125; [ ] / \ + * . $ ^ | ?</code>。在特殊字符前面加 <code>\</code>，就可以使用它来做匹配字符。<br>例如正则表达式 <code>.</code> 是用来匹配除了换行符以外的任意字符。现在要在输入字符串中匹配 <code>.</code> 字符，正则表达式 <code>(f|c|m)at\.?</code>，表示：小写字母 <code>f</code>、<code>c</code> 或者 <code>m</code> 后跟小写字母 <code>a</code>，后跟小写字母 <code>t</code>，后跟可选的 <code>.</code> 字符。</p>
+<pre>
+"(f|c|m)at\.?" => The <a href="#learn-regex"><strong>fat</strong></a> <a href="#learn-regex"><strong>cat</strong></a> sat on the <a href="#learn-regex"><strong>mat.</strong></a>
+</pre>
+
+<h2 id="2-8-定位符"><a href="#2-8-定位符" class="headerlink" title="2.8 定位符"></a>2.8 定位符</h2><p>在正则表达式中，为了检查匹配符号是否是起始符号或结尾符号，我们使用定位符。<br>定位符有两种类型：第一种类型是 <code>^</code> 检查匹配字符是否是起始字符，第二种类型是 <code>$</code>，它检查匹配字符是否是输入字符串的最后一个字符。</p>
+<h3 id="2-8-1-插入符号"><a href="#2-8-1-插入符号" class="headerlink" title="2.8.1 插入符号"></a>2.8.1 插入符号</h3><p>插入符号 <code>^</code> 符号用于检查匹配字符是否是输入字符串的第一个字符。如果我们使用正则表达式 <code>^a</code>（如果 a 是起始符号）匹配字符串 <code>abc</code>，它会匹配到 <code>a</code>。<br>但是如果我们使用正则表达式 <code>^b</code>，它是匹配不到任何东西的，因为在字符串 <code>abc</code> 中“b”不是起始字符。<br>让我们来看看另一个正则表达式 <code>^(T|t)he</code>，这表示：大写字母 <code>T</code> 或小写字母 <code>t</code> 是输入字符串的起始符号，后面跟着小写字母 <code>h</code>，后跟小写字母 <code>e</code>。</p>
+<pre>
+"(T|t)he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in <a href="#learn-regex"><strong>the</strong></a> garage.
+</pre>
+
+<pre>
+"^(T|t)he" => <a href="#learn-regex"><strong>The</strong></a> car is parked in the garage.
+</pre>
+
+<h3 id="2-8-2-美元符号"><a href="#2-8-2-美元符号" class="headerlink" title="2.8.2 美元符号"></a>2.8.2 美元符号</h3><p>美元 <code>$</code> 符号用于检查匹配字符是否是输入字符串的最后一个字符。例如正则表达式 <code>(at\.)$</code>，表示：小写字母 <code>a</code>，后跟小写字母 <code>t</code>，后跟一个 <code>.</code> 字符，且这个匹配器必须是字符串的结尾。</p>
+<pre>
+"(at\.)" => The fat c<a href="#learn-regex"><strong>at.</strong></a> s<a href="#learn-regex"><strong>at.</strong></a> on the m<a href="#learn-regex"><strong>at.</strong></a>
+</pre>
+
+<pre>
+"(at\.)$" => The fat cat sat on the m<a href="#learn-regex"><strong>at.</strong></a>
+</pre>
+
+<h2 id="3-简写字符集"><a href="#3-简写字符集" class="headerlink" title="3. 简写字符集"></a>3. 简写字符集</h2><p>正则表达式为常用的字符集和常用的正则表达式提供了简写。简写字符集如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">简写</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td>匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td>匹配所有字母和数字的字符：<code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td>匹配非字母和数字的字符：<code>[^\w]</code></td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td>匹配数字：<code>[0-9]</code></td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td>匹配非数字：<code>[^\d]</code></td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td>匹配空格符：<code>[\t\n\f\r\p&#123;Z&#125;]</code></td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td>匹配非空格符：<code>[^\s]</code></td>
+</tr>
+</tbody></table>
+<h2 id="4-断言"><a href="#4-断言" class="headerlink" title="4. 断言"></a>4. 断言</h2><p>后行断言和先行断言有时候被称为断言，它们是特殊类型的 <em><strong>非捕获组</strong></em>（用于匹配模式，但不包括在匹配列表中）。当我们在一种特定模式之前或者之后有这种模式时，会优先使用断言。<br>例如我们想获取输入字符串 <code>$4.44 and $10.88</code> 中带有前缀 <code>$</code> 的所有数字。我们可以使用这个正则表达式 <code>(?&lt;=\$)[0-9\.]*</code>，表示：获取包含 <code>.</code> 字符且前缀为 <code>$</code> 的所有数字。<br>以下是正则表达式中使用的断言：</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">?&#x3D;</td>
+<td>正向先行断言</td>
+</tr>
+<tr>
+<td align="center">?!</td>
+<td>负向先行断言</td>
+</tr>
+<tr>
+<td align="center">?&lt;&#x3D;</td>
+<td>正向后行断言</td>
+</tr>
+<tr>
+<td align="center">?&lt;!</td>
+<td>负向后行断言</td>
+</tr>
+</tbody></table>
+<h3 id="4-1-正向先行断言"><a href="#4-1-正向先行断言" class="headerlink" title="4.1 正向先行断言"></a>4.1 正向先行断言</h3><p>正向先行断言认为第一部分的表达式的后面必须是先行断言表达式。返回的匹配结果仅包含与第一部分表达式匹配的文本。<br>要在一个括号内定义一个正向先行断言，在括号中问号和等号是这样使用的 <code>(?=...)</code>。先行断言表达式写在括号中的等号后面。<br>例如正则表达式 <code>(T|t)he(?=\sfat)</code>，表示：匹配大写字母 <code>T</code> 或小写字母 <code>t</code>，后面跟字母 <code>h</code>，后跟字母 <code>e</code>。<br>在括号中，我们定义了正向先行断言，它会引导正则表达式引擎匹配后面跟着 <code>fat</code> 的 <code>The</code> 或 <code>the</code>。</p>
+<pre>
+"(T|t)he(?=\sfat)" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
+</pre>
+
+<h3 id="4-2-负向先行断言"><a href="#4-2-负向先行断言" class="headerlink" title="4.2 负向先行断言"></a>4.2 负向先行断言</h3><p>当我们需要指定第一部分表达式的后面不跟随某一内容时，使用负向先行断言。负向先行断言的定义跟我们定义的正向先行断言一样，<br>唯一的区别在于我们使用否定符号 <code>!</code> 而不是等号 <code>=</code>，例如 <code>(?!...)</code>。<br>我们来看看下面的正则表达式 <code>(T|t)he(?!\sfat)</code>，表示：从输入字符串中获取全部 <code>The</code> 或者 <code>the</code> 且不匹配 <code>fat</code> 前面加上一个空格字符。</p>
+<pre>
+"(T|t)he(?!\sfat)" => The fat cat sat on <a href="#learn-regex"><strong>the</strong></a> mat.
+</pre>
+
+<h3 id="4-3-正向后行断言"><a href="#4-3-正向后行断言" class="headerlink" title="4.3 正向后行断言"></a>4.3 正向后行断言</h3><p>正向后行断言用于获取跟随在特定模式之后的所有匹配内容。正向后行断言表示为 <code>(?&lt;=...)</code>。例如正则表达式 <code>(?&lt;=(T|t)he\s)(fat|mat)</code>，表示：从输入字符串中获取在单词 <code>The</code> 或 <code>the</code> 之后的所有 <code>fat</code> 和 <code>mat</code> 单词。</p>
+<pre>
+"(?<=(T|t)he\s)(fat|mat)" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the <a href="#learn-regex"><strong>mat</strong></a>.
+</pre>
+
+<h3 id="4-4-负向后行断言"><a href="#4-4-负向后行断言" class="headerlink" title="4.4 负向后行断言"></a>4.4 负向后行断言</h3><p>负向后行断言是用于获取不跟随在特定模式之后的所有匹配的内容。负向后行断言表示为 <code>(?&lt;!...)</code>。例如正则表达式 <code>(?&lt;!(T|t)he\s)(cat)</code>，表示：在输入字符中获取所有不在 <code>The</code> 或 <code>the</code> 之后的所有单词 <code>cat</code>。</p>
+<pre>
+"(?&lt;!(T|t)he\s)(cat)" => The cat sat on <a href="#learn-regex"><strong>cat</strong></a>.
+</pre>
+
+<h2 id="5-标记"><a href="#5-标记" class="headerlink" title="5. 标记"></a>5. 标记</h2><p>标记也称为修饰符，因为它会修改正则表达式的输出。这些标志可以以任意顺序或组合使用，并且是正则表达式的一部分。</p>
+<table>
+<thead>
+<tr>
+<th align="center">标记</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">i</td>
+<td>不区分大小写：将匹配设置为不区分大小写。</td>
+</tr>
+<tr>
+<td align="center">g</td>
+<td>全局搜索：搜索整个输入字符串中的所有匹配。</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td>多行匹配：会匹配输入字符串每一行。</td>
+</tr>
+</tbody></table>
+<h3 id="5-1-不区分大小写"><a href="#5-1-不区分大小写" class="headerlink" title="5.1 不区分大小写"></a>5.1 不区分大小写</h3><p><code>i</code> 修饰符用于执行不区分大小写匹配。例如正则表达式 <code>/The/gi</code>，表示：大写字母 <code>T</code>，后跟小写字母 <code>h</code>，后跟字母 <code>e</code>。<br>但是在正则匹配结束时 <code>i</code> 标记会告诉正则表达式引擎忽略这种情况。正如你所看到的，我们还使用了 <code>g</code> 标记，因为我们要在整个输入字符串中搜索匹配。</p>
+<pre>
+"The" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
+</pre>
+
+<pre>
+"/The/gi" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on <a href="#learn-regex"><strong>the</strong></a> mat.
+</pre>
+
+<h3 id="5-2-全局搜索"><a href="#5-2-全局搜索" class="headerlink" title="5.2 全局搜索"></a>5.2 全局搜索</h3><p><code>g</code> 修饰符用于执行全局匹配（会查找所有匹配，不会在查找到第一个匹配时就停止）。<br>例如正则表达式 <code>/.(at)/g</code>，表示：除换行符之外的任意字符，后跟小写字母 <code>a</code>，后跟小写字母 <code>t</code>。<br>因为我们在正则表达式的末尾使用了 <code>g</code> 标记，它会从整个输入字符串中找到每个匹配项。</p>
+<pre>
+".(at)" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the mat.
+</pre>
+
+<pre>
+"/.(at)/g" => The <a href="#learn-regex"><strong>fat</strong></a> <a href="#learn-regex"><strong>cat</strong></a> <a href="#learn-regex"><strong>sat</strong></a> on the <a href="#learn-regex"><strong>mat</strong></a>.
+</pre>
+
+<h3 id="5-3-多行匹配"><a href="#5-3-多行匹配" class="headerlink" title="5.3 多行匹配"></a>5.3 多行匹配</h3><p><code>m</code> 修饰符被用来执行多行的匹配。正如我们前面讨论过的 <code>(^, $)</code>，使用定位符来检查匹配字符是输入字符串开始或者结束。但是我们希望每一行都使用定位符，所以我们就使用 <code>m</code> 修饰符。<br>例如正则表达式 <code>/at(.)?$/gm</code>，表示：小写字母 <code>a</code>，后跟小写字母 <code>t</code>，匹配除了换行符以外任意字符零次或一次。而且因为 <code>m</code> 标记，现在正则表达式引擎匹配字符串中每一行的末尾。</p>
+<pre>
+"/.at(.)?$/" => The fat
+                cat sat
+                on the <a href="#learn-regex"><strong>mat.</strong></a>
+</pre>
+
+<pre>
+"/.at(.)?$/gm" => The <a href="#learn-regex"><strong>fat</strong></a>
+                  cat <a href="#learn-regex"><strong>sat</strong></a>
+                  on the <a href="#learn-regex"><strong>mat.</strong></a>
+</pre>
+
+<h2 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h2><ul>
+<li><strong>正整数</strong>：<code>^\d+$</code></li>
+<li><strong>负整数</strong>：<code>^-\d+$</code></li>
+<li><strong>电话号码</strong>：<code>^+?[\d\s]&#123;3,&#125;$</code></li>
+<li><strong>电话代码</strong>：<code>^+?[\d\s]+(?[\d\s]&#123;10,&#125;$</code></li>
+<li><strong>整数</strong>：<code>^-?\d+$</code></li>
+<li><strong>用户名</strong>：<code>^[\w\d_.]&#123;4,16&#125;$</code></li>
+<li><strong>字母数字字符</strong>：<code>^[a-zA-Z0-9]*$</code></li>
+<li><strong>带空格的字母数字字符</strong>：<code>^[a-zA-Z0-9 ]*$</code></li>
+<li><strong>密码</strong>：<code>^(?=^.&#123;6,&#125;$)((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.*$</code></li>
+<li><strong>电子邮件</strong>：<code>^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]&#123;2,4&#125;)*$</code></li>
+<li><strong>IPv4 地址</strong>：<code>^((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))*$</code></li>
+<li><strong>小写字母</strong>：<code>^([a-z])*$</code></li>
+<li><strong>大写字母</strong>：<code>^([A-Z])*$</code></li>
+<li><strong>网址</strong>：<code>^(((http|https|ftp):\/\/)?([[a-zA-Z0-9]\-\.])+(\.)([[a-zA-Z0-9]])&#123;2,4&#125;([[a-zA-Z0-9]\/+=%&amp;_\.~?\-]*))*$</code></li>
+<li><strong>VISA 信用卡号码</strong>：<code>^(4[0-9]&#123;12&#125;(?:[0-9]&#123;3&#125;)?)*$</code></li>
+<li><strong>日期（MM&#x2F;DD&#x2F;YYYY）</strong>：<code>^(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]&#123;2&#125;$</code></li>
+<li><strong>日期（YYYY&#x2F;MM&#x2F;DD）</strong>：<code>^(19|20)?[0-9]&#123;2&#125;[- /.](0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])$</code></li>
+<li><strong>万事达信用卡号码</strong>：<code>^(5[1-5][0-9]&#123;14&#125;)*$</code></li>
+</ul>
+<h2 id="我的常用与测试网站"><a href="#我的常用与测试网站" class="headerlink" title="我的常用与测试网站"></a>我的常用与测试网站</h2><ul>
+<li>IP Address : <code>^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</code></li>
+<li>多个词语 : <code>((A)|(B))</code></li>
+<li>汉字 : <code>[\u4e00-\u9fa5]</code> 或 <code>[一-龥]</code> （龥yu）或者 <code>[一-龟]</code> （匹配3500常用汉字，和7000通用汉字）</li>
+<li>双字节字符(包括汉字在内)：<code>[^\x00-\xff]</code></li>
+<li></li>
+</ul>
+<h3 id="测试网站"><a href="#测试网站" class="headerlink" title="测试网站"></a>测试网站</h3><p><a target="_blank" rel="noopener" href="https://regex101.com/">regex101</a>：最好的</p>
+<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tools/index?name=reg">w3cschool</a>：一般</p>
+<h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ul>
+<li>Report issues</li>
+<li>Open pull request with improvements</li>
+<li>Spread the word</li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>MIT © <a href="mailto:ziishaned@gmail.com">Zeeshan Ahmed</a></p>
+<hr>
+<p><strong><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-">⬆ top</a></strong></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>学习正则表达式</p><p><a href="https://scutlmg.github.io/2020/08/13/学习正则表达式/">https://scutlmg.github.io/2020/08/13/学习正则表达式/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>ivy</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-08-14</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-03-25</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/cs/">cs</a></div><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a><a class="a2a_button_wechat"></a><a class="a2a_button_print"></a><a class="a2a_button_copy_link"></a><a class="a2a_button_email"></a></div><script async src="https://static.addtoany.com/menu/page.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/logo/cmcm.jpeg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/logo/cmcm.jpeg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2020/10/18/Pycharm%E8%AE%B0%E5%BD%95%EF%BC%88%E7%A0%B4%E8%A7%A3%EF%BC%89/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Pycharm记录（破解）</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2020/07/14/Hexo%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8/"><span class="level-item">Hexo进阶使用</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "4e9932bcccbd94f077272618e8f5b422",
+            repo: "blog_comment",
+            owner: "scutLMG",
+            clientID: "82e44bb7d19ddb388412",
+            clientSecret: "649cbfca073a5d68d47f02617190321c5fd47f78",
+            admin: "scutLMG",
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 8,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/2023/03/24/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/"><img src="/tn/tn_book.jpg" alt="常见的开源协议（转载）"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-24T16:00:00.000Z">2023-03-25</time></p><p class="title"><a href="/2023/03/24/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/">常见的开源协议（转载）</a></p><p class="categories"><a href="/categories/cs/">cs</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/03/23/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%97%A5%E5%BF%97%E7%BB%B4%E6%8A%A4/"><img src="/tn/tn_logs.jpg" alt="如何进行日志维护"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-23T16:00:00.000Z">2023-03-24</time></p><p class="title"><a href="/2023/03/23/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%97%A5%E5%BF%97%E7%BB%B4%E6%8A%A4/">如何进行日志维护</a></p><p class="categories"><a href="/categories/cs/">cs</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/03/21/Robots.txt%E8%AF%A6%E8%A7%A3/"><img src="/tn/tn_python.jpg" alt="Robots.txt详解"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-21T16:00:00.000Z">2023-03-22</time></p><p class="title"><a href="/2023/03/21/Robots.txt%E8%AF%A6%E8%A7%A3/">Robots.txt详解</a></p><p class="categories"><a href="/categories/cs/">cs</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/02/22/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/"><img src="/tn/tn_hugo.jpg" alt="hugo搭建网站"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-02-22T16:00:00.000Z">2023-02-23</time></p><p class="title"><a href="/2023/02/22/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">hugo搭建网站</a></p><p class="categories"><a href="/categories/blog/">blog</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/02/21/github_page%E5%AD%90%E9%A1%B5%E9%9D%A2/"><img src="/tn/tn_blog_panda2.jpg" alt="github page 子页面"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-02-21T16:00:00.000Z">2023-02-22</time></p><p class="title"><a href="/2023/02/21/github_page%E5%AD%90%E9%A1%B5%E9%9D%A2/">github page 子页面</a></p><p class="categories"><a href="/categories/blog/">blog</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/blog/"><span class="level-start"><span class="level-item">blog</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/categories/book/"><span class="level-start"><span class="level-item">book</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/categories/book/magic/"><span class="level-start"><span class="level-item">magic</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/cs/"><span class="level-start"><span class="level-item">cs</span></span><span class="level-end"><span class="level-item tag">26</span></span></a><ul><li><a class="level is-mobile" href="/categories/cs/android/"><span class="level-start"><span class="level-item">android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/automation/"><span class="level-start"><span class="level-item">automation</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/docker/"><span class="level-start"><span class="level-item">docker</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/categories/cs/docker/docker-app/"><span class="level-start"><span class="level-item">docker-app</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/cs/front-end/"><span class="level-start"><span class="level-item">front-end</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/github/"><span class="level-start"><span class="level-item">github</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/%E7%A1%AC%E4%BB%B6/"><span class="level-start"><span class="level-item">硬件</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/game/"><span class="level-start"><span class="level-item">game</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/categories/game/switch/"><span class="level-start"><span class="level-item">switch</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/game/zelda/"><span class="level-start"><span class="level-item">zelda</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/note/"><span class="level-start"><span class="level-item">note</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/software/"><span class="level-start"><span class="level-item">software</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/test/"><span class="level-start"><span class="level-item">test</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/IME/"><span class="tag">IME</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/android/"><span class="tag">android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/automation/"><span class="tag">automation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blog/"><span class="tag">blog</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="/tags/book/"><span class="tag">book</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cs/"><span class="tag">cs</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-app/"><span class="tag">docker-app</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/front-end/"><span class="tag">front-end</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/game/"><span class="tag">game</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/magic/"><span class="tag">magic</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nonebot/"><span class="tag">nonebot</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/note/"><span class="tag">note</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/software/"><span class="tag">software</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/switch/"><span class="tag">switch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tasker/"><span class="tag">tasker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/test/"><span class="tag">test</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/web-spider/"><span class="tag">web-spider</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/zelda/"><span class="tag">zelda</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">一月 2022</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">九月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">六月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/03/"><span class="level-start"><span class="level-item">三月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/10/"><span class="level-start"><span class="level-item">十月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/08/"><span class="level-start"><span class="level-item">八月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">五月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/10/"><span class="level-start"><span class="level-item">十月 2019</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#什么是正则表达式-？"><span class="level-left"><span class="level-item">1</span><span class="level-item">什么是正则表达式 ？</span></span></a></li><li><a class="level is-mobile" href="#目录"><span class="level-left"><span class="level-item">2</span><span class="level-item">目录</span></span></a></li><li><a class="level is-mobile" href="#1-基本匹配"><span class="level-left"><span class="level-item">3</span><span class="level-item">1. 基本匹配</span></span></a></li><li><a class="level is-mobile" href="#2-元字符"><span class="level-left"><span class="level-item">4</span><span class="level-item">2. 元字符</span></span></a></li><li><a class="level is-mobile" href="#2-1-英文句号"><span class="level-left"><span class="level-item">5</span><span class="level-item">2.1 英文句号</span></span></a></li><li><a class="level is-mobile" href="#2-2-字符集"><span class="level-left"><span class="level-item">6</span><span class="level-item">2.2 字符集</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-2-1-否定字符集"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">2.2.1 否定字符集</span></span></a></li></ul></li><li><a class="level is-mobile" href="#2-3-重复"><span class="level-left"><span class="level-item">7</span><span class="level-item">2.3 重复</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-3-1-星号"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">2.3.1 星号</span></span></a></li><li><a class="level is-mobile" href="#2-3-2-加号"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">2.3.2 加号</span></span></a></li><li><a class="level is-mobile" href="#2-3-3-问号"><span class="level-left"><span class="level-item">7.3</span><span class="level-item">2.3.3 问号</span></span></a></li></ul></li><li><a class="level is-mobile" href="#2-4-花括号"><span class="level-left"><span class="level-item">8</span><span class="level-item">2.4 花括号</span></span></a></li><li><a class="level is-mobile" href="#2-5-字符组"><span class="level-left"><span class="level-item">9</span><span class="level-item">2.5 字符组</span></span></a></li><li><a class="level is-mobile" href="#2-6-分支结构"><span class="level-left"><span class="level-item">10</span><span class="level-item">2.6 分支结构</span></span></a></li><li><a class="level is-mobile" href="#2-7-转义特殊字符"><span class="level-left"><span class="level-item">11</span><span class="level-item">2.7 转义特殊字符</span></span></a></li><li><a class="level is-mobile" href="#2-8-定位符"><span class="level-left"><span class="level-item">12</span><span class="level-item">2.8 定位符</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-8-1-插入符号"><span class="level-left"><span class="level-item">12.1</span><span class="level-item">2.8.1 插入符号</span></span></a></li><li><a class="level is-mobile" href="#2-8-2-美元符号"><span class="level-left"><span class="level-item">12.2</span><span class="level-item">2.8.2 美元符号</span></span></a></li></ul></li><li><a class="level is-mobile" href="#3-简写字符集"><span class="level-left"><span class="level-item">13</span><span class="level-item">3. 简写字符集</span></span></a></li><li><a class="level is-mobile" href="#4-断言"><span class="level-left"><span class="level-item">14</span><span class="level-item">4. 断言</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#4-1-正向先行断言"><span class="level-left"><span class="level-item">14.1</span><span class="level-item">4.1 正向先行断言</span></span></a></li><li><a class="level is-mobile" href="#4-2-负向先行断言"><span class="level-left"><span class="level-item">14.2</span><span class="level-item">4.2 负向先行断言</span></span></a></li><li><a class="level is-mobile" href="#4-3-正向后行断言"><span class="level-left"><span class="level-item">14.3</span><span class="level-item">4.3 正向后行断言</span></span></a></li><li><a class="level is-mobile" href="#4-4-负向后行断言"><span class="level-left"><span class="level-item">14.4</span><span class="level-item">4.4 负向后行断言</span></span></a></li></ul></li><li><a class="level is-mobile" href="#5-标记"><span class="level-left"><span class="level-item">15</span><span class="level-item">5. 标记</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#5-1-不区分大小写"><span class="level-left"><span class="level-item">15.1</span><span class="level-item">5.1 不区分大小写</span></span></a></li><li><a class="level is-mobile" href="#5-2-全局搜索"><span class="level-left"><span class="level-item">15.2</span><span class="level-item">5.2 全局搜索</span></span></a></li><li><a class="level is-mobile" href="#5-3-多行匹配"><span class="level-left"><span class="level-item">15.3</span><span class="level-item">5.3 多行匹配</span></span></a></li></ul></li><li><a class="level is-mobile" href="#常用正则表达式"><span class="level-left"><span class="level-item">16</span><span class="level-item">常用正则表达式</span></span></a></li><li><a class="level is-mobile" href="#我的常用与测试网站"><span class="level-left"><span class="level-item">17</span><span class="level-item">我的常用与测试网站</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#测试网站"><span class="level-left"><span class="level-item">17.1</span><span class="level-item">测试网站</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Contribution"><span class="level-left"><span class="level-item">18</span><span class="level-item">Contribution</span></span></a></li><li><a class="level is-mobile" href="#License"><span class="level-left"><span class="level-item">19</span><span class="level-item">License</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/logo/logo_light.svg" alt="也无风雨也无晴" height="28"><img class="logo-img-dark" src="/logo/logo_dark.svg" alt="也无风雨也无晴" height="28"></a><p class="is-size-7"><span>&copy; 2023 ivy</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/scutLMG"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="/js/night.js" defer></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script type="text/javascript" src="/js/universe.js"></script></body></html>

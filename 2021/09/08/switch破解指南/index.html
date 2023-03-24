@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>switch破解指南 - 也无风雨也无晴</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="也无风雨也无晴"><meta name="msapplication-TileImage" content="/logo/logo.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="也无风雨也无晴"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="我的机子买的非续航，经老友指点，发现可以软破双系统，我直接真香告别正版受害者，踏上破解不归路。 不常玩的可以用破解系统试试水，好游戏还是得买的，毕竟要收藏。 鉴于网络的教程实在过于零散、混乱，还是自己记录整合一个。"><meta property="og:type" content="blog"><meta property="og:title" content="switch破解指南"><meta property="og:url" content="https://scutlmg.github.io/2021/09/08/switch%E7%A0%B4%E8%A7%A3%E6%8C%87%E5%8D%97/"><meta property="og:site_name" content="也无风雨也无晴"><meta property="og:description" content="我的机子买的非续航，经老友指点，发现可以软破双系统，我直接真香告别正版受害者，踏上破解不归路。 不常玩的可以用破解系统试试水，好游戏还是得买的，毕竟要收藏。 鉴于网络的教程实在过于零散、混乱，还是自己记录整合一个。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://scutlmg.github.io/cover/cv_nintendo.jpg"><meta property="article:published_time" content="2021-09-08T16:00:00.000Z"><meta property="article:modified_time" content="2023-03-24T18:25:57.663Z"><meta property="article:author" content="戴闻濠"><meta property="article:tag" content="game"><meta property="article:tag" content="switch"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://scutlmg.github.io/cover/cv_nintendo.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://scutlmg.github.io/2021/09/08/switch%E7%A0%B4%E8%A7%A3%E6%8C%87%E5%8D%97/"},"headline":"switch破解指南","image":["https://scutlmg.github.io/cover/cv_nintendo.jpg"],"datePublished":"2021-09-08T16:00:00.000Z","dateModified":"2023-03-24T18:25:57.663Z","author":{"@type":"Person","name":"ivy"},"publisher":{"@type":"Organization","name":"也无风雨也无晴","logo":{"@type":"ImageObject","url":{"light":"/logo/logo_light.svg","dark":"/logo/logo_dark.svg"}}},"description":"我的机子买的非续航，经老友指点，发现可以软破双系统，我直接真香告别正版受害者，踏上破解不归路。 不常玩的可以用破解系统试试水，好游戏还是得买的，毕竟要收藏。 鉴于网络的教程实在过于零散、混乱，还是自己记录整合一个。"}</script><link rel="canonical" href="https://scutlmg.github.io/2021/09/08/switch%E7%A0%B4%E8%A7%A3%E6%8C%87%E5%8D%97/"><link rel="icon" href="/logo/logo.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atelier-dune-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><canvas id="universe"></canvas><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/logo/logo_light.svg" alt="也无风雨也无晴" height="28"><img class="logo-img-dark" src="/logo/logo_dark.svg" alt="也无风雨也无晴" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a><a class="navbar-item" href="/talktalk">瞎扯</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/scutLMG"><i class="fab fa-github"></i></a><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/cover/cv_nintendo.jpg" alt="switch破解指南"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-09-08T16:00:00.000Z" title="9/8/2021, 4:00:00 PM">2021-09-09</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/game/">game</a><span> / </span><a class="link-muted" href="/categories/game/switch/">switch</a></span><span class="level-item">24 分钟读完 (大约3639个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">switch破解指南</h1><div class="content"><p>我的机子买的非续航，经老友指点，发现可以软破双系统，我直接真香告别正版受害者，踏上破解不归路。</p>
+<p>不常玩的可以用破解系统试试水，好游戏还是得买的，毕竟要收藏。</p>
+<p>鉴于网络的教程实在过于零散、混乱，还是自己记录整合一个。</p>
+<span id="more"></span>
+
+
+
+<h2 id="破解之前"><a href="#破解之前" class="headerlink" title="破解之前"></a>破解之前</h2><h3 id="机型"><a href="#机型" class="headerlink" title="机型"></a>机型</h3><p>关乎软破、硬破，不能破。</p>
+<ul>
+<li><p><strong>普通版&#x2F;标准版：</strong></p>
+<p>2017年3月首发-2018年6月，erista型主板，续航时间大致为：2-3小时，<strong>破解方法</strong>：软破。也称为旧版，非续航版，包浆机。存在RCM漏洞，唯一一款支持“软破”的机型</p>
+</li>
+<li><p><strong>2，补丁机：</strong></p>
+<p>2018年6月-2019年停产，erista型主板，续航时间大致为：2-3小时，<strong>破解方法</strong>：硬破。普通版修复了RCM漏洞的版本，与普通版仅有不能软破的区别。</p>
+</li>
+<li><p><strong>3，国行&#x2F;外版 续航：</strong></p>
+<p>2019年9月-至今，mariko型主板，续航时间大致为：<strong>4-6小时</strong>，<strong>破解方法</strong>：硬破。散热与续航时间加强，国行由于在系统增加了企鹅的SDK，所以只能跟国服的玩家联机与下载国服的游戏。外版的仅不能和国行联机。</p>
+</li>
+</ul>
+<h3 id="破解系统与破解方式"><a href="#破解系统与破解方式" class="headerlink" title="破解系统与破解方式"></a>破解系统与破解方式</h3><p><strong>破解系统</strong>，只是一种引导方式。都是内存卡的文件。通过破解让机子先运行卡里的文件。破解系统的文件，必须支持当前的switch主机版本，才能正常进入系统玩游戏。</p>
+<ul>
+<li><p><strong>TX系统：</strong></p>
+<p>仅有TX芯片可以刷入。不过由于开发团队的落网，NS系统最高只支持到11。想玩高版本的游戏只能用魔改版。支持在相册直读XCI格式的游戏。</p>
+</li>
+<li><p><strong>大气层系统：</strong></p>
+<p>TX和国产芯片都可以刷入。目前支持NS最新的版本。支持任何版本的游戏。不过游戏都必须安装才能进行游玩。<strong>（目前用这个，以后也只有这个持续更新了）</strong></p>
+</li>
+<li><p>魔改：因为系统不更新的缘故，对游戏强制降级实现游玩目的，针对已经凉了的TX系统</p>
+</li>
+</ul>
+<p><strong>破解方式：</strong></p>
+<ul>
+<li>软破：软破只有第一款NS可以，故软破也特指旧款普通版NS。主要通过短接硬破，是需要短接和注入才能够实现的破解，所以每次开机都需要短接注入，正版系统和tf卡上的虚拟系统都可以随意升级。（原本是用来称呼那种无需短接也无需注入以及焊接，直接通过浏览器漏洞实现破解，但每次开机都需要进如一次nand的真实系统再进入破解，而且nand里系统必须保持在4.1版本以下才能够实现的版本，后续因为系统的升级已经被修复了。）</li>
+</ul>
+<p>​		<strong>软破序列号</strong>：</p>
+<div align="center">
+    <img src="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/%E8%BD%AF%E7%A0%B4%E5%BA%8F%E5%88%97%E5%8F%B7.jpg" alt="软破序列号" style="zoom:40%;" />
+</div>
+
+<ul>
+<li>硬破：主要要拆机，在主板上焊接芯片来破解，芯片分为TX芯片和国产芯片。（无论何种芯片，在开机时，背后的防尘网都能看到闪烁几秒的灯光。）</li>
+</ul>
+<h3 id="双系统："><a href="#双系统：" class="headerlink" title="双系统："></a>双系统：</h3><p>双系统指的是，虚拟系统 + 真实破解（正版破解）+ 正版系统</p>
+<div align="center">
+    <img src="https://gitblog-1309012157.cos.ap-guangzhou.myqcloud.com/blogimg/%E7%A0%B4%E8%A7%A3%E7%B3%BB%E7%BB%9F.png" alt="破解系统" />
+</div>
+
+
+<p>虚拟系统以及真实&#x2F;正版系统相互独立且互不影响，两边都可以任意升级（不玩正版就没必要升级真实&#x2F;正版系统）。但升级前要先确定你的破解系统支持升级后的NS版本。</p>
+<p>强烈推荐只在虚拟系统玩盗版游戏，<strong>真实系统不要进去</strong>！</p>
+<h2 id="材料准备"><a href="#材料准备" class="headerlink" title="材料准备"></a>材料准备</h2><p>读卡器、短接器、注入器。(TB买)</p>
+<p>下载网站：<a target="_blank" rel="noopener" href="http://www.switch321.com/">switch导航小站</a>（查链接），<a target="_blank" rel="noopener" href="https://xxxxx520.com/">switch520</a>（现在是xxxxx520），<a target="_blank" rel="noopener" href="https://www.91tvg.com/">91tvg</a>（好像挂了），<a target="_blank" rel="noopener" href="https://www.2023game.com/">游戏年轮</a>（现为游戏星辰），<a target="_blank" rel="noopener" href="http://www.a9vg.com/">A9VG电玩部落</a>，<a target="_blank" rel="noopener" href="https://github.com/Atmosphere-NX/Atmosphere/releases">大气层发布</a>（感谢技术宅），<a target="_blank" rel="noopener" href="http://www.hasheji.cn/forum.php">哈设の游戏世界</a>（金手指）</p>
+<p>内存卡：好一点的，128G以上。（朗科及以下杂牌很有可能GG）</p>
+<h3 id="内存卡注意事项"><a href="#内存卡注意事项" class="headerlink" title="内存卡注意事项"></a>内存卡注意事项</h3><ul>
+<li>禁止热拔插</li>
+<li>双系统，不要在真实系统安装任何盗版游戏</li>
+<li>内存卡内任何文件都不能有中文</li>
+<li>NS对于高速卡的兼容不是很好。不用花冤枉钱买超高速卡。（非常符合宇宙第一垃圾硬件厂的定位）</li>
+<li>注意内存卡的格式：最好是fat32格式，别搞什么exfat格式。</li>
+</ul>
+<h3 id="内存卡文件详解"><a href="#内存卡文件详解" class="headerlink" title="内存卡文件详解"></a>内存卡文件详解</h3><p><strong>文件夹：</strong></p>
+<p>AMS-数字：NS用的固件离线升级包，升级主机系统后可以删除。</p>
+<p>atmosphere：大气层的运行需要的一些文件。金手指及mod存放于该文件夹下的contents文件夹中。</p>
+<p>atmosphere&#x2F;contents：存放金手指和MOD，还有后台插件的文件夹</p>
+<p>atmosphere\config：大气层的配置文件目录，可以通过修改里面的文件，变更大气层的部分功能</p>
+<p>backup：备份nand及boot以后会出现的文件，建议备份到其他安全的地方</p>
+<p>bootloader：破解系统的主要载入程序</p>
+<p>config：特斯拉插件及其他插件的设置文件</p>
+<p>emuMMC（用户数据）：虚拟系统本身，机身内存以及虚拟系统的存档和游戏数据</p>
+<p>JKSV：通过JKSV软件备份出来的存档文件</p>
+<p>Nintendo（用户数据）：正版以及真实系统安装的游戏数据</p>
+<p>SaltySD：底座插件的配置文件</p>
+<p>SaltySD&#x2F;exceptions.txt：将游戏加入底座插件黑名单的读取文件。在这里输入游戏的TID后，底座插件将不会在那个游戏里生效</p>
+<p>switch：出现在大气层系统相册中的自制软件的存放目录</p>
+<p>System Volume Information：Windows 系统”系统还原“创建的管理目录，可删，但是插上Win电脑会被重建</p>
+<p>themes：存放主题用的文件夹</p>
+<p>warmboot-mariko：忽略熔断用的文件，当系统版本与熔断数不符合时，进入会黑屏，常见于正版系统版本高于虚拟系统的情况。进入正版系统后，会自动生成。也可网上下载后放入。</p>
+<hr>
+<p><strong>文件：</strong></p>
+<p>payload.bin：hekate界面主程序，即引导界面&#x2F;开机出现的绿字界面</p>
+<p>boot.dat：sxos引导，破解机开机均需要，没有的话会出现NO boot报错</p>
+<p>boot.ini：引导配置文件，没有的话会出现NO boot报错</p>
+<p>hbmenu.nro：即大气层的破解程序运行主体，没有这个一般打开相册就会出问题。</p>
+<p>exosphere.ini：插件配置文件。</p>
+<p>hbmenu.nsp：跟游戏一样的前端，高权限版本的相册。需要跟游戏一样安装</p>
+<p>Tinfoil [R9].nsp：tinfoil的前端，一般只有安装这个才能正常打开</p>
+<h2 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h2><ol>
+<li>下载最新的大气层整合包。并解压将 <code>payload.bin</code> 文件放到别的地方备份。剩下的文件扔进内存卡里面。</li>
+<li>然后将内存卡插入switch里。关机，再将短接器插入switch右手柄的滑槽处。</li>
+<li>先将注入器插好。注入用的文件就是上一步提取出来的<code>payload.bin</code>。记得放到注入器里。（好像不用）</li>
+<li>长按音量+键和点按电源键开机即可。</li>
+</ol>
+<p>注：</p>
+<ul>
+<li>软破机每次关机后，都需要注入开机才能进大气层系统。不注入直接开机，会进入正版系统。</li>
+<li>备份、回复NAND（正版系统）的教程，另开一文记录。</li>
+</ul>
+<h2 id="关机重开"><a href="#关机重开" class="headerlink" title="关机重开"></a>关机重开</h2><p>右手柄拆下，接上短接器，插上注入器，之后同时按住音量加号加上开机键一秒松开，进入破解系统后拔掉。注入器没电就充一下，指示灯应该是蓝色闪烁的。</p>
+<blockquote>
+<p>​	当游戏不能玩的时候，尝试在开机时，选择你想进去的系统。在大气层的图片消失后，长按音量加减，等进入维护模式后就可以放开了。进入模式后，什么都不需要动，然后单击电源键关机，重新进系统。</p>
+</blockquote>
+<h2 id="系统版本"><a href="#系统版本" class="headerlink" title="系统版本"></a>系统版本</h2><p>关于系统以及大气层版本：游戏对于NS的版本有要求，低于某个版本的不能游玩。NS版本对于大气层版本有要求，低于该版本的不能进入系统。游戏能玩就不建议升级。</p>
+<p>设置内可以查看更新主机，下面有行小字，如<code>13.2.0 AMS 1.2.5E</code> ,前面一段为NS版本，后一段 <code>AMS</code> 为大气层版本，E表虚拟系统，S表真实系统。正版系统没有后半段。</p>
+<h2 id="维护模式"><a href="#维护模式" class="headerlink" title="维护模式"></a>维护模式</h2><p>进入方法：开机时。大气层图片消失后，长按音量加减，等进入这模式后就可以放开了。</p>
+<p>退出方法：单击电源键。</p>
+<h2 id="游戏安装（）"><a href="#游戏安装（）" class="headerlink" title="游戏安装（）"></a>游戏安装（）</h2><h3 id="NSP"><a href="#NSP" class="headerlink" title="NSP"></a>NSP</h3><ol>
+<li>将NSP格式的游戏或者DLC下载到内存卡中,放到根目录下或文件夹都可。</li>
+<li>开机进入破解系统，进入相册。</li>
+<li>选择文件安装</li>
+</ol>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>NSP格式：先在主机主界面选中游戏图标按加号，选删除游戏，之后关机拔储存卡把NSP安装包删了就可以</p>
+<p>XCI格式：关机拔下储存卡把XCI 安装包删了就行了</p>
+<h2 id="相册"><a href="#相册" class="headerlink" title="相册"></a>相册</h2><p>原来的系统相册在NS主页面，按住R键打开游戏，会自动进入高权限的破解工具台。但<strong>按住R键打开相册，就会进入正常的系统相册。</strong></p>
+<h2 id="金手指"><a href="#金手指" class="headerlink" title="金手指"></a>金手指</h2><p>游戏的作弊功能。</p>
+<p>大气层系统下的金手指读取路径为<code>atmosphere</code>→<code>contents</code>→<code>游戏编号（TID）</code>→<code>cheats</code>→<code>游戏版本号（BID）.txt</code>.</p>
+<p>使用：以热血三国志为例</p>
+<p>打开游戏再打开相册，找到 <code>edizon</code>，打开，会显示游戏的 <code>TID</code> 与 <code>BID</code> ，将金手指文件（<code>游戏版本号（BID）.txt</code>）放到对应文件夹，没有就依照游戏的 <code>TID</code> 与 <code>BID</code> 创建适宜路径。游玩时打开游戏再打开相册的 <code>edizon</code> ，选择作弊选项即可。</p>
+<p>软件 <code>edizon</code> 自带搜索内存功能，但只有<strong>FAT32格式</strong>的内存卡可用！<strong>exfat格式</strong>的内存卡，多次使用会使系统崩溃！</p>
+<p>补充说明：可以直接在游戏里，调出<strong>特斯拉</strong>选择金手指选项使用。</p>
+<h3 id="备份金手指与MOD"><a href="#备份金手指与MOD" class="headerlink" title="备份金手指与MOD"></a>备份金手指与MOD</h3><p>日后补充。</p>
+<h2 id="MOD"><a href="#MOD" class="headerlink" title="MOD"></a>MOD</h2><p>MOD与金手指一样，下载解压后，大气层放到 <code>atmosphere/contents/</code> 里面就自动生效了。</p>
+<p>完整路径是：<code>atmosphere</code>→<code>contents</code>→<code>游戏编号（TID）</code>→<code>romfs</code>→<code>mod文件</code></p>
+<p>有的mod需要特殊开启方法，要去下载MOD那里看要求，游戏要重新打开才能读取！</p>
+<blockquote>
+<p>汉化补丁也是MOD的一种！</p>
+</blockquote>
+<h2 id="防BAN"><a href="#防BAN" class="headerlink" title="防BAN"></a>防BAN</h2><p>常在河边走，避免走湿鞋。</p>
+<h2 id="必备软件以及使用"><a href="#必备软件以及使用" class="headerlink" title="必备软件以及使用"></a>必备软件以及使用</h2><h3 id="特斯拉Tesla-Menu"><a href="#特斯拉Tesla-Menu" class="headerlink" title="特斯拉Tesla-Menu"></a>特斯拉Tesla-Menu</h3><p>一款自制软件的快捷窗口，里面的程序称为插件，完整版的程序在相册中。</p>
+<p>特斯拉基础包包含组件：金手指+系统控制台+超频+底座&#x2F;手持转换+状态显示+emuiibo</p>
+<p>这个太长，要另外开个贴。<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVXhQeXdOUGtTQlVq">特斯拉插件介绍与刷amiibo</a></p>
+<h3 id="AWOO："><a href="#AWOO：" class="headerlink" title="AWOO："></a><strong>AWOO：</strong></h3><p>游戏安装工具。介绍在<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVVdjcFVrSGJVZ2RW">游戏和补丁在哪里找？怎么安装？</a></p>
+<h3 id="Edizon："><a href="#Edizon：" class="headerlink" title="Edizon："></a><strong>Edizon：</strong></h3><p>运行金手指必须的工具。介绍在<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVXNOZHNBcHRuUUlt">怎么用金手指，打汉化补丁和MOD？</a></p>
+<h3 id="DBI："><a href="#DBI：" class="headerlink" title="DBI："></a><strong>DBI：</strong></h3><p>通过USB连接电脑的软件。介绍在<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVVdjcFVrSGJVZ2RW">游戏和补丁在哪里找？怎么安装？</a></p>
+<h3 id="JKSV："><a href="#JKSV：" class="headerlink" title="JKSV："></a><strong>JKSV：</strong></h3><p>存档的操作工具。介绍在<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVW1laWhJWG1JUEpM">怎么修改存档？</a></p>
+<h3 id="Tinfoil："><a href="#Tinfoil：" class="headerlink" title="Tinfoil："></a>Tinfoil：</h3><h3 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h3><p>用户自己制作的程序，存在于主页面，跟游戏一样。功能各有不同，大气层真实系统安装这个，联网后会导致ban机。</p>
+<p>此外，前端具有较高的权限，当按住R键不放再打开游戏时，会进入自制软件界面。此时使用相册中软件时，基本不会死机报错。</p>
+<h3 id="hbmenu"><a href="#hbmenu" class="headerlink" title="hbmenu"></a>hbmenu</h3><p>别名天马前端，即破解系统点相册能进入的，放有自制软件的界面。</p>
+<p>直接点进相册进入的是apple限制模式，一返回到桌面就会杀后台。此模式下，自制软件的权限会受到限制，部分操作会导致死机报错或失败。</p>
+<p>安装大气层整合包自带的hbmenu.nsp，可在桌面生成跟游戏一样的入口。打开他或者按住R进入游戏时，会进入完整模式&#x2F;高权限模式的相册，此时所有软件的功能都不会受到限制。</p>
+<h3 id="Hekate界面："><a href="#Hekate界面：" class="headerlink" title="Hekate界面："></a>Hekate界面：</h3><p>软破机是使用注入器注入时进入的界面。硬破机只需要按住音量减，再开机</p>
+<p>详细介绍请看<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVVpQcmd1RFNpUnNL">Hekate界面详细介绍</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>整合于各论坛（switch520等）、视频网站，贴吧，交流群等，太乱了，不贴了。</p>
+<p>更新：<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVVFMWXRLQ096RXVG">好东西</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>switch破解指南</p><p><a href="https://scutlmg.github.io/2021/09/08/switch破解指南/">https://scutlmg.github.io/2021/09/08/switch破解指南/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>ivy</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-09-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-03-25</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/game/">game</a><a class="link-muted mr-2" rel="tag" href="/tags/switch/">switch</a></div><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a><a class="a2a_button_wechat"></a><a class="a2a_button_print"></a><a class="a2a_button_copy_link"></a><a class="a2a_button_email"></a></div><script async src="https://static.addtoany.com/menu/page.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/logo/cmcm.jpeg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/logo/cmcm.jpeg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/09/14/Hexo-icarus%E4%B8%BB%E9%A2%98%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F%E4%BB%A5%E5%8F%8A%E8%83%8C%E6%99%AF/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Hexo-icarus主题黑夜模式以及背景</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/06/01/Git%20%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"><span class="level-item">Git 版本控制</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "699db1a23ba21f8bdb4afd018a2bdf51",
+            repo: "blog_comment",
+            owner: "scutLMG",
+            clientID: "82e44bb7d19ddb388412",
+            clientSecret: "649cbfca073a5d68d47f02617190321c5fd47f78",
+            admin: "scutLMG",
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 8,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/2023/03/24/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/"><img src="/tn/tn_book.jpg" alt="常见的开源协议（转载）"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-24T16:00:00.000Z">2023-03-25</time></p><p class="title"><a href="/2023/03/24/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/">常见的开源协议（转载）</a></p><p class="categories"><a href="/categories/cs/">cs</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/03/23/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%97%A5%E5%BF%97%E7%BB%B4%E6%8A%A4/"><img src="/tn/tn_logs.jpg" alt="如何进行日志维护"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-23T16:00:00.000Z">2023-03-24</time></p><p class="title"><a href="/2023/03/23/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%97%A5%E5%BF%97%E7%BB%B4%E6%8A%A4/">如何进行日志维护</a></p><p class="categories"><a href="/categories/cs/">cs</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/03/21/Robots.txt%E8%AF%A6%E8%A7%A3/"><img src="/tn/tn_python.jpg" alt="Robots.txt详解"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-21T16:00:00.000Z">2023-03-22</time></p><p class="title"><a href="/2023/03/21/Robots.txt%E8%AF%A6%E8%A7%A3/">Robots.txt详解</a></p><p class="categories"><a href="/categories/cs/">cs</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/02/22/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/"><img src="/tn/tn_hugo.jpg" alt="hugo搭建网站"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-02-22T16:00:00.000Z">2023-02-23</time></p><p class="title"><a href="/2023/02/22/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">hugo搭建网站</a></p><p class="categories"><a href="/categories/blog/">blog</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/02/21/github_page%E5%AD%90%E9%A1%B5%E9%9D%A2/"><img src="/tn/tn_blog_panda2.jpg" alt="github page 子页面"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-02-21T16:00:00.000Z">2023-02-22</time></p><p class="title"><a href="/2023/02/21/github_page%E5%AD%90%E9%A1%B5%E9%9D%A2/">github page 子页面</a></p><p class="categories"><a href="/categories/blog/">blog</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/blog/"><span class="level-start"><span class="level-item">blog</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/categories/book/"><span class="level-start"><span class="level-item">book</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/categories/book/magic/"><span class="level-start"><span class="level-item">magic</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/cs/"><span class="level-start"><span class="level-item">cs</span></span><span class="level-end"><span class="level-item tag">26</span></span></a><ul><li><a class="level is-mobile" href="/categories/cs/android/"><span class="level-start"><span class="level-item">android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/automation/"><span class="level-start"><span class="level-item">automation</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/docker/"><span class="level-start"><span class="level-item">docker</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/categories/cs/docker/docker-app/"><span class="level-start"><span class="level-item">docker-app</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/cs/front-end/"><span class="level-start"><span class="level-item">front-end</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/github/"><span class="level-start"><span class="level-item">github</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/cs/%E7%A1%AC%E4%BB%B6/"><span class="level-start"><span class="level-item">硬件</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/game/"><span class="level-start"><span class="level-item">game</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/categories/game/switch/"><span class="level-start"><span class="level-item">switch</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/game/zelda/"><span class="level-start"><span class="level-item">zelda</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/note/"><span class="level-start"><span class="level-item">note</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/software/"><span class="level-start"><span class="level-item">software</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/test/"><span class="level-start"><span class="level-item">test</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/IME/"><span class="tag">IME</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/android/"><span class="tag">android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/automation/"><span class="tag">automation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blog/"><span class="tag">blog</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="/tags/book/"><span class="tag">book</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cs/"><span class="tag">cs</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker-app/"><span class="tag">docker-app</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/front-end/"><span class="tag">front-end</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/game/"><span class="tag">game</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/magic/"><span class="tag">magic</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nonebot/"><span class="tag">nonebot</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/note/"><span class="tag">note</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/software/"><span class="tag">software</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/switch/"><span class="tag">switch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tasker/"><span class="tag">tasker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/test/"><span class="tag">test</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/web-spider/"><span class="tag">web-spider</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/zelda/"><span class="tag">zelda</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">一月 2022</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">九月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">六月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/03/"><span class="level-start"><span class="level-item">三月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/10/"><span class="level-start"><span class="level-item">十月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/08/"><span class="level-start"><span class="level-item">八月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">五月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/10/"><span class="level-start"><span class="level-item">十月 2019</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#破解之前"><span class="level-left"><span class="level-item">1</span><span class="level-item">破解之前</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#机型"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">机型</span></span></a></li><li><a class="level is-mobile" href="#破解系统与破解方式"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">破解系统与破解方式</span></span></a></li><li><a class="level is-mobile" href="#双系统："><span class="level-left"><span class="level-item">1.3</span><span class="level-item">双系统：</span></span></a></li></ul></li><li><a class="level is-mobile" href="#材料准备"><span class="level-left"><span class="level-item">2</span><span class="level-item">材料准备</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#内存卡注意事项"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">内存卡注意事项</span></span></a></li><li><a class="level is-mobile" href="#内存卡文件详解"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">内存卡文件详解</span></span></a></li></ul></li><li><a class="level is-mobile" href="#破解"><span class="level-left"><span class="level-item">3</span><span class="level-item">破解</span></span></a></li><li><a class="level is-mobile" href="#关机重开"><span class="level-left"><span class="level-item">4</span><span class="level-item">关机重开</span></span></a></li><li><a class="level is-mobile" href="#系统版本"><span class="level-left"><span class="level-item">5</span><span class="level-item">系统版本</span></span></a></li><li><a class="level is-mobile" href="#维护模式"><span class="level-left"><span class="level-item">6</span><span class="level-item">维护模式</span></span></a></li><li><a class="level is-mobile" href="#游戏安装（）"><span class="level-left"><span class="level-item">7</span><span class="level-item">游戏安装（）</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#NSP"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">NSP</span></span></a></li><li><a class="level is-mobile" href="#删除"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">删除</span></span></a></li></ul></li><li><a class="level is-mobile" href="#相册"><span class="level-left"><span class="level-item">8</span><span class="level-item">相册</span></span></a></li><li><a class="level is-mobile" href="#金手指"><span class="level-left"><span class="level-item">9</span><span class="level-item">金手指</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#备份金手指与MOD"><span class="level-left"><span class="level-item">9.1</span><span class="level-item">备份金手指与MOD</span></span></a></li></ul></li><li><a class="level is-mobile" href="#MOD"><span class="level-left"><span class="level-item">10</span><span class="level-item">MOD</span></span></a></li><li><a class="level is-mobile" href="#防BAN"><span class="level-left"><span class="level-item">11</span><span class="level-item">防BAN</span></span></a></li><li><a class="level is-mobile" href="#必备软件以及使用"><span class="level-left"><span class="level-item">12</span><span class="level-item">必备软件以及使用</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#特斯拉Tesla-Menu"><span class="level-left"><span class="level-item">12.1</span><span class="level-item">特斯拉Tesla-Menu</span></span></a></li><li><a class="level is-mobile" href="#AWOO："><span class="level-left"><span class="level-item">12.2</span><span class="level-item">AWOO：</span></span></a></li><li><a class="level is-mobile" href="#Edizon："><span class="level-left"><span class="level-item">12.3</span><span class="level-item">Edizon：</span></span></a></li><li><a class="level is-mobile" href="#DBI："><span class="level-left"><span class="level-item">12.4</span><span class="level-item">DBI：</span></span></a></li><li><a class="level is-mobile" href="#JKSV："><span class="level-left"><span class="level-item">12.5</span><span class="level-item">JKSV：</span></span></a></li><li><a class="level is-mobile" href="#Tinfoil："><span class="level-left"><span class="level-item">12.6</span><span class="level-item">Tinfoil：</span></span></a></li><li><a class="level is-mobile" href="#前端："><span class="level-left"><span class="level-item">12.7</span><span class="level-item">前端：</span></span></a></li><li><a class="level is-mobile" href="#hbmenu"><span class="level-left"><span class="level-item">12.8</span><span class="level-item">hbmenu</span></span></a></li><li><a class="level is-mobile" href="#Hekate界面："><span class="level-left"><span class="level-item">12.9</span><span class="level-item">Hekate界面：</span></span></a></li></ul></li><li><a class="level is-mobile" href="#参考"><span class="level-left"><span class="level-item">13</span><span class="level-item">参考</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/logo/logo_light.svg" alt="也无风雨也无晴" height="28"><img class="logo-img-dark" src="/logo/logo_dark.svg" alt="也无风雨也无晴" height="28"></a><p class="is-size-7"><span>&copy; 2023 ivy</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/scutLMG"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="/js/night.js" defer></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script type="text/javascript" src="/js/universe.js"></script></body></html>
